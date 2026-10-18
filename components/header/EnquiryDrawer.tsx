@@ -7,33 +7,33 @@ import { ROOMS_DATA } from "@/lib/rooms-data";
 interface EnquiryDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultRoom?: string;
 }
 
-export function EnquiryDrawer({ isOpen, onClose, defaultRoom }: EnquiryDrawerProps) {
+export function EnquiryDrawer({ isOpen, onClose }: EnquiryDrawerProps) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     checkIn: "",
     checkOut: "",
     guests: "2",
-    roomType: defaultRoom || "Garden View Room",
+    roomType: "Garden View Room",
     message: "",
   });
 
   useEffect(() => {
-    if (defaultRoom) {
-      setFormData((prev) => ({ ...prev, roomType: defaultRoom }));
-    }
-  }, [defaultRoom]);
-
-  useEffect(() => {
     if (!isOpen) return;
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {

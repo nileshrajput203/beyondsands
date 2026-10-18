@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { WhatsAppIcon } from "../icons";
 
 export function WhatsAppFab() {
-  const [isHovered, setIsHovered] = useState(false);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   useEffect(() => {
@@ -38,8 +37,6 @@ export function WhatsAppFab() {
       {/* Floating Circle Button */}
       <button
         onClick={handleClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         aria-label="Chat with Beyond Sands on WhatsApp"
         className="relative group w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer animate-float"
       >

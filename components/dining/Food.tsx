@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MenuDrawer } from "./MenuDrawer";
+import { scrollToY } from "@/lib/scroll-nav";
+import { WhatsAppIcon } from "../icons";
 
 function parseHex(hex: string): [number, number, number] {
   const c = hex.replace("#", "");
@@ -30,35 +31,38 @@ const MEALS = [
     id: "breakfast",
     name: "Breakfast",
     timing: "08:00 AM – 10:30 AM",
-    description: "Breakfast (08:00 AM – 10:30 AM) · Steamed Idli & Medu Vada, Coastal Poha with Crispy Peanuts, Upma & Sheera with Fresh Masala Chai.",
-    src: "/assets/dining/breakfast-plate.png",
+    description:
+      "Breakfast (08:00 AM – 10:30 AM) · Steamed Idli & Medu Vada, Coastal Poha with Crispy Peanuts, Upma & Sheera with Fresh Masala Chai.",
+    src: "/assets/dining/breakfast.png",
     alt: "Vegetarian breakfast spread at Beyond Sands",
   },
   {
     id: "lunch",
     name: "Lunch",
     timing: "12:30 PM – 03:00 PM",
-    description: "Lunch (12:30 PM – 03:00 PM) · Hearty Maharashtrian Coastal Thali, Paneer Coastal Masala, Dal Tadka, Steamed Basmati & Chilled Solkadhi.",
-    src: "/assets/dining/lunch-plate.png",
+    description:
+      "Lunch (12:30 PM – 03:00 PM) · Hearty Maharashtrian Coastal Thali, Paneer Coastal Masala, Dal Tadka, Steamed Basmati & Chilled Solkadhi.",
+    src: "/assets/dining/lunch.png",
     alt: "Vegetarian lunch thali at Beyond Sands",
   },
   {
     id: "dinner",
     name: "Dinner",
     timing: "08:00 PM – 10:30 PM",
-    description: "Dinner (08:00 PM – 10:30 PM) · Pure Vegetarian Blue-Hour Feast, Palak Corn Delight, Artisanal Tandoori Rotis, Jeera Pulao & Warm Gulab Jamun.",
-    src: "/assets/dining/dinner-plate.png",
+    description:
+      "Dinner (08:00 PM – 10:30 PM) · Pure Vegetarian Blue-Hour Feast, Palak Corn Delight, Artisanal Tandoori Rotis, Jeera Pulao & Warm Gulab Jamun.",
+    src: "/assets/dining/dinner.png",
     alt: "Vegetarian dinner feast at Beyond Sands",
   },
 ];
 
+const KITCHEN_PHONE = "919923895055";
+
 export function Food() {
   const [activeMeal, setActiveMeal] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
-  const isDarkRef = useRef(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -69,16 +73,19 @@ export function Food() {
     const plates = Array.from(stage.querySelectorAll<HTMLDivElement>(".plate-item"));
     if (plates.length === 0) return;
 
+    let panelWidth = stage.parentElement?.offsetWidth || 1000;
+    const measurePanelWidth = () => {
+      panelWidth = stage.parentElement?.offsetWidth || 1000;
+    };
+    window.addEventListener("resize", measurePanelWidth, { passive: true });
+
     const updatePhysics = (p: number) => {
-      // p goes from 0.0 to 1.0
-      // 0.0 => Breakfast (meal 0)
-      // 0.5 => Lunch (meal 1)
-      // 1.0 => Dinner (meal 2)
-      const currentPos = p * 2; // 0 to 2
+      // p: 0.0 => Breakfast (0) | 0.5 => Lunch (1) | 1.0 => Dinner (2)
+      const currentPos = p * 2;
       const activeIdx = Math.min(2, Math.max(0, Math.round(currentPos)));
       setActiveMeal(activeIdx);
 
-      // Interpolate background color: #fffaf2 -> #f6debE -> #102242
+      // Revert dynamic background color change: #fffaf2 -> #f6debE -> #102242
       let bg = "#fffaf2";
       if (p <= 0.5) {
         bg = lerpColor("#fffaf2", "#f6debE", p * 2);
@@ -87,40 +94,26 @@ export function Food() {
       }
       section.style.backgroundColor = bg;
 
-      // Dark mode flag for Dinner
+      // Dark mode text color for Dinner
       const isDark = p > 0.62;
-      isDarkRef.current = isDark;
       section.style.color = isDark ? "#FFFFFF" : "#17365d";
 
-      // Calculate viewport responsive spacing
-      const panelWidth = stage.parentElement?.offsetWidth || 1000;
+      // Viewport responsive spacing
       const baseSpacing = Math.min(panelWidth * 0.42, 380);
 
-      // Animate dishes: moving right to left and rotating as user scrolls!
+      // Animate dishes: moving right to left and rotating dynamically on scroll
       plates.forEach((plate, i) => {
-        // distance from active position:
-        // i = 0: at p=0 dist=0; at p=1 dist=-2 (moved far left)
-        // i = 1: at p=0 dist=+1 (on right); at p=0.5 dist=0 (center); at p=1 dist=-1 (on left)
-        // i = 2: at p=0 dist=+2 (far right); at p=0.5 dist=+1; at p=1 dist=0 (center)
         const dist = i - currentPos;
         const absDist = Math.abs(dist);
 
-        // Movement: right to left
         const x = dist * baseSpacing;
-
-        // Scale: center is 1.0, sides shrink to ~0.62
         const scale = Math.max(0.55, 1 - absDist * 0.38);
 
-        // Rotation: rotates continuously as it moves right to left!
-        // At the same time, tilted based on distance
-        const continuousRotation = p * -220; // Spins counter-clockwise as scrolling down
+        const continuousRotation = p * -220;
         const tiltRotation = dist * -18;
         const totalRotation = continuousRotation + tiltRotation;
 
-        // Opacity
         const opacity = Math.max(0, 1 - Math.pow(absDist, 1.4) * 0.65);
-
-        // Z-Index
         const zIndex = Math.round(10 - absDist * 4);
 
         plate.style.transform = `translate(-50%, -50%) translateX(${x}px) scale(${scale}) rotate(${totalRotation}deg)`;
@@ -129,10 +122,8 @@ export function Food() {
       });
     };
 
-    // Initialize initial frame
     updatePhysics(0);
 
-    // Scroll-based pinned animation with scrub
     const st = ScrollTrigger.create({
       trigger: section,
       start: "top top",
@@ -149,6 +140,7 @@ export function Food() {
     scrollTriggerRef.current = st;
 
     return () => {
+      window.removeEventListener("resize", measurePanelWidth);
       st.kill();
     };
   }, []);
@@ -159,22 +151,23 @@ export function Food() {
     if (st) {
       const targetP = index / 2;
       const targetScroll = st.start + targetP * (st.end - st.start);
-      window.scrollTo({
-        top: targetScroll,
-        behavior: "smooth",
-      });
+      scrollToY(targetScroll);
     }
   };
 
   const isDark = activeMeal === 2;
+  const currentMeal = MEALS[activeMeal];
+  const mealMessage = encodeURIComponent(
+    `Hi Beyond Sands! Please share today's fresh pure vegetarian ${currentMeal.name} menu and dining options.`
+  );
 
   return (
     <>
-      {/* Text-free spacer between Location and Food */}
+      {/* Gentle transition spacer before Food */}
       <div
         id="location-food-spacer"
         aria-hidden="true"
-        className="w-full h-[20vh] min-h-[120px] pointer-events-none"
+        className="w-full h-8 pointer-events-none"
       />
 
       <section
@@ -182,48 +175,45 @@ export function Food() {
         id="food-section"
         data-id="dining"
         aria-labelledby="dining-heading"
-        className="relative w-full min-h-screen py-16 sm:py-24 px-4 sm:px-8 lg:px-12 overflow-hidden select-none"
+        className="relative w-full min-h-screen py-10 sm:py-14 lg:py-16 px-4 sm:px-8 lg:px-12 overflow-hidden select-none transition-colors duration-500"
         style={{
           backgroundColor: "#fffaf2",
           color: "#17365d",
         }}
       >
         <div className="w-full max-w-[1500px] mx-auto text-center flex flex-col items-center">
-          {/* Top Bar: Section Index + View Menu CTA */}
-          <div className="w-full flex items-center justify-between mb-6 sm:mb-8 border-b border-current/15 pb-4">
-            <div className="flex items-baseline gap-4">
-              <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold">
-                03
-              </span>
+          {/* Top Bar: Section Title + Direct Contact for Menu Link */}
+          <div className="w-full flex items-center justify-between mb-4 sm:mb-6 border-b border-current/15 pb-3">
+            <div className="flex items-center gap-2.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold animate-pulse" />
               <span className="font-display text-2xl sm:text-3xl font-normal tracking-wide">
                 PURE VEGETARIAN DINING
               </span>
             </div>
 
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="View resort dining menu"
+            <a
+              href={`https://wa.me/${KITCHEN_PHONE}?text=${mealMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contact Beyond Sands on WhatsApp for today's dining menu"
               className="group flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-widest text-champagne-gold hover:opacity-80 transition-opacity cursor-pointer font-medium"
             >
-              <span>view menu</span>
+              <span>Contact for Menu</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </button>
+            </a>
           </div>
 
           {/* Heading */}
           <h2
             id="dining-heading"
-            className="m-0 font-normal text-[clamp(36px,5vw,76px)] leading-[1.15] tracking-[-2px]"
-            style={{
-              fontFamily: "var(--font-display), 'Playfair Display', serif",
-            }}
+            className="m-0 font-normal text-[clamp(32px,4.5vw,68px)] leading-[1.15] tracking-[-1.5px] font-display"
           >
             100% pure vegetarian.
           </h2>
 
           {/* Pure Vegetarian FSSAI Quality Badge */}
           <div
-            className="inline-flex items-center justify-center gap-3.5 sm:gap-4 my-4 sm:my-5 px-5 sm:px-6 py-2.5 sm:py-3 border border-[#d6a05c] rounded-full shadow-sm text-[10px] sm:text-xs font-semibold tracking-[3px] sm:tracking-[4px] uppercase leading-none transition-colors duration-500"
+            className="inline-flex items-center justify-center gap-3.5 sm:gap-4 my-3 sm:my-4 px-5 sm:px-6 py-2 sm:py-2.5 border border-[#d6a05c] rounded-full shadow-sm text-[10px] sm:text-xs font-semibold tracking-[3px] sm:tracking-[4px] uppercase leading-none transition-colors duration-500"
             style={{
               backgroundColor: isDark ? "#0E243E" : "#FFFFFF",
               color: isDark ? "#F8F6F1" : "#17365d",
@@ -242,7 +232,7 @@ export function Food() {
           </div>
 
           {/* Wooden Food Display Panel */}
-          <div className="relative w-full h-[clamp(280px,44vh,460px)] my-3 sm:my-4 mx-auto overflow-hidden rounded-[20px] sm:rounded-[28px] bg-[#493022] shadow-[0_40px_70px_-35px_rgba(60,30,10,0.55)] border border-black/10">
+          <div className="relative w-full h-[clamp(260px,38vh,420px)] my-2 sm:my-3 mx-auto overflow-hidden rounded-[20px] sm:rounded-[28px] bg-[#493022] shadow-[0_40px_70px_-35px_rgba(60,30,10,0.55)] border border-black/10">
             {/* Rustic Wood Table Top Image */}
             <div className="absolute inset-0 w-full h-full">
               <Image
@@ -264,53 +254,25 @@ export function Food() {
               }}
             />
 
-            {/* Small Decorative Side Plates */}
-            <div
-              className="absolute z-[1] right-[4%] sm:right-[7%] top-1/2 w-[clamp(90px,14vw,215px)] aspect-square opacity-25 -translate-y-1/2 pointer-events-none filter saturate-75 drop-shadow-[0_15px_15px_rgba(20,10,5,0.4)]"
-              aria-hidden="true"
-            >
-              <Image
-                src="/assets/dining/dinner-plate.png"
-                alt=""
-                fill
-                sizes="220px"
-                className="object-contain"
-              />
-            </div>
-
-            <div
-              className="absolute z-[1] left-[3%] sm:left-[6%] top-1/2 w-[clamp(80px,12vw,180px)] aspect-square opacity-20 -translate-y-1/2 pointer-events-none filter saturate-75 drop-shadow-[0_15px_15px_rgba(20,10,5,0.4)] hidden sm:block"
-              aria-hidden="true"
-            >
-              <Image
-                src="/assets/dining/breakfast-plate.png"
-                alt=""
-                fill
-                sizes="180px"
-                className="object-contain"
-              />
-            </div>
-
             {/* Food Plates Stage — Animated right to left with scroll rotation */}
             <div
               ref={stageRef}
               id="plateStage"
-              className="absolute left-1/2 top-1/2 w-0 h-0 z-[2]"
+              className="absolute inset-0 z-[2] pointer-events-none"
             >
               {MEALS.map((meal, i) => (
                 <div
                   key={meal.id}
                   data-meal={i}
                   onClick={() => handleTabClick(i)}
-                  className="plate-item absolute left-0 top-0 w-[min(65vw,340px)] sm:w-[min(30vw,390px)] cursor-pointer drop-shadow-[0_20px_25px_rgba(25,10,2,0.45)] select-none will-change-transform"
+                  className="plate-item absolute top-1/2 left-1/2 w-[clamp(190px,24vw,310px)] h-[clamp(190px,24vw,310px)] rounded-full overflow-hidden cursor-pointer drop-shadow-[0_20px_25px_rgba(25,10,2,0.45)] select-none will-change-transform pointer-events-auto border-2 border-[#fffaf2]/20"
                 >
                   <Image
                     src={meal.src}
                     alt={meal.alt}
-                    width={420}
-                    height={420}
-                    priority={i === 0}
-                    className="w-full h-auto object-contain filter drop-shadow-md hover:scale-103 transition-transform duration-300"
+                    fill
+                    sizes="320px"
+                    className="w-full h-full object-cover object-center filter drop-shadow-md hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               ))}
@@ -344,25 +306,35 @@ export function Food() {
             })}
           </nav>
 
-          {/* Dining Note / Description */}
-          <p
-            id="diningNote"
-            aria-live="polite"
-            className="min-h-[28px] mt-4 max-w-2xl text-xs sm:text-sm font-sans font-light leading-relaxed transition-colors duration-500"
-            style={{
-              color: isDark ? "#d2deec" : "#526b87",
-            }}
-          >
-            {MEALS[activeMeal].description}
-          </p>
+          {/* Dining Note / Description & Direct WhatsApp CTA */}
+          <div className="mt-4 flex flex-col items-center gap-3.5">
+            <p
+              id="diningNote"
+              aria-live="polite"
+              className="max-w-2xl text-xs sm:text-sm font-sans font-light leading-relaxed transition-colors duration-500"
+              style={{
+                color: isDark ? "#d2deec" : "#526b87",
+              }}
+            >
+              {MEALS[activeMeal].description}
+            </p>
+
+            <a
+              href={`https://wa.me/${KITCHEN_PHONE}?text=${mealMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Inquire about today's fresh ${currentMeal.name} menu on WhatsApp`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-champagne-gold text-deep-navy font-sans text-xs uppercase tracking-wider font-semibold shadow-md hover:bg-champagne-gold/90 transition-all hover:scale-105"
+            >
+              <WhatsAppIcon size={15} />
+              <span>Contact for {currentMeal.name} Menu</span>
+              <span>→</span>
+            </a>
+          </div>
         </div>
       </section>
-
-      {/* Luxury Menu Modal Drawer */}
-      <MenuDrawer
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-      />
     </>
   );
 }
+
+export default Food;

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import Image from "next/image";
 import { CloseIcon, ChevronLeftIcon, ChevronRightIcon } from "../icons";
 import { GalleryItem } from "@/lib/gallery-data";
@@ -35,6 +35,9 @@ export function Lightbox({
   useEffect(() => {
     if (!isOpen) return;
 
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       else if (e.key === "ArrowLeft") handlePrev();
@@ -42,7 +45,10 @@ export function Lightbox({
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen, onClose, handlePrev, handleNext]);
 
   if (!isOpen || currentIndex === null) return null;

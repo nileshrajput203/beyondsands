@@ -5,14 +5,13 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
 import { SkySystem } from "@/components/sky/SkySystem";
 import { Header } from "@/components/header/Header";
 import { WhatsAppFab } from "@/components/hero/WhatsAppFab";
-import { Preloader } from "@/components/preloader/Preloader";
+import { InstagramFab } from "@/components/hero/InstagramFab";
+import { BackToTop } from "@/components/ui/BackToTop";
 import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
-import { LuxuryCursor } from "@/components/ui/LuxuryCursor";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -20,7 +19,6 @@ const cormorant = Cormorant_Garamond({
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -121,14 +119,8 @@ export default function RootLayout({
           {/* Awwwards Subtle Top Scroll Progress Line */}
           <ScrollProgressBar />
 
-          {/* Luxury Custom Trailing Cursor */}
-          <LuxuryCursor />
-
           {/* Global Scroll-Linked Sky Background */}
           <SkySystem />
-
-          {/* Interactive Ocean Wave Preloader */}
-          <Preloader />
 
           {/* Transparent Adaptive Header */}
           <Header />
@@ -138,8 +130,10 @@ export default function RootLayout({
             {children}
           </main>
 
-          {/* Floating WhatsApp Concierge */}
+          {/* Floating WhatsApp Concierge on Right, Instagram on Left & Back to Top */}
+          <InstagramFab />
           <WhatsAppFab />
+          <BackToTop />
         </SmoothScrollProvider>
       </body>
     </html>

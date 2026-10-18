@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer/Footer";
 import { FaqAccordion } from "@/components/faq/FaqAccordion";

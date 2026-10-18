@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { WhatsAppIcon } from "@/components/icons";
+
+type OfferFilter = "all" | "groups" | "couple" | "classic";
 
 interface OfferItem {
   id: string;
@@ -91,7 +93,7 @@ const OFFERS: OfferItem[] = [
 ];
 
 export function OffersInteractive() {
-  const [selectedFilter, setSelectedFilter] = useState<"all" | "groups" | "couple" | "classic">("all");
+  const [selectedFilter, setSelectedFilter] = useState<OfferFilter>("all");
   const [stayNights, setStayNights] = useState<number>(1);
 
   const filteredOffers = selectedFilter === "all"
@@ -112,7 +114,7 @@ export function OffersInteractive() {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setSelectedFilter(tab.id as any)}
+              onClick={() => setSelectedFilter(tab.id as OfferFilter)}
               className={`px-4 py-2 text-xs font-sans uppercase tracking-wider rounded-full transition-all duration-300 cursor-pointer ${
                 selectedFilter === tab.id
                   ? "bg-deep-navy text-warm-ivory font-medium shadow-sm"
@@ -248,7 +250,7 @@ export function OffersInteractive() {
                 rel="noopener noreferrer"
                 className={`w-full py-4 font-sans text-xs uppercase tracking-widest font-semibold rounded-[2px] transition-all flex items-center justify-center gap-2 text-center cursor-pointer ${
                   offer.badgeHighlight
-                    ? "bg-deep-navy hover:bg-navy-blue text-warm-ivory shadow-md hover:scale-102"
+                    ? "bg-deep-navy hover:bg-navy-blue text-warm-ivory shadow-md hover:scale-105"
                     : "bg-white border border-deep-navy/30 text-deep-navy hover:bg-deep-navy hover:text-warm-ivory"
                 }`}
               >

@@ -1,8 +1,7 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer/Footer";
-import { WhatsAppIcon, MapPinIcon } from "@/components/icons";
+import { WhatsAppIcon } from "@/components/icons";
 
 export const metadata = {
   title: "Experiences & Surroundings · Beyond Sands Resort",

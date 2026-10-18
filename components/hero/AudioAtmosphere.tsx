@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { VolumeIcon, VolumeXIcon } from "@/components/icons";
 
 export function AudioAtmosphere() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
-  const isPlayingRef = useRef(false);
 
   const startOceanAudio = () => {
     try {
@@ -63,7 +62,6 @@ export function AudioAtmosphere() {
       lfo.start();
 
       setIsPlaying(true);
-      isPlayingRef.current = true;
     } catch {
       // Audio autoplay restrictions
     }
@@ -77,7 +75,6 @@ export function AudioAtmosphere() {
         audioCtxRef.current = null;
         gainNodeRef.current = null;
         setIsPlaying(false);
-        isPlayingRef.current = false;
       }, 1000);
     }
   };

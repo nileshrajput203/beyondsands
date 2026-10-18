@@ -1,120 +1,69 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { GALLERY_ITEMS, GalleryItem } from "@/lib/gallery-data";
-import { Lightbox } from "./Lightbox";
+import { TiltedGridHero, type TiltedGridImage } from "@/components/ui/tilted-grid-hero";
 
-type CategoryFilter = "All" | "Rooms" | "Nature" | "Amenities" | "Architecture";
+const ALL_GALLERY_IMAGES: TiltedGridImage[] = [
+  // Signature Resort Suites & Interiors
+  { src: "/assets/rooms/garden-view-main.jpg", alt: "Garden View Room main interior and terrace" },
+  { src: "/assets/rooms/pool-view-main.jpg", alt: "Pool View Suite private balcony overlooking azure waters" },
+  { src: "/assets/rooms/couple-room-main.webp", alt: "Couple Room intimate retreat with warm ambient lighting" },
+  { src: "/assets/rooms/family-dorm-main.jpg", alt: "Family Dorm spacious multi-bed suite for group gatherings" },
+  { src: "/assets/rooms/garden-courtyard.png", alt: "Tranquil garden courtyard enveloped by tropical flora" },
+  { src: "/assets/rooms/pool-view-thumb4.png", alt: "Signature infinity pool shimmering under coastal sunlight" },
+  { src: "/assets/rooms/garden-view-thumb1.jpg", alt: "Garden View sunlit verandah with garden breeze" },
+  { src: "/assets/rooms/pool-view-thumb1.jpg", alt: "Pool View deluxe suite layout and bespoke woodwork" },
+  { src: "/assets/rooms/couple-room-thumb1.webp", alt: "Couple suite cosy nook and floral detailing" },
+  { src: "/assets/rooms/family-dorm-thumb1.jpg", alt: "Family Dorm airy verandah and group lounge" },
+
+  // Resort Grounds, Celebrations & Architecture
+  { src: "/assets/gallery/wedding-banner.webp", alt: "Grand 15,000+ sq ft celebration lawns illuminated for wedding" },
+  { src: "/assets/gallery/banquet-hall.jpg", alt: "Air-conditioned banquet hall and evening celebration deck" },
+  { src: "/assets/hero/hero-gardens.jpg", alt: "Lush tropical manicured lawns and flowering coconut groves" },
+  { src: "/assets/rooms/garden-view-thumb5.png", alt: "Pathways lined with tall coastal palms and soft lighting" },
+  { src: "/assets/rooms/pool-view-thumb5.jpg", alt: "Poolside twilight view with starry night silhouettes" },
+  { src: "/assets/rooms/couple-room-thumb2.webp", alt: "Romantic honeymoon styling with warm mood accents" },
+  { src: "/assets/rooms/family-dorm-thumb3.jpg", alt: "High-ceiling family quarters with open coastal breeze" },
+  { src: "/assets/rooms/garden-view-thumb2.jpg", alt: "King bed dressed in crisp luxury organic linens" },
+  { src: "/assets/rooms/pool-view-thumb3.jpg", alt: "Golden hour sunset reflections across the pool" },
+
+  // Surrounding Kelva Coastal Landmarks & Nature
+  { src: "/assets/location/location-surroundings-beach.webp", alt: "Pristine Kelva Beach shoreline lined with Casuarina groves" },
+  { src: "/assets/location/location-kelvafort.jpg", alt: "Historic Portuguese Kelva Fort ruins at low tide" },
+  { src: "/assets/location/location-kelvadam.avif", alt: "Serene Kelva Dam reservoir and lush green hills" },
+  { src: "/assets/location/location-drone-shitlamata.jpg", alt: "Sea-facing Sheetla Devi Temple in Kelva" },
+  { src: "/assets/hero/hero-canopy-poster.jpg", alt: "Aerial canopy overview of Beyond Sands resort" },
+
+  // Curated High-Definition Coastal Atmosphere Visuals
+  { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=80", alt: "Infinity pool overlooking turquoise waters at dusk" },
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80", alt: "Golden sunset over calm coastal shoreline" },
+  { src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1400&q=80", alt: "Coastal luxury beachfront villas under swaying palms" },
+  { src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80", alt: "Evening poolside lanterns and amber reflections" },
+  { src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80", alt: "Boutique resort bedroom suite with custom teak finishes" },
+  { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80", alt: "Contemporary coastal architecture at golden hour" },
+];
 
 export function Gallery() {
-  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("All");
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const categories: CategoryFilter[] = [
-    "All",
-    "Rooms",
-    "Nature",
-    "Amenities",
-    "Architecture",
-  ];
-
-  const filteredItems =
-    activeCategory === "All"
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
-
   return (
-    <>
-      <section
-        id="gallery-section"
-        className="relative w-full py-24 px-6 sm:px-12 bg-gradient-to-b from-[#091D30] via-[#071727] to-[#05121E] text-warm-ivory border-t border-warm-ivory/10 select-none overflow-hidden"
-      >
-        {/* Subtle night ambience background glow */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none opacity-25 bg-[radial-gradient(ellipse_at_top,rgba(196,154,101,0.18),transparent_65%)]"
+    <section
+      id="gallery-section"
+      className="relative w-full py-6 sm:py-10 bg-white text-charcoal select-none overflow-hidden"
+    >
+      {/* 3D Tilted Grid Hero Gallery: All Images in Continuous Seamless Loop */}
+      <div className="relative w-full overflow-hidden bg-white">
+        <TiltedGridHero
+          images={ALL_GALLERY_IMAGES}
+          speed={3.5}
+          tileHeight={32}
+          aspectRatio={16 / 9}
+          gap={5}
+          axis={54}
+          curve={75}
+          fade={0}
+          className="h-[540px] sm:h-[620px] lg:h-[700px] w-full"
         />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Header Row */}
-          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-6 mb-12 border-b border-warm-ivory/20 pb-5">
-            <div className="flex items-baseline gap-4">
-              <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold">
-                04
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal text-warm-ivory tracking-wide drop-shadow-sm">
-                RESORT GALLERY
-              </h2>
-            </div>
-
-            {/* Live Site Category Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-sans text-xs uppercase tracking-wider">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`py-2 px-4 rounded-[2px] transition-all cursor-pointer font-medium tracking-wider ${
-                    activeCategory === cat
-                      ? "bg-champagne-gold text-deep-navy font-semibold shadow-md"
-                      : "text-warm-ivory/80 hover:text-warm-ivory hover:bg-warm-ivory/10 border border-warm-ivory/25"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-
-        {/* Editorial Masonry Bento Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item, idx) => {
-            // Asymmetric aspect ratio rhythm
-            const isTall = idx % 5 === 0 || idx % 7 === 0;
-            const isWide = idx % 4 === 0 && !isTall;
-
-            return (
-              <div
-                key={item.id}
-                onClick={() => setLightboxIndex(idx)}
-                className={`relative group overflow-hidden rounded-[2px] border border-warm-ivory/15 hover:border-champagne-gold/60 transition-all duration-500 cursor-pointer bg-deep-navy/40 shadow-sm ${
-                  isTall ? "sm:row-span-2 aspect-[3/4]" : isWide ? "aspect-[16/10]" : "aspect-[4/3]"
-                }`}
-              >
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
-                />
-
-                {/* Subtle Hover Gradient & Metadata */}
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                  <span className="font-sans text-[10px] uppercase tracking-widest text-champagne-gold block mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="font-display text-lg sm:text-xl font-normal text-warm-ivory">
-                    {item.title}
-                  </h3>
-                  <p className="font-sans text-xs text-warm-ivory/70 font-light line-clamp-1 mt-0.5">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
-
-      {/* Lightbox Inspection Modal */}
-      <Lightbox
-        items={filteredItems}
-        currentIndex={lightboxIndex}
-        onClose={() => setLightboxIndex(null)}
-        onNavigate={(newIdx) => setLightboxIndex(newIdx)}
-      />
-    </>
   );
 }
+
+export default Gallery;

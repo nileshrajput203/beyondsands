@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { ArrowRightIcon } from "../icons";
 
 interface ScrollBasedViewPillProps {
@@ -17,16 +16,17 @@ export function ScrollBasedViewPill({
   const currentFormatted = String(currentIndex + 1).padStart(2, "0");
   const totalFormatted = String(totalRooms).padStart(2, "0");
   const progressPercent = ((currentIndex + 1) / totalRooms) * 100;
+  const isAtEnd = currentIndex >= totalRooms - 1;
 
   return (
     <button
       onClick={onNext}
-      aria-label="Advance to next room suite"
-      className="group flex items-center gap-4 bg-deep-navy/85 hover:bg-deep-navy text-warm-ivory px-5 py-3 rounded-full border border-champagne-gold/30 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-pointer select-none"
+      aria-label={isAtEnd ? "Scroll all the way back to first room" : "Scroll all the way through rooms"}
+      className="group flex items-center gap-4 bg-deep-navy/90 hover:bg-deep-navy text-warm-ivory px-5 py-3 rounded-full border border-champagne-gold/30 shadow-xl backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-pointer select-none"
     >
       {/* Scroll Hint */}
       <span className="font-sans text-[10px] uppercase tracking-wider text-champagne-gold font-medium">
-        Scroll / View
+        {isAtEnd ? "Scroll to Start" : "Scroll / View"}
       </span>
 
       {/* Progress Line */}
@@ -43,7 +43,11 @@ export function ScrollBasedViewPill({
       </span>
 
       {/* Advance Arrow */}
-      <div className="text-champagne-gold group-hover:translate-x-1 transition-transform">
+      <div
+        className={`text-champagne-gold transition-transform duration-300 ${
+          isAtEnd ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
+        }`}
+      >
         <ArrowRightIcon size={14} strokeWidth={1.5} />
       </div>
     </button>

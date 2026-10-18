@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer/Footer";
-import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon, CalendarIcon, SparklesIcon } from "@/components/icons";
+import { PhoneIcon, MailIcon, MapPinIcon, WhatsAppIcon } from "@/components/icons";
 
 interface RouteInfo {
   mode: string;
@@ -337,11 +337,11 @@ export default function ContactPage() {
               <div className="hairline-t border-charcoal/15 pt-4 grid grid-cols-2 gap-4 text-center font-sans text-xs">
                 <div className="p-3 bg-warm-ivory/50 rounded-[2px]">
                   <span className="text-[10px] uppercase font-mono text-champagne-gold block mb-1">Check-in</span>
-                  <span className="font-semibold text-deep-navy text-sm">1:00 PM</span>
+                  <span className="font-semibold text-deep-navy text-sm">12:00 PM</span>
                 </div>
                 <div className="p-3 bg-warm-ivory/50 rounded-[2px]">
                   <span className="text-[10px] uppercase font-mono text-champagne-gold block mb-1">Check-out</span>
-                  <span className="font-semibold text-deep-navy text-sm">10:30 AM</span>
+                  <span className="font-semibold text-deep-navy text-sm">10:00 AM</span>
                 </div>
               </div>
             </div>

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ROOMS_DATA } from "@/lib/rooms-data";
 import { RoomPanel } from "./RoomPanel";
 import { ScrollBasedViewPill } from "./ScrollBasedViewPill";
+import { scrollToY } from "@/lib/scroll-nav";
 
 export function RoomsRail() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ export function RoomsRail() {
         x: getScrollAmount,
         ease: "none",
         scrollTrigger: {
+          id: "rooms-rail",
           trigger: section,
           pin: true,
           scrub: 1,
@@ -66,26 +68,30 @@ export function RoomsRail() {
       };
     });
 
-    // Refresh ScrollTrigger after layout settles
-    ScrollTrigger.refresh();
-
     return () => {
       mm.revert();
     };
   }, []);
 
-  const handleNextSlide = () => {
-    const nextIdx = (currentSlide + 1) % ROOMS_DATA.length;
-    if (window.innerWidth >= 1024 && sectionRef.current) {
-      // Scroll smoothly down by one panel width
-      const totalWidth = trackRef.current ? trackRef.current.scrollWidth - window.innerWidth : 0;
-      const panelStep = totalWidth / (ROOMS_DATA.length - 1);
-      const targetScroll = sectionRef.current.offsetTop + nextIdx * panelStep;
-      window.scrollTo({ top: targetScroll, behavior: "smooth" });
-    } else if (trackRef.current) {
-      const panelWidth = trackRef.current.clientWidth;
+  // Scroll all the way through the horizontal section from left to right
+  const handleScrollAllTheWay = () => {
+    if (window.innerWidth >= 1024) {
+      const st = ScrollTrigger.getById("rooms-rail");
+      if (st) {
+        // If already near the end (progress >= 0.92), scroll all the way back to start; otherwise scroll all the way to the end
+        const isAtEnd = st.progress >= 0.92;
+        const targetScroll = isAtEnd ? st.start : st.end;
+        scrollToY(targetScroll, 2.4);
+        return;
+      }
+    }
+
+    // Fallback or Mobile (native horizontal scroll container)
+    if (trackRef.current) {
+      const maxScroll = trackRef.current.scrollWidth - trackRef.current.clientWidth;
+      const isAtEnd = trackRef.current.scrollLeft >= maxScroll - 40;
       trackRef.current.scrollTo({
-        left: nextIdx * panelWidth,
+        left: isAtEnd ? 0 : maxScroll,
         behavior: "smooth",
       });
     }
@@ -95,18 +101,13 @@ export function RoomsRail() {
     <section
       ref={sectionRef}
       id="rooms-section"
-      className="relative w-full min-h-screen py-16 lg:py-0 flex flex-col justify-center overflow-hidden bg-transparent select-none"
+      className="relative w-full min-h-screen lg:h-screen lg:min-h-0 py-8 lg:py-2 flex flex-col justify-between lg:justify-center overflow-hidden bg-transparent select-none"
     >
       {/* Top Header Block */}
-      <div className="max-w-7xl mx-auto w-full px-6 sm:px-12 pt-6 pb-2 flex items-baseline justify-between z-10">
-        <div className="flex items-baseline gap-4">
-          <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold">
-            01
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal text-deep-navy tracking-wide">
-            ROOMS & SUITES
-          </h2>
-        </div>
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 md:px-12 pt-2 sm:pt-3 pb-1 sm:pb-1.5 flex items-baseline justify-between z-10 flex-shrink-0">
+        <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-normal text-deep-navy tracking-wide">
+          ROOMS & SUITES
+        </h2>
 
         <p className="hidden md:block font-sans text-xs tracking-wider text-charcoal/60 uppercase">
           Horizontal Rail · Pinned Suite Showcase
@@ -128,12 +129,12 @@ export function RoomsRail() {
         ))}
       </div>
 
-      {/* Floating Scroll Based View Pill (Bottom-Right of pinned Rooms section) */}
-      <div className="absolute bottom-6 right-8 lg:right-16 z-30 hidden sm:block pointer-events-auto">
+      {/* Floating Scroll Based View Pill (Centered at bottom of pinned Rooms section, avoiding WhatsApp FAB) */}
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:block pointer-events-auto">
         <ScrollBasedViewPill
           currentIndex={currentSlide}
           totalRooms={ROOMS_DATA.length}
-          onNext={handleNextSlide}
+          onNext={handleScrollAllTheWay}
         />
       </div>
     </section>

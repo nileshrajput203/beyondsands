@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { WhatsAppIcon, SparklesIcon, CalendarIcon, HeartHandshakeIcon } from "@/components/icons";
+import { WhatsAppIcon, HeartHandshakeIcon } from "@/components/icons";
 
 interface EventType {
   id: string;

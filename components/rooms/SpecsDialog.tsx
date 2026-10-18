@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { CloseIcon, WhatsAppIcon } from "../icons";
 import { RoomItem } from "@/lib/rooms-data";
 
@@ -11,37 +12,106 @@ interface SpecsDialogProps {
 }
 
 export function SpecsDialog({ room, isOpen, onClose }: SpecsDialogProps) {
+  const [mounted, setMounted] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body & documentElement scroll completely while modal is open
   useEffect(() => {
     if (!isOpen) return;
+
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevTouchAction = document.body.style.touchAction;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.touchAction = prevTouchAction;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  // Isolate mouse wheel event so scrolling inside or hovering over the modal never scrolls the website behind
+  useEffect(() => {
+    if (!isOpen) return;
 
-  return (
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Prevent wheel event from bubbling to window / GSAP ScrollTrigger
+      e.stopPropagation();
+
+      const { scrollTop, scrollHeight, clientHeight } = el;
+      const atTop = scrollTop <= 0;
+      const atBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 1;
+
+      // Prevent boundary bounce from propagating to parent window
+      if ((e.deltaY < 0 && atTop) || (e.deltaY > 0 && atBottom)) {
+        e.preventDefault();
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.stopPropagation();
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    el.addEventListener("touchmove", handleTouchMove, { passive: true });
+
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+      el.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [isOpen]);
+
+  if (!isOpen || !mounted) return null;
+
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-label={`${room.name} Full Specifications`}
-      className="fixed inset-0 z-[90] flex items-center justify-center p-4 sm:p-6"
+      onWheel={(e) => {
+        // Prevent background website scrolling if scrolling on outer padding or backdrop
+        e.stopPropagation();
+        if (e.target === e.currentTarget || (e.target as HTMLElement).classList.contains("specs-modal-backdrop")) {
+          e.preventDefault();
+          scrollContainerRef.current?.scrollBy({ top: e.deltaY, behavior: "auto" });
+        }
+      }}
+      className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-6 overscroll-contain"
     >
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-deep-navy/70 backdrop-blur-sm transition-opacity"
+        className="specs-modal-backdrop absolute inset-0 bg-deep-navy/80 backdrop-blur-md transition-opacity cursor-pointer overscroll-contain"
       />
 
-      {/* Dialog Body */}
-      <div className="relative w-full max-w-2xl bg-warm-ivory text-charcoal shadow-2xl p-6 sm:p-10 hairline-all border-champagne-gold/30 rounded-[2px] z-10 max-h-[90vh] overflow-y-auto">
+      {/* Dialog Body - Isolated Scroll Container */}
+      <div
+        ref={scrollContainerRef}
+        tabIndex={-1}
+        className="relative w-full max-w-2xl bg-[#FDFBF7] text-charcoal shadow-2xl p-6 sm:p-10 border border-champagne-gold/30 rounded-[4px] z-10 max-h-[88vh] overflow-y-auto overscroll-contain select-text focus:outline-none [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-[#F4ECE1] [&::-webkit-scrollbar-thumb]:bg-champagne-gold/60 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-champagne-gold"
+      >
         {/* Header */}
-        <div className="flex items-start justify-between pb-6 hairline-b border-charcoal/15 mb-6">
+        <div className="flex items-start justify-between pb-6 hairline-b border-charcoal/15 mb-6 sticky -top-6 sm:-top-10 bg-[#FDFBF7]/95 backdrop-blur-md pt-1 z-20">
           <div>
             <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold">
-              Suite Specifications · {room.index}
+              Suite Specifications
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-normal text-deep-navy mt-1">
               {room.name}
@@ -50,7 +120,7 @@ export function SpecsDialog({ room, isOpen, onClose }: SpecsDialogProps) {
           <button
             onClick={onClose}
             aria-label="Close specifications dialog"
-            className="p-2 text-charcoal/60 hover:text-charcoal transition-colors cursor-pointer"
+            className="p-2 text-charcoal/60 hover:text-charcoal hover:bg-black/5 rounded-full transition-colors cursor-pointer"
           >
             <CloseIcon size={22} strokeWidth={1.25} />
           </button>
@@ -141,6 +211,7 @@ export function SpecsDialog({ room, isOpen, onClose }: SpecsDialogProps) {
           </a>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

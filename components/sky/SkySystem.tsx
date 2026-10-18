@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -124,7 +124,7 @@ export function SkySystem() {
       st2.kill();
       st3.kill();
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div

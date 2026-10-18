@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer/Footer";
 import { OffersInteractive } from "@/components/offers/OffersInteractive";

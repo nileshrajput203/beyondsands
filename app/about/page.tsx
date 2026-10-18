@@ -1,13 +1,20 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer/Footer";
-import { WhatsAppIcon, SparklesIcon, LeafIcon, ShieldCheckIcon, HeartHandshakeIcon } from "@/components/icons";
+import { WhatsAppIcon, LeafIcon, ShieldCheckIcon, HeartHandshakeIcon } from "@/components/icons";
 
 export const metadata = {
-  title: "About Us · Beyond Sands Resort",
+  title: "About Us | Beyond Sands — Palghar's #1 Best Resort & Pure Veg Sanctuary",
   description:
-    "Born from a love for coastal serenity and authentic hospitality, Beyond Sands is more than a resort—it's a sanctuary.",
+    "Discover the story of Beyond Sands, Palghar's top-ranked luxury resort located directly opposite Sheetla Devi Temple and 1 min from Kelva Beach. 100% pure veg hospitality, serene coastal groves, and family tranquility.",
+  keywords: [
+    "best resort in palghar",
+    "palghar best resort",
+    "top 1 resort in palghar",
+    "resort nearest to shitla devi temple",
+    "kelva beach pure veg resort",
+    "about beyond sands palghar",
+  ],
 };
 
 const VALUES = [
@@ -33,7 +40,7 @@ const VALUES = [
     subtitle: "Sattvic Culinary Art",
     description:
       "A kitchen built on purity and reverence. Distinct cookware and strict Jain/Swaminarayan preparation options celebrate regional Konkani flavors.",
-    icon: SparklesIcon,
+    icon: ShieldCheckIcon,
   },
   {
     num: "04",

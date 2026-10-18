@@ -15,7 +15,7 @@ export const DISHES_DATA: DishItem[] = [
     name: "Coastal Morning Awakening",
     course: "Breakfast",
     label: "Breakfast",
-    image: "/assets/dining/breakfast-plate.png",
+    image: "/assets/dining/breakfast.png",
     description: "Wake to palms, sea air, and fresh coastal morning delicacies, artisanal tea, and warm savouries.",
     timing: "08:00 AM – 10:30 AM",
     focalPoint: "center"
@@ -25,7 +25,7 @@ export const DISHES_DATA: DishItem[] = [
     name: "Maharashtrian Coastal Thali",
     course: "Lunch",
     label: "Lunch",
-    image: "/assets/dining/lunch-plate.png",
+    image: "/assets/dining/lunch.png",
     description: "Authentic coastal thalis crafted with regional Palghar spices, slow-cooked pulses, and organic greens.",
     timing: "12:30 PM – 03:00 PM",
     focalPoint: "center"
@@ -35,7 +35,7 @@ export const DISHES_DATA: DishItem[] = [
     name: "Blue Hour Twilight Repast",
     course: "Dinner",
     label: "Dinner",
-    image: "/assets/dining/dinner-plate.png",
+    image: "/assets/dining/dinner.png",
     description: "Curated evening dining under the starlit sky, accompanied by gentle coastal breezes and lantern light.",
     timing: "07:30 PM – 10:30 PM",
     focalPoint: "center"
