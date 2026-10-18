@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Argon Exact Hex Brand Palette */
+  --navy-blue: #12395A;
+  --champagne-gold: #C49A65;
+  --deep-navy: #0B2238;
+  --warm-ivory: #F8F6F1;
+  --pure-white: #FFFFFF;
+  --charcoal: #26313A;
+
+  /* Theme Defaults (Light / Morning) */
+  --text-primary: var(--charcoal);
+  --text-muted: rgba(38, 49, 58, 0.72);
+  --hairline: rgba(38, 49, 58, 0.14);
+  --bg-surface: var(--warm-ivory);
+
+  /* Global Sky Gradient Stops (Driven by GSAP ScrollTrigger) */
+  --sky-top: #F8F6F1;
+  --sky-bottom: #F0E9DC;
+}
+
+[data-theme="dark"] {
+  --text-primary: var(--warm-ivory);
+  --text-muted: rgba(248, 246, 241, 0.75);
+  --hairline: rgba(196, 154, 101, 0.22);
+  --bg-surface: var(--deep-navy);
+}
+
+/* Typography & Root Reset */
+html {
+  font-family: var(--font-sans), sans-serif;
+  background-color: var(--warm-ivory);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* Lenis Smooth Scroll Recommended Rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Selection and Focus Standards */
+::selection {
+  background-color: var(--champagne-gold);
+  color: var(--deep-navy);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--champagne-gold);
+  outline-offset: 3px;
+}
+
+/* Hairline utilities */
+.hairline-b {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--hairline);
+}
+
+.hairline-r {
+  border-right: 1px solid var(--hairline);
+}
+
+.hairline-l {
+  border-left: 1px solid var(--hairline);
+}
+
+.hairline-all {
+  border: 1px solid var(--hairline);
+}
+
+.gold-hairline {
+  border: 1px solid var(--champagne-gold);
+}
+
+/* Hide scrollbar for clean luxury rails */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Fluid display headings */
+.font-display-hero {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+}
+
+.font-display-section {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+}
+
+.font-display-numeral {
+  font-family: var(--font-display), serif;
+  font-size: clamp(5rem, 11vw, 11.5rem);
+  line-height: 0.85;
+}
+
+/* Subtle photo grading filter across the site */
+.luxury-grade {
+  filter: contrast(1.02) saturate(0.96) brightness(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

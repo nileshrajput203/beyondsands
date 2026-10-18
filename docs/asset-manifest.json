@@ -1,0 +1,435 @@
+{
+  "asset_count": 43,
+  "manifest": [
+    {
+      "source_file": "lofo-D3STrPks.png",
+      "target_path": "/assets/brand/logo.png",
+      "slot": "Header, Footer, Menu emblem",
+      "focal_point": "center",
+      "width": 842,
+      "height": 490,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "bg1-OX6kOzUT.jpg",
+      "target_path": "/assets/hero/hero-canopy-poster.jpg",
+      "slot": "Hero video poster & fallback",
+      "focal_point": "center 40%",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "bg2-NYfrkTZy.jpg",
+      "target_path": "/assets/hero/hero-gardens.jpg",
+      "slot": "Hero alternate view / About banner",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "bg3-4CcLfXbw.jpg",
+      "target_path": "/assets/hero/hero-twilight.jpg",
+      "slot": "Hero blue hour / pool night banner",
+      "focal_point": "center",
+      "width": 1500,
+      "height": 1000,
+      "full_bleed": true,
+      "flag_under_1600px": true
+    },
+    {
+      "source_file": "garden view-CaLd1yF5.jpg",
+      "target_path": "/assets/rooms/garden-view-main.jpg",
+      "slot": "Garden View Room main portrait",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "garden view 2-hzEj2Mua.jpg",
+      "target_path": "/assets/rooms/garden-view-thumb1.jpg",
+      "slot": "Garden View Room thumb 1 (Patio)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "garden view 3-Bc90DOOA.jpg",
+      "target_path": "/assets/rooms/garden-view-thumb2.jpg",
+      "slot": "Garden View Room thumb 2 (Bed)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "garden view 4-Dgo2GqBD.jpg",
+      "target_path": "/assets/rooms/garden-view-thumb3.jpg",
+      "slot": "Garden View Room thumb 3 (Detail)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "garden view 5-D24IwnZJ.jpg",
+      "target_path": "/assets/rooms/garden-view-thumb4.jpg",
+      "slot": "Garden View Room thumb 4 (Balcony)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "gardenn-B5oktTNs.png",
+      "target_path": "/assets/rooms/garden-view-thumb5.png",
+      "slot": "Garden View Room thumb 5 (Palms)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "gard-BcR8QuWj.png",
+      "target_path": "/assets/rooms/garden-courtyard.png",
+      "slot": "Garden View Room courtyard view",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "pool view 1-V3wAI2zc.jpg",
+      "target_path": "/assets/rooms/pool-view-main.jpg",
+      "slot": "Pool View Room main portrait",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "pool view 2-BDgYlzMW.jpg",
+      "target_path": "/assets/rooms/pool-view-thumb1.jpg",
+      "slot": "Pool View Room thumb 1 (Suite)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "pool view 3-B6viPmIO.jpg",
+      "target_path": "/assets/rooms/pool-view-thumb2.jpg",
+      "slot": "Pool View Room thumb 2 (Corner)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "pool view 4-BbIt0lHW.jpg",
+      "target_path": "/assets/rooms/pool-view-thumb3.jpg",
+      "slot": "Pool View Room thumb 3 (Sunset)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "Pool-DJyaeZNs.png",
+      "target_path": "/assets/rooms/pool-view-thumb4.png",
+      "slot": "Pool View Room thumb 4 (Pool)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "pool-evening-DybBhBMA.jpg",
+      "target_path": "/assets/rooms/pool-view-thumb5.jpg",
+      "slot": "Pool View Room thumb 5 (Evening)",
+      "focal_point": "center",
+      "width": 1200,
+      "height": 800,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "couple3-BjBHXe2j.webp",
+      "target_path": "/assets/rooms/couple-room-main.webp",
+      "slot": "Couple Room main portrait",
+      "focal_point": "center",
+      "width": 4032,
+      "height": 3024,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "couple2-U2oqQeUn.webp",
+      "target_path": "/assets/rooms/couple-room-thumb1.webp",
+      "slot": "Couple Room thumb 1 (Cozy)",
+      "focal_point": "center",
+      "width": 4032,
+      "height": 3024,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "couple1-DATCXrtz.webp",
+      "target_path": "/assets/rooms/couple-room-thumb2.webp",
+      "slot": "Couple Room thumb 2 (Romantic)",
+      "focal_point": "center",
+      "width": 4032,
+      "height": 3024,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "couple4-DCWfNh_t.webp",
+      "target_path": "/assets/rooms/couple-room-thumb3.webp",
+      "slot": "Couple Room thumb 3 (Comfort)",
+      "focal_point": "center",
+      "width": 4032,
+      "height": 3024,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "couple5-f3VihD8I.webp",
+      "target_path": "/assets/rooms/couple-room-thumb4.webp",
+      "slot": "Couple Room thumb 4 (Serene)",
+      "focal_point": "center",
+      "width": 4032,
+      "height": 3024,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "family dorm-BgKdxxtH.jpg",
+      "target_path": "/assets/rooms/family-dorm-main.jpg",
+      "slot": "Family Dorm main portrait",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "family dorm 2-CdryRBzn.jpg",
+      "target_path": "/assets/rooms/family-dorm-thumb1.jpg",
+      "slot": "Family Dorm thumb 1 (Lounge)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "family dorm 3-pVrRid6n.jpg",
+      "target_path": "/assets/rooms/family-dorm-thumb2.jpg",
+      "slot": "Family Dorm thumb 2 (Beds)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "family drom 4-CNNY9ssX.jpg",
+      "target_path": "/assets/rooms/family-dorm-thumb3.jpg",
+      "slot": "Family Dorm thumb 3 (Verandah)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "family dorm 5-CCqvb4Ll.jpg",
+      "target_path": "/assets/rooms/family-dorm-thumb4.jpg",
+      "slot": "Family Dorm thumb 4 (Comfort)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "family dorm 6-DDzpLy1L.jpg",
+      "target_path": "/assets/rooms/family-dorm-thumb5.jpg",
+      "slot": "Family Dorm thumb 5 (Group)",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "shitladevi -Dj3KqYeD.jpg",
+      "target_path": "/assets/location/location-drone-shitlamata.jpg",
+      "slot": "Location primary drone view in front of Shitla Mata temple",
+      "focal_point": "center",
+      "width": 1280,
+      "height": 720,
+      "full_bleed": true,
+      "flag_under_1600px": true
+    },
+    {
+      "source_file": "kelvabeach-DFAj9y4e.webp",
+      "target_path": "/assets/location/location-surroundings-beach.webp",
+      "slot": "Location offset secondary coastal image",
+      "focal_point": "center",
+      "width": 560,
+      "height": 315,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "kelvafort-Dfk42c0Z.jpg",
+      "target_path": "/assets/location/location-kelvafort.jpg",
+      "slot": "Kelva Fort ruins attraction",
+      "focal_point": "center",
+      "width": 1280,
+      "height": 720,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "kelvadam-C09ftrRs.avif",
+      "target_path": "/assets/location/location-kelvadam.avif",
+      "slot": "Kelva Dam attraction",
+      "focal_point": "center",
+      "width": 1280,
+      "height": 720,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "weddingbanner-B_dPjdFt.webp",
+      "target_path": "/assets/gallery/wedding-banner.webp",
+      "slot": "Weddings & Celebrations showcase",
+      "focal_point": "center",
+      "width": 4032,
+      "height": 3024,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "Hall-BGdJPS_s.jpg",
+      "target_path": "/assets/gallery/banquet-hall.jpg",
+      "slot": "Banquet Hall & Event Lawn",
+      "focal_point": "center",
+      "width": 1600,
+      "height": 1200,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://upload.wikimedia.org/wikipedia/commons/3/35/Inasa_Beach_aerial_video.webm",
+      "target_path": "/assets/hero/hero-video.mp4",
+      "slot": "Hero full-viewport background video (H.264)",
+      "focal_point": "center",
+      "width": 1280,
+      "height": 720,
+      "full_bleed": true,
+      "flag_under_1600px": true
+    },
+    {
+      "source_file": "https://upload.wikimedia.org/wikipedia/commons/3/35/Inasa_Beach_aerial_video.webm",
+      "target_path": "/assets/hero/hero-video.webm",
+      "slot": "Hero full-viewport background video (VP9 WebM)",
+      "focal_point": "center",
+      "width": 1280,
+      "height": 720,
+      "full_bleed": true,
+      "flag_under_1600px": true
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0",
+      "target_path": "/assets/sky/ocean-foam.jpg",
+      "slot": "Preloader ocean foam background stage",
+      "focal_point": "center",
+      "width": 2000,
+      "height": 1333,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1534088568595-a066f410bcda",
+      "target_path": "/assets/sky/cloud-layer-1.webp",
+      "slot": "Cloud divider parallax layer 1 (foreground drift)",
+      "focal_point": "center",
+      "width": 1920,
+      "height": 1080,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1534088568595-a066f410bcda",
+      "target_path": "/assets/sky/cloud-layer-2.webp",
+      "slot": "Cloud divider parallax layer 2 (midground drift)",
+      "focal_point": "center",
+      "width": 1920,
+      "height": 1080,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1534088568595-a066f410bcda",
+      "target_path": "/assets/sky/cloud-layer-3.webp",
+      "slot": "Cloud divider parallax layer 3 (parting coastal mist)",
+      "focal_point": "center",
+      "width": 1920,
+      "height": 1080,
+      "full_bleed": true,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
+      "target_path": "/assets/dining/breakfast-plate.png",
+      "slot": "Food section diagonal plate 1 (Breakfast)",
+      "focal_point": "center",
+      "width": 533,
+      "height": 533,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46",
+      "target_path": "/assets/dining/lunch-plate.png",
+      "slot": "Food section diagonal plate 2 (Lunch)",
+      "focal_point": "center",
+      "width": 450,
+      "height": 450,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    },
+    {
+      "source_file": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7",
+      "target_path": "/assets/dining/dinner-plate.png",
+      "slot": "Food section diagonal plate 3 (Dinner)",
+      "focal_point": "center",
+      "width": 800,
+      "height": 800,
+      "full_bleed": false,
+      "flag_under_1600px": false
+    }
+  ]
+}
