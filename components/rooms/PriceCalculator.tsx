@@ -39,7 +39,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
   };
 
   return (
-    <div className="w-full bg-white/70 backdrop-blur-sm border border-charcoal/20 rounded-[2px] p-3.5 sm:p-4 shadow-sm font-sans">
+    <div className="w-full bg-white/70 border border-charcoal/10 rounded-[1.6rem] p-4 sm:p-5 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.35)] font-sans">
       {/* Pricing Header */}
       <div className="flex items-baseline justify-between hairline-b border-charcoal/15 pb-2.5 mb-2.5 sm:mb-3">
         <div>
@@ -56,7 +56,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
           </div>
         </div>
 
-        <span className="text-[10px] sm:text-[11px] font-sans font-semibold tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 bg-champagne-gold/20 text-deep-navy border border-champagne-gold/30 rounded-[2px]">
+        <span className="text-[10px] sm:text-[11px] font-sans font-semibold tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 bg-champagne-gold/20 text-deep-navy border border-champagne-gold/30 rounded-xl">
           {room.discountPercent}% OFF
         </span>
       </div>
@@ -81,7 +81,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
                 setCheckOut(next);
               }
             }}
-            className="w-full bg-warm-ivory/60 border border-charcoal/15 rounded-[2px] px-2 py-1.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none transition-colors"
+            className="w-full bg-warm-ivory/60 border border-charcoal/15 rounded-xl px-2 py-1.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none transition-colors"
           />
         </div>
 
@@ -95,7 +95,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
             min={checkIn || today}
             value={checkOut}
             onChange={(e) => setCheckOut(e.target.value)}
-            className="w-full bg-warm-ivory/60 border border-charcoal/15 rounded-[2px] px-2 py-1.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none transition-colors"
+            className="w-full bg-warm-ivory/60 border border-charcoal/15 rounded-xl px-2 py-1.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none transition-colors"
           />
         </div>
 
@@ -107,7 +107,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
             id={`guests-${room.id}`}
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
-            className="w-full bg-warm-ivory/60 border border-charcoal/15 rounded-[2px] px-2 py-1.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none transition-colors"
+            className="w-full bg-warm-ivory/60 border border-charcoal/15 rounded-xl px-2 py-1.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none transition-colors"
           >
             {Array.from({ length: room.guests }, (_, i) => i + 1).map((g) => (
               <option key={g} value={g}>
@@ -119,7 +119,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
       </div>
 
       {/* Real-time Calculation Breakdown */}
-      <div className="bg-warm-ivory/50 rounded-[2px] p-2.5 sm:p-3 hairline-all border-charcoal/10 space-y-1 mb-2.5 sm:mb-3 text-xs">
+      <div className="bg-warm-ivory/50 rounded-xl p-2.5 sm:p-3 hairline-all border-charcoal/10 space-y-1 mb-2.5 sm:mb-3 text-xs">
         <div className="flex justify-between text-charcoal/70">
           <span>
             {room.priceFormatted} × {nights} {nights === 1 ? "night" : "nights"}
@@ -141,7 +141,7 @@ export function PriceCalculator({ room }: PriceCalculatorProps) {
       {/* Booking Action */}
       <button
         onClick={handleBooking}
-        className="w-full bg-deep-navy hover:bg-navy-blue text-warm-ivory py-2.5 sm:py-3 rounded-[2px] font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm hover:shadow-md"
+        className="w-full bg-deep-navy hover:bg-navy-blue text-warm-ivory py-2.5 sm:py-3 rounded-full font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all duration-500 ease-luxury cursor-pointer"
       >
         <WhatsAppIcon size={15} />
         <span>Book Suite Directly</span>

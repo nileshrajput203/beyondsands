@@ -32,24 +32,25 @@ const ALL_GALLERY_IMAGES: TiltedGridImage[] = [
   { src: "/assets/location/location-kelvadam.avif", alt: "Serene Kelva Dam reservoir and lush green hills" },
   { src: "/assets/location/location-drone-shitlamata.jpg", alt: "Sea-facing Sheetla Devi Temple in Kelva" },
   { src: "/assets/hero/hero-canopy-poster.jpg", alt: "Aerial canopy overview of Beyond Sands resort" },
-
-  // Curated High-Definition Coastal Atmosphere Visuals
-  { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=80", alt: "Infinity pool overlooking turquoise waters at dusk" },
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80", alt: "Golden sunset over calm coastal shoreline" },
-  { src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1400&q=80", alt: "Coastal luxury beachfront villas under swaying palms" },
-  { src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80", alt: "Evening poolside lanterns and amber reflections" },
-  { src: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1400&q=80", alt: "Boutique resort bedroom suite with custom teak finishes" },
-  { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80", alt: "Contemporary coastal architecture at golden hour" },
+  { src: "/assets/events/pool-evening.jpg", alt: "Evening poolside celebration at Beyond Sands" },
+  { src: "/assets/rooms/garden-view-thumb3.jpg", alt: "Garden verandah seating at dusk" },
+  { src: "/assets/dining/lunch.png", alt: "Pure vegetarian lunch thali" },
+  { src: "/assets/events/lawn-reception.jpg", alt: "Celebration lawns prepared for a reception" },
 ];
 
 export function Gallery() {
   return (
     <section
       id="gallery-section"
-      className="relative w-full py-6 sm:py-10 bg-white text-charcoal select-none overflow-hidden"
+      className="relative w-full py-16 sm:py-24 bg-transparent text-charcoal select-none overflow-hidden"
     >
-      {/* 3D Tilted Grid Hero Gallery: All Images in Continuous Seamless Loop */}
-      <div className="relative w-full overflow-hidden bg-white">
+      <div className="max-w-7xl mx-auto px-5 sm:px-12 mb-8 sm:mb-10">
+        <span className="section-kicker mb-3">Gallery</span>
+        <h2 className="font-display text-3xl sm:text-5xl font-normal text-deep-navy tracking-tight">
+          The grounds, in motion
+        </h2>
+      </div>
+      <div className="relative w-full overflow-hidden">
         <TiltedGridHero
           images={ALL_GALLERY_IMAGES}
           speed={3.5}

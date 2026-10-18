@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
 import { SkySystem } from "@/components/sky/SkySystem";
@@ -16,9 +16,9 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -107,28 +107,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased relative min-h-screen text-charcoal bg-transparent selection:bg-champagne-gold selection:text-deep-navy">
+      <body className="antialiased relative min-h-[100dvh] text-charcoal bg-transparent selection:bg-champagne-gold selection:text-deep-navy">
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <SmoothScrollProvider>
-          {/* Awwwards Subtle Top Scroll Progress Line */}
           <ScrollProgressBar />
-
-          {/* Global Scroll-Linked Sky Background */}
           <SkySystem />
-
-          {/* Transparent Adaptive Header */}
           <Header />
-
-          {/* Main Website Flow */}
-          <main role="main" className="relative z-10 w-full overflow-hidden">
+          <main id="main-content" role="main" className="relative z-10 w-full overflow-hidden">
             {children}
           </main>
+          <div className="noise-overlay" aria-hidden="true" />
 
           {/* Floating WhatsApp Concierge on Right, Instagram on Left & Back to Top */}
           <InstagramFab />

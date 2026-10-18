@@ -7,8 +7,8 @@ export const metadata = {
 
 export default function DemoPage() {
   return (
-    <main className="min-h-screen bg-[#0d1117] text-white">
+    <div className="min-h-[100dvh] bg-[#0d1117] text-white">
       <DemoOne />
-    </main>
+    </div>
   );
 }

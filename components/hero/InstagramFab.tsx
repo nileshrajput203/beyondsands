@@ -1,30 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { InstagramIcon } from "../icons";
+import { usePastHero } from "@/lib/use-past-hero";
 
 export function InstagramFab() {
-  const [isFooterVisible, setIsFooterVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsFooterVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    const footerElem = document.getElementById("site-footer");
-    if (footerElem) observer.observe(footerElem);
-
-    return () => observer.disconnect();
-  }, []);
+  const { isPastHero, isFooterVisible } = usePastHero();
 
   return (
     <div
-      className={`fixed bottom-6 left-6 z-[60] flex items-center gap-3 transition-opacity duration-500 ${
-        isFooterVisible ? "opacity-30 hover:opacity-100" : "opacity-100"
-      }`}
+      className={`fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-[60] transition-all duration-700 ease-luxury ${
+        isPastHero ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-3 pointer-events-none"
+      } ${isFooterVisible ? "opacity-30 hover:opacity-100" : ""}`}
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <a
@@ -33,27 +19,10 @@ export function InstagramFab() {
         rel="noopener noreferrer"
         aria-label="Visit Beyond Sands on Instagram"
         title="Follow @beyondsands on Instagram"
-        className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer animate-float-left"
+        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0b2238] text-warm-ivory border border-champagne-gold/35 flex items-center justify-center shadow-[0_18px_40px_-18px_rgba(11,34,56,0.7)] transition-transform duration-500 ease-luxury hover:scale-105 cursor-pointer"
       >
-        <InstagramIcon size={26} strokeWidth={1.75} />
-        {/* Subtle pulsing beacon */}
-        <span className="absolute inset-0 rounded-full bg-[#dd2a7b]/40 animate-ping pointer-events-none" />
+        <InstagramIcon size={22} strokeWidth={1.5} />
       </a>
-
-      <style jsx>{`
-        @keyframes floatSlowLeft {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-8px);
-          }
-        }
-        .animate-float-left {
-          animation: floatSlowLeft 4.5s ease-in-out infinite;
-          animation-delay: 0.75s;
-        }
-      `}</style>
     </div>
   );
 }

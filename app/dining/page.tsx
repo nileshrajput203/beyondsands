@@ -156,7 +156,7 @@ export default function DiningPage() {
         }}
       />
 
-      <main className="min-h-screen bg-warm-ivory text-charcoal pt-28 sm:pt-36 pb-20 select-none">
+      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-32 sm:pt-36 pb-20 select-none">
         <div className="max-w-7xl mx-auto px-6 sm:px-12">
           
           {/* Breadcrumbs */}
@@ -174,7 +174,7 @@ export default function DiningPage() {
                 <span>100% Pure Vegetarian &amp; Jain Sanctuary</span>
               </div>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-deep-navy tracking-tight leading-[1.1]">
-                PURE VEG &amp; JAIN DINING
+                Pure veg &amp; Jain dining
               </h1>
               <p className="font-sans text-base sm:text-lg text-charcoal/75 font-light mt-4 leading-relaxed">
                 Beyond Sands is proudly recognized as <strong>Palghar's #1 Best Pure Vegetarian Resort</strong>. Located right across from the sacred <strong>Sheetla Devi Temple</strong>, our kitchen is governed by unwavering standards of culinary purity, fresh seasonal produce, and revered Jain and Swaminarayan culinary traditions.
@@ -348,7 +348,7 @@ export default function DiningPage() {
           </section>
 
         </div>
-      </main>
+      </div>
 
       <Footer />
     </>

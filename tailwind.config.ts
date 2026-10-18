@@ -42,7 +42,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-display)", "Cormorant Garamond", "serif"],
-        sans: ["var(--font-sans)", "Montserrat", "sans-serif"],
+        sans: ["var(--font-sans)", "Outfit", "sans-serif"],
       },
       letterSpacing: {
         widest: "0.22em",
@@ -50,12 +50,17 @@ const config: Config = {
         wide: "0.12em",
       },
       borderRadius: {
-        DEFAULT: "2px",
-        sm: "2px",
-        md: "3px",
-        lg: "4px",
-        xl: "4px",
-        "2xl": "4px",
+        DEFAULT: "1rem",
+        sm: "0.5rem",
+        md: "0.75rem",
+        lg: "1rem",
+        xl: "1.5rem",
+        "2xl": "2rem",
+        "3xl": "2.5rem",
+      },
+      transitionTimingFunction: {
+        luxury: "cubic-bezier(0.32, 0.72, 0, 1)",
+        spring: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
       keyframes: {
         "accordion-down": {
@@ -66,10 +71,15 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        floatSlow: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-7px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "floatSlow 4.8s ease-in-out infinite",
       },
     },
   },

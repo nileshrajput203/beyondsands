@@ -205,7 +205,7 @@ export default function RoomsPage() {
         }}
       />
 
-      <main className="min-h-screen bg-warm-ivory text-charcoal pt-28 sm:pt-36 pb-20 select-none">
+      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-32 sm:pt-36 pb-20 select-none">
         <div className="max-w-7xl mx-auto px-6 sm:px-12">
           
           {/* Breadcrumbs */}
@@ -439,7 +439,7 @@ export default function RoomsPage() {
           </section>
 
         </div>
-      </main>
+      </div>
 
       <Footer />
     </>

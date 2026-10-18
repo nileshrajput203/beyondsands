@@ -18,7 +18,7 @@ export function SpecsCard({ room }: SpecsCardProps) {
 
   return (
     <>
-      <div className="w-full bg-white/70 backdrop-blur-sm border border-charcoal/20 rounded-[2px] transition-all duration-300 shadow-sm overflow-hidden mb-3 lg:mb-3.5">
+      <div className="w-full bg-white/70 border border-charcoal/10 rounded-[1.6rem] transition-all duration-500 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.35)] overflow-hidden mb-3 lg:mb-3.5">
         {/* Card Body */}
         <div className="p-3.5 sm:p-4 text-charcoal space-y-2.5">
           <p className="font-sans text-xs leading-relaxed text-charcoal/85 line-clamp-2 sm:line-clamp-none">
@@ -27,15 +27,15 @@ export function SpecsCard({ room }: SpecsCardProps) {
 
           {/* Key Specs Pill Bar */}
           <div className="grid grid-cols-3 gap-2 pt-0.5 text-[10px] sm:text-[11px] font-sans">
-            <div className="px-2 py-1.5 bg-warm-ivory/60 border border-charcoal/10 rounded-[2px]">
+            <div className="px-2 py-1.5 bg-warm-ivory/60 border border-charcoal/10 rounded-xl">
               <span className="text-charcoal/50 block text-[9px] uppercase tracking-wider">Space</span>
               <span className="font-medium text-deep-navy truncate block">{room.size}</span>
             </div>
-            <div className="px-2 py-1.5 bg-warm-ivory/60 border border-charcoal/10 rounded-[2px]">
+            <div className="px-2 py-1.5 bg-warm-ivory/60 border border-charcoal/10 rounded-xl">
               <span className="text-charcoal/50 block text-[9px] uppercase tracking-wider">Bed</span>
               <span className="font-medium text-deep-navy truncate block">{room.bedType}</span>
             </div>
-            <div className="px-2 py-1.5 bg-warm-ivory/60 border border-charcoal/10 rounded-[2px]">
+            <div className="px-2 py-1.5 bg-warm-ivory/60 border border-charcoal/10 rounded-xl">
               <span className="text-charcoal/50 block text-[9px] uppercase tracking-wider">Guests</span>
               <span className="font-medium text-deep-navy truncate block">Up to {room.guests}</span>
             </div>

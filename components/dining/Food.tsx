@@ -141,7 +141,7 @@ export function Food() {
 
     return () => {
       window.removeEventListener("resize", measurePanelWidth);
-      st.kill();
+      st.kill(true);
     };
   }, []);
 
@@ -170,12 +170,13 @@ export function Food() {
         className="w-full h-8 pointer-events-none"
       />
 
-      <section
-        ref={sectionRef}
-        id="food-section"
+      <div>
+        <section
+          ref={sectionRef}
+          id="food-section"
         data-id="dining"
         aria-labelledby="dining-heading"
-        className="relative w-full min-h-screen py-10 sm:py-14 lg:py-16 px-4 sm:px-8 lg:px-12 overflow-hidden select-none transition-colors duration-500"
+        className="relative w-full min-h-[100dvh] py-10 sm:py-14 lg:py-16 px-4 sm:px-8 lg:px-12 overflow-hidden select-none transition-colors duration-500"
         style={{
           backgroundColor: "#fffaf2",
           color: "#17365d",
@@ -333,7 +334,8 @@ export function Food() {
           </div>
         </div>
       </section>
-    </>
+    </div>
+  </>
   );
 }
 

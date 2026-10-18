@@ -265,7 +265,7 @@ export function Footer() {
             </div>
 
             {/* Timings & Sanctuary Badge Card */}
-            <div className="p-3 rounded-lg bg-white/[0.03] border border-white/10 font-sans text-xs space-y-1.5">
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 font-sans text-xs space-y-1.5">
               <div className="flex items-center justify-between text-[11px] text-warm-ivory/85">
                 <span className="font-medium">Check-in: 01:00 PM</span>
                 <span className="text-champagne-gold/40">·</span>

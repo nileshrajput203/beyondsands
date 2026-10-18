@@ -23,7 +23,7 @@ export function RoomPanel({ room }: RoomPanelProps) {
         <div className="lg:col-span-7 flex flex-col sm:flex-row gap-3 sm:gap-3.5 items-stretch relative">
           {/* Main Room Image with enhanced dimensions */}
           <div className="relative flex-1 h-[340px] sm:h-[440px] md:h-[480px] lg:h-[520px] xl:h-[550px] max-h-[62vh] mb-6 sm:mb-0">
-            <div className="relative w-full h-full overflow-hidden rounded-[4px] border border-charcoal/15 bg-charcoal/5 shadow-md group">
+            <div className="relative w-full h-full overflow-hidden rounded-[1.6rem] border border-charcoal/10 bg-charcoal/5 shadow-[0_24px_50px_-32px_rgba(11,34,56,0.45)] group">
               {room.images.map((img, idx) => (
                 <div
                   key={img.src}
@@ -45,7 +45,7 @@ export function RoomPanel({ room }: RoomPanelProps) {
 
               {/* Room Title Overlay Badge on top-left of photo */}
               <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 pointer-events-none">
-                <span className="px-2.5 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] sm:text-xs font-sans uppercase tracking-widest font-medium border border-warm-ivory/20 rounded-[2px] shadow-sm">
+                <span className="px-3 py-1.5 bg-deep-navy/70 backdrop-blur-md text-warm-ivory text-[10px] sm:text-xs font-sans uppercase tracking-widest font-medium border border-warm-ivory/20 rounded-full">
                   {room.name}
                 </span>
               </div>
@@ -68,10 +68,10 @@ export function RoomPanel({ room }: RoomPanelProps) {
                   key={thumb.src}
                   onClick={() => setActiveImageIndex(idx)}
                   aria-label={`View photo ${idx + 1} of ${room.name}`}
-                  className={`relative flex-1 min-h-0 w-full aspect-[4/3] sm:aspect-auto rounded-[2px] overflow-hidden border transition-all duration-300 cursor-pointer ${
+                  className={`relative flex-1 min-h-0 w-full aspect-[4/3] sm:aspect-auto rounded-2xl overflow-hidden border transition-all duration-500 ease-luxury cursor-pointer ${
                     isActive
-                      ? "border-champagne-gold ring-2 ring-champagne-gold/60 shadow-md scale-[1.02]"
-                      : "border-charcoal/20 hover:border-champagne-gold/60 opacity-80 hover:opacity-100"
+                      ? "border-champagne-gold ring-2 ring-champagne-gold/50 scale-[1.02]"
+                      : "border-charcoal/15 hover:border-champagne-gold/60 opacity-80 hover:opacity-100"
                   }`}
                 >
                   <Image

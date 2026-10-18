@@ -26,7 +26,7 @@ const PROPERTY_DETAILS = [
     title: "1-Minute Walk to Kelva Beach & Temple Enclave",
     icon: MapPin,
     category: "Prime Coastal Setting",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/location/location-surroundings-beach.webp",
     summary:
       "Nestled amidst coconut groves and casuarina trees in Kelva, Palghar — situated directly opposite the revered Sheetla Devi Temple and just a 1-minute peaceful walk from the serene shores of Kelva Beach.",
     specs: ["1 min walk to beach", "Opposite Sheetla Devi Temple", "2.5 hours from Mumbai", "Private parking on-site"],
@@ -36,7 +36,7 @@ const PROPERTY_DETAILS = [
     title: "100% Pure Vegetarian & Jain Dining Sanctuary",
     icon: UtensilsCrossed,
     category: "Culinary Heritage",
-    image: "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/dining/lunch.png",
     summary:
       "A dedicated pure vegetarian kitchen serving freshly prepared Maharashtrian coastal delicacies, authentic Gujarati thalis, North Indian curries, and breakfast buffets. Strict Jain food (without onion, garlic, or root vegetables) is prepared upon request.",
     specs: ["Strictly pure vegetarian", "Authentic Jain food available", "Breakfast, Lunch & Dinner", "No non-veg or alcohol allowed"],
@@ -46,7 +46,7 @@ const PROPERTY_DETAILS = [
     title: "Azure Swimming Pool & Rain Dance Arena",
     icon: Waves,
     category: "Recreation & Wellness",
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/rooms/pool-view-main.jpg",
     summary:
       "An impeccably filtered swimming pool surrounded by tropical palm greens, complete with a dedicated children's splash pool, shaded poolside recliners, and a lively rain dance setup with music for weekend family enjoyment.",
     specs: ["Operating hours: 07:00 AM – 08:00 PM", "Children's pool section", "Rain dance facility", "Proper swimwear required"],
@@ -56,7 +56,7 @@ const PROPERTY_DETAILS = [
     title: "Spacious Suites & Deluxe Family Dormitories",
     icon: BedDouble,
     category: "Accommodations",
-    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/rooms/garden-view-main.jpg",
     summary:
       "Thoughtfully designed rooms with private verandahs overlooking the gardens and pool, plus large Deluxe Family Dormitories accommodating up to 8 guests comfortably. Equipped with air conditioning, king-size beds, hot water geysers, and free WiFi.",
     specs: ["Garden & Pool View rooms", "Family Dorms (up to 8 guests)", "High-speed WiFi", "24/7 Hot water & Power backup"],
@@ -66,7 +66,7 @@ const PROPERTY_DETAILS = [
     title: "15,000+ sq ft Event Lawns & Banquet Hall",
     icon: PartyPopper,
     category: "Weddings & Celebrations",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/events/wedding-banner.webp",
     summary:
       "Host memorable destination weddings, pre-wedding sangeet & mehendi celebrations, milestone birthdays, and corporate retreats. Features manicured natural grass lawns and an air-conditioned banquet hall with stage and audio setups.",
     specs: ["Capacity up to 500+ guests", "Air-conditioned banquet", "Custom pure veg catering", "Full resort buyout options"],
@@ -76,7 +76,7 @@ const PROPERTY_DETAILS = [
     title: "Check-in Timings, Safety & Guest Policies",
     icon: Clock,
     category: "Guest Guidelines",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+    image: "/assets/hero/hero-canopy-poster.jpg",
     summary:
       "Check-in begins at 12:00 PM and check-out is by 10:00 AM (11:00 AM for all-inclusive meal packages). All adult guests must present valid government photo ID upon arrival. Quiet hours are observed from 11:00 PM to 07:00 AM.",
     specs: ["Check-in: 12:00 PM", "Check-out: 10:00 AM", "Govt ID required", "24/7 Security & CCTV"],
@@ -145,7 +145,7 @@ export function PropertyFaqSection() {
   return (
     <section
       id="property-faq-section"
-      className="relative w-full py-20 sm:py-28 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EE] to-[#FFFDF9] text-gray-900 select-none overflow-hidden"
+      className="relative w-full py-24 sm:py-32 bg-transparent text-charcoal select-none overflow-hidden"
       aria-label="Property Details and Frequently Asked Questions"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
@@ -174,7 +174,7 @@ export function PropertyFaqSection() {
                 <AccordionItem
                   key={item.id}
                   value={item.id}
-                  className="bg-white border border-gray-200/90 rounded-xl overflow-hidden shadow-2xs hover:shadow-xs transition-shadow data-[state=open]:border-champagne-gold/60"
+                  className="bg-white/75 border border-charcoal/10 rounded-2xl overflow-hidden data-[state=open]:border-champagne-gold/50"
                 >
                   <AccordionTrigger className="px-5 sm:px-7 py-4 sm:py-5 hover:no-underline transition-colors hover:bg-gray-50/60">
                     <div className="flex items-center gap-3.5 text-left pr-4">
@@ -255,7 +255,7 @@ export function PropertyFaqSection() {
               <AccordionItem
                 key={faq.id}
                 value={faq.id}
-                className="bg-white border border-gray-200/80 rounded-xl overflow-hidden shadow-2xs hover:shadow-xs transition-shadow data-[state=open]:border-champagne-gold/60"
+                className="bg-white/75 border border-charcoal/10 rounded-2xl overflow-hidden data-[state=open]:border-champagne-gold/50"
               >
                 <AccordionTrigger className="px-5 sm:px-7 py-4 sm:py-5 hover:no-underline transition-colors hover:bg-gray-50/60 text-left">
                   <span className="font-medium text-sm sm:text-base text-deep-navy pr-4">
@@ -270,7 +270,7 @@ export function PropertyFaqSection() {
           </Accordion>
 
           {/* Concierge Support CTA */}
-          <div className="mt-12 bg-deep-navy text-warm-ivory rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md border border-champagne-gold/20">
+          <div className="mt-12 bg-deep-navy text-warm-ivory rounded-[1.8rem] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-champagne-gold/20">
             <div className="text-center sm:text-left space-y-1">
               <span className="text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
                 Direct Guest Support

@@ -58,7 +58,7 @@ export default function BookingPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-warm-ivory text-charcoal pt-28 sm:pt-36 pb-20 select-none">
+      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-32 sm:pt-36 pb-20 select-none">
         <div className="max-w-7xl mx-auto px-6 sm:px-12">
           
           {/* Breadcrumbs */}
@@ -75,7 +75,7 @@ export default function BookingPage() {
                 <span>Best Rate Guarantee · Direct Perks</span>
               </div>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-deep-navy tracking-tight leading-[1.1]">
-                BOOK YOUR SANCTUARY STAY
+                Book your sanctuary stay
               </h1>
               <p className="font-sans text-base sm:text-lg text-charcoal/75 font-light mt-4 leading-relaxed">
                 Reserve directly with Beyond Sands, <strong>Palghar's #1 Best Resort</strong> located <strong>directly opposite Sheetla Devi Temple</strong> and <strong>1 minute from Kelva Beach</strong>. Direct bookings include complimentary coastal breakfast, preferred room allocations, and flexible date adjustments.
@@ -364,7 +364,7 @@ export default function BookingPage() {
           </div>
 
         </div>
-      </main>
+      </div>
 
       <Footer />
     </>

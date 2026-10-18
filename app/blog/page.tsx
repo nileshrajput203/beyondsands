@@ -9,7 +9,7 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <>
-      <main className="min-h-[85vh] pt-28 sm:pt-36 pb-20 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col justify-between select-none">
+      <div className="min-h-[100dvh] pt-32 sm:pt-36 pb-20 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col justify-between select-none">
         <div>
           {/* Navigation Breadcrumb */}
           <Link
@@ -45,7 +45,7 @@ export default function BlogPage() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
       <Footer />
     </>

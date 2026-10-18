@@ -218,7 +218,7 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
       </header>
 
       {/* Main Split Section: 7-Col Navigation + 5-Col Interactive Visual Card */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-4 sm:py-6 lg:py-8 flex items-center z-10">
+      <div className="flex-1 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-4 sm:py-6 lg:py-8 flex items-center z-10">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Editorial Menu Links (Cols 1-7) */}
@@ -347,7 +347,7 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
       {/* Bottom Architectural Contact Strip */}
       <footer className="border-t border-white/15 px-6 sm:px-10 lg:px-14 py-3.5 sm:py-4 bg-[#02060c] sticky bottom-0 z-20 shrink-0">

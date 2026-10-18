@@ -83,7 +83,7 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <div className="pt-28 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
+      <div className="pt-32 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
         {/* Navigation Breadcrumb */}
         <Link
           href="/"
@@ -113,7 +113,7 @@ export default function AboutPage() {
         {/* 21st.dev Style Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-20">
           {/* Card 1: Main Story Hero Card (8 cols) */}
-          <div className="lg:col-span-8 relative min-h-[380px] sm:min-h-[460px] rounded-[3px] overflow-hidden border border-charcoal/15 shadow-sm group">
+          <div className="lg:col-span-8 relative min-h-[380px] sm:min-h-[460px] rounded-[1.8rem] overflow-hidden border border-charcoal/10 shadow-[0_24px_50px_-32px_rgba(11,34,56,0.4)] group">
             <Image
               src="/assets/hero/hero-gardens.jpg"
               alt="Lush green coconut palm groves at Beyond Sands Resort"
@@ -144,7 +144,7 @@ export default function AboutPage() {
           </div>
 
           {/* Card 2: Luxury Stats Pillar (4 cols) */}
-          <div className="lg:col-span-4 bg-deep-navy text-warm-ivory p-8 rounded-[3px] border border-champagne-gold/30 flex flex-col justify-between shadow-sm relative overflow-hidden">
+          <div className="lg:col-span-4 bg-deep-navy text-warm-ivory p-8 rounded-[1.8rem] border border-champagne-gold/25 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-champagne-gold/10 blur-2xl pointer-events-none" />
 
             <div>
@@ -176,7 +176,7 @@ export default function AboutPage() {
           </div>
 
           {/* Card 3: The Blue Hour Philosophy (4 cols) */}
-          <div className="lg:col-span-4 bg-white/70 backdrop-blur-sm p-7 rounded-[3px] border border-charcoal/15 shadow-sm space-y-4 hover:border-champagne-gold/50 transition-colors">
+          <div className="lg:col-span-4 bg-white/70 p-7 rounded-[1.6rem] border border-charcoal/10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.25)] space-y-4 hover:border-champagne-gold/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-deep-navy/5 border border-deep-navy/10 flex items-center justify-center text-deep-navy">
               <span className="text-sm">✦</span>
             </div>
@@ -192,7 +192,7 @@ export default function AboutPage() {
           </div>
 
           {/* Card 4: 100% Pure Vegetarian Purity (4 cols) */}
-          <div className="lg:col-span-4 bg-white/70 backdrop-blur-sm p-7 rounded-[3px] border border-charcoal/15 shadow-sm space-y-4 hover:border-champagne-gold/50 transition-colors">
+          <div className="lg:col-span-4 bg-white/70 p-7 rounded-[1.6rem] border border-charcoal/10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.25)] space-y-4 hover:border-champagne-gold/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
               <span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" />
             </div>
@@ -208,9 +208,9 @@ export default function AboutPage() {
           </div>
 
           {/* Card 5: Sacred Location & Nature (4 cols) */}
-          <div className="lg:col-span-4 bg-white/70 backdrop-blur-sm p-7 rounded-[3px] border border-charcoal/15 shadow-sm space-y-4 hover:border-champagne-gold/50 transition-colors">
+          <div className="lg:col-span-4 bg-white/70 p-7 rounded-[1.6rem] border border-charcoal/10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.25)] space-y-4 hover:border-champagne-gold/50 transition-colors">
             <div className="w-10 h-10 rounded-full bg-deep-navy/5 border border-deep-navy/10 flex items-center justify-center text-deep-navy">
-              <span className="text-sm">🌴</span>
+              <span className="text-sm font-display italic">K</span>
             </div>
             <span className="text-[10px] uppercase font-mono tracking-widest text-champagne-gold font-semibold block">
               Historic Palghar Locale
@@ -241,7 +241,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={idx}
-                  className="p-7 bg-white/60 hover:bg-white border border-charcoal/15 hover:border-champagne-gold/60 rounded-[3px] space-y-3 transition-all duration-300 shadow-sm"
+                  className="p-7 bg-white/60 hover:bg-white border border-charcoal/15 hover:border-champagne-gold/60 rounded-[1.6rem] space-y-3 transition-all duration-300 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs uppercase font-mono text-champagne-gold font-semibold">
@@ -284,7 +284,7 @@ export default function AboutPage() {
             {TEAM.map((member, idx) => (
               <div
                 key={idx}
-                className="space-y-4 p-7 bg-white/70 border border-charcoal/15 rounded-[3px] hover:border-champagne-gold/60 transition-all duration-300 shadow-sm"
+                className="space-y-4 p-7 bg-white/70 border border-charcoal/15 rounded-[1.6rem] hover:border-champagne-gold/60 transition-all duration-300 shadow-sm"
               >
                 <div className="w-14 h-14 rounded-full bg-deep-navy text-warm-ivory flex items-center justify-center font-display text-xl border border-champagne-gold/40 shadow-inner">
                   {member.name.split(" ").map((n) => n[0]).join("")}
@@ -309,7 +309,7 @@ export default function AboutPage() {
         </div>
 
         {/* Interactive Concierge Callout */}
-        <div className="p-8 sm:p-12 bg-deep-navy text-warm-ivory rounded-[3px] border border-champagne-gold/30 shadow-md relative overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div className="p-8 sm:p-12 bg-deep-navy text-warm-ivory rounded-[1.6rem] border border-champagne-gold/30 shadow-md relative overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between gap-8">
           <div className="absolute top-0 right-0 w-80 h-80 bg-champagne-gold/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-3 max-w-2xl">
@@ -329,14 +329,14 @@ export default function AboutPage() {
               href="https://wa.me/919923895055?text=Hello%20Beyond%20Sands%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20resort%20and%20heritage."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-champagne-gold hover:bg-champagne-gold/90 text-navy-blue font-sans text-xs uppercase tracking-widest font-semibold rounded-[2px] inline-flex items-center gap-2 transition-all shadow-sm"
+              className="px-6 py-3.5 bg-champagne-gold hover:bg-champagne-gold/90 text-navy-blue font-sans text-xs uppercase tracking-widest font-semibold rounded-full inline-flex items-center gap-2 transition-all shadow-sm"
             >
               <WhatsAppIcon size={16} />
               <span>Message Concierge</span>
             </a>
             <Link
               href="/offers"
-              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-warm-ivory border border-white/20 font-sans text-xs uppercase tracking-widest font-semibold rounded-[2px] transition-colors"
+              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-warm-ivory border border-white/20 font-sans text-xs uppercase tracking-widest font-semibold rounded-full transition-colors"
             >
               <span>Explore Offers</span>
             </Link>

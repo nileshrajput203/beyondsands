@@ -56,16 +56,18 @@ export function Location() {
     <section
       ref={sectionRef}
       id="location-section"
-      className="relative w-full py-20 px-6 sm:px-12 max-w-7xl mx-auto bg-transparent text-charcoal select-none"
+      className="relative w-full py-24 sm:py-32 px-5 sm:px-12 max-w-7xl mx-auto bg-transparent text-charcoal select-none"
     >
       {/* Section Header */}
-      <div className="flex items-baseline justify-between mb-12 hairline-b border-charcoal/15 pb-4">
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal text-deep-navy tracking-wide">
-          LOCATION &amp; SURROUNDINGS
-        </h2>
-
-        <span className="font-sans text-xs uppercase tracking-widest text-charcoal/60 hidden sm:block">
-          Kelva Beach · Palghar District
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 pb-6 border-b border-charcoal/10">
+        <div>
+          <span className="section-kicker mb-4">Place</span>
+          <h2 className="font-display text-3xl sm:text-5xl font-normal text-deep-navy tracking-tight">
+            Location &amp; surroundings
+          </h2>
+        </div>
+        <span className="font-sans text-xs uppercase tracking-[0.18em] text-charcoal/55">
+          Kelva Beach · Palghar
         </span>
       </div>
 
@@ -73,7 +75,7 @@ export function Location() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
         {/* LEFT COLUMN: Large Upper Drone View Frame - Full Height of Both Right Cards */}
         <div className="lg:col-span-7 flex flex-col h-full">
-          <div className="relative w-full h-full min-h-[420px] sm:min-h-[520px] lg:min-h-0 flex-1 overflow-hidden rounded-[2px] border border-charcoal/15 shadow-sm group bg-charcoal/5">
+          <div className="relative w-full h-full min-h-[420px] sm:min-h-[520px] lg:min-h-0 flex-1 overflow-hidden rounded-[1.8rem] border border-charcoal/10 shadow-[0_24px_50px_-32px_rgba(11,34,56,0.4)] group bg-charcoal/5">
             <div
               ref={droneImageRef}
               className="absolute inset-0 -top-10 w-full h-[120%] transition-transform will-change-transform"
@@ -92,7 +94,7 @@ export function Location() {
         {/* RIGHT COLUMN: Stacked Second Image + Google Maps Embed */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           {/* Top Card: Second Image (Coastal Shoreline Perspective) */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2px] border border-charcoal/15 shadow-sm group bg-charcoal/5">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.6rem] border border-charcoal/10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.35)] group bg-charcoal/5">
             <Image
               src="/assets/location/location-surroundings-beach.webp"
               alt="Kelva Beach Casuarina Grove and Arabian Sea Shoreline"
@@ -103,10 +105,10 @@ export function Location() {
           </div>
 
           {/* Bottom Card: Live Google Maps Embed Pinned to Beyond Sands */}
-          <div className="flex flex-col bg-white/70 backdrop-blur-sm border border-charcoal/20 rounded-[2px] p-4 shadow-sm">
+          <div className="flex flex-col bg-white/70 border border-charcoal/10 rounded-[1.6rem] p-4 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.28)]">
             <div
               ref={mapWrapperRef}
-              className="relative w-full aspect-[4/3] rounded-[2px] overflow-hidden border border-champagne-gold/30"
+              className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-champagne-gold/25"
             >
               {showMap ? (
                 <iframe

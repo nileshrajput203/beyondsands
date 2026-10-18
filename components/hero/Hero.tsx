@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect, type MouseEvent } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { scrollToSection } from "@/lib/scroll-nav";
 
 type NetworkInformation = {
   saveData?: boolean;
@@ -10,7 +9,6 @@ type NetworkInformation = {
 };
 
 export function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState<boolean>(false);
 
@@ -25,34 +23,17 @@ export function Hero() {
 
     if (reducedMotion || saveData || slowNetwork || smallScreen) return;
 
-    // Mount the video right after hydration so it replaces the poster quickly.
     setShouldLoadVideo(true);
   }, []);
-
-  useEffect(() => {
-    if (!shouldLoadVideo) return;
-    const video = videoRef.current;
-    if (!video) return;
-    video
-      .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false));
-  }, [shouldLoadVideo]);
-
-  const handleDiscoverClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    scrollToSection("rooms-section");
-  };
 
   return (
     <section
       id="hero-section"
-      className="relative w-full h-[100svh] overflow-hidden flex items-center justify-center bg-deep-navy text-warm-ivory select-none"
+      className="relative w-full min-h-[100dvh] overflow-hidden flex items-end bg-deep-navy text-warm-ivory select-none"
     >
-      {/* Background Poster for instant paint & reduced motion */}
       <Image
         src="/assets/hero/hero-canopy-poster.jpg"
-        alt="Beyond Sands Coastal Canopy Overview"
+        alt="Beyond Sands coastal canopy overlooking Kelva Beach"
         fill
         priority
         sizes="100vw"
@@ -61,43 +42,26 @@ export function Hero() {
         }`}
       />
 
-      {/* Autoplaying Hero Looping Video (skipped on small screens, save-data, slow networks) */}
       {shouldLoadVideo && (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster="/assets/hero/hero-canopy-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover object-center luxury-grade"
-        >
-          <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
-          <source src="/assets/hero/hero-video.webm" type="video/webm" />
-        </video>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/YBjgWfEOSXY?autoplay=1&mute=1&controls=0&loop=1&playlist=YBjgWfEOSXY&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
+            title="Beyond Sands Resort"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            onLoad={() => setIsPlaying(true)}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-full min-h-[56.25vw] pointer-events-none scale-105 border-0"
+          />
+        </div>
       )}
 
-      {/* Cinematic Overlays (Subtle top & bottom fades for header & controls legibility) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-navy/50 via-transparent to-deep-navy/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/50 via-transparent to-deep-navy/30 pointer-events-none" />
 
-      {/* Accessible h1 for SEO and screen readers without visual overlay */}
-      <h1 className="sr-only">
-        Beyond Sands Resort · Coastal Calm at Kelva Beach, Palghar
-      </h1>
+      {/* Screen-reader and SEO accessible heading */}
+      <h1 className="sr-only">Beyond Sands Resort — Kelva Beach, Palghar</h1>
 
-      {/* Bottom Minimalist Scroll Indicator */}
-      <div className="absolute bottom-8 left-6 sm:left-12 right-6 sm:right-12 z-20 flex items-end justify-center pointer-events-none">
-        <div className="pointer-events-auto">
-          <a
-            href="#rooms-section"
-            aria-label="Scroll to Rooms & Suites"
-            onClick={handleDiscoverClick}
-            className="flex flex-col items-center gap-2 text-warm-ivory/80 hover:text-champagne-gold transition-colors duration-300 group cursor-pointer"
-          >
-            <div className="w-[1px] h-10 bg-gradient-to-b from-champagne-gold via-champagne-gold/60 to-transparent group-hover:h-12 transition-all duration-300" />
-          </a>
-        </div>
+      <div className="absolute bottom-6 right-6 sm:right-12 z-20 hidden sm:flex flex-col items-center gap-3 text-warm-ivory/70">
+        <span className="font-sans text-[10px] uppercase tracking-[0.22em]">Scroll</span>
+        <div className="hero-scroll-line" />
       </div>
     </section>
   );

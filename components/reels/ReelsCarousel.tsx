@@ -157,8 +157,9 @@ export function ReelsCarousel() {
       <div className="max-w-7xl mx-auto px-6 sm:px-12 mb-8 sm:mb-12">
         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 hairline-b border-charcoal/15 pb-4">
           <div>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-normal text-deep-navy tracking-wide">
-              RESORT REELS &amp; MOMENTS
+            <span className="section-kicker mb-3">Moments</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-deep-navy tracking-tight">
+              Resort reels
             </h2>
             <p className="font-sans text-xs sm:text-sm text-charcoal/70 font-light mt-1">
               Continuous glimpses of coastal calm, suite interiors &amp; sanctuary life at Beyond Sands.

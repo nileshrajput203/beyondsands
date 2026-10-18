@@ -69,7 +69,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <div className="pt-28 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
+      <div className="pt-32 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
         {/* Navigation Breadcrumb */}
         <Link
           href="/"
@@ -99,7 +99,7 @@ export default function ContactPage() {
         {/* 2-Column Contact & Form Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-20">
           {/* Form Column (7 cols) */}
-          <div className="lg:col-span-7 bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[3px] p-6 sm:p-10 shadow-sm">
+          <div className="lg:col-span-7 bg-white/80 border border-charcoal/10 rounded-[1.8rem] p-6 sm:p-10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.28)]">
             <div className="flex items-center justify-between mb-8 hairline-b border-charcoal/15 pb-4">
               <div>
                 <h2 className="font-display text-2xl sm:text-3xl text-deep-navy font-normal">
@@ -130,7 +130,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="E.g. Ananya Mehta"
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:ring-1 focus:ring-champagne-gold/30 focus:outline-none transition-all"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:ring-1 focus:ring-champagne-gold/30 focus:outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -145,7 +145,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 99238 95055"
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:ring-1 focus:ring-champagne-gold/30 focus:outline-none transition-all"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:ring-1 focus:ring-champagne-gold/30 focus:outline-none transition-all"
                   />
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="ananya@example.com"
-                  className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:ring-1 focus:ring-champagne-gold/30 focus:outline-none transition-all"
+                  className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:ring-1 focus:ring-champagne-gold/30 focus:outline-none transition-all"
                 />
               </div>
 
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     name="roomType"
                     value={formData.roomType}
                     onChange={handleChange}
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3.5 py-3 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none cursor-pointer"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3.5 py-3 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none cursor-pointer"
                   >
                     <option value="Deluxe Verandah Room">Deluxe Verandah Room (Garden View)</option>
                     <option value="Executive Poolside Suite">Executive Poolside Suite</option>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                     name="diet"
                     value={formData.diet}
                     onChange={handleChange}
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3.5 py-3 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none cursor-pointer"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3.5 py-3 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none cursor-pointer"
                   >
                     <option value="Pure Vegetarian">100% Pure Vegetarian (Standard)</option>
                     <option value="Jain (No Root Veg)">Jain Diet (Strictly No Onion/Garlic/Potato)</option>
@@ -216,7 +216,7 @@ export default function ContactPage() {
                     type="date"
                     value={formData.checkIn}
                     onChange={handleChange}
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3 py-2.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3 py-2.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none"
                   />
                 </div>
                 <div>
@@ -229,7 +229,7 @@ export default function ContactPage() {
                     type="date"
                     value={formData.checkOut}
                     onChange={handleChange}
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3 py-2.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3 py-2.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none"
                   />
                 </div>
                 <div>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                     name="guests"
                     value={formData.guests}
                     onChange={handleChange}
-                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3 py-2.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none cursor-pointer"
+                    className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3 py-2.5 text-xs text-deep-navy focus:border-champagne-gold focus:outline-none cursor-pointer"
                   >
                     {[1, 2, 3, 4, 5, 6, 8, 10, 15, 20].map((g) => (
                       <option key={g} value={g}>
@@ -265,14 +265,14 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="E.g. Celebrating an anniversary, requiring ground floor room for elders..."
-                  className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-[2px] px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:outline-none resize-none"
+                  className="w-full bg-warm-ivory/50 border border-charcoal/15 rounded-xl px-3.5 py-3 text-sm text-deep-navy focus:border-champagne-gold focus:outline-none resize-none"
                 />
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-deep-navy hover:bg-navy-blue text-warm-ivory font-sans text-xs uppercase tracking-widest font-semibold py-4 rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm hover:shadow-md mt-4"
+                className="w-full bg-deep-navy hover:bg-navy-blue text-warm-ivory font-sans text-xs uppercase tracking-widest font-semibold py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-500 ease-luxury cursor-pointer mt-4"
               >
                 <WhatsAppIcon size={18} />
                 <span>Submit Reservation to Host via WhatsApp</span>
@@ -287,7 +287,7 @@ export default function ContactPage() {
           {/* Details & Interactive Map Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Direct Contact Card */}
-            <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[3px] p-6 sm:p-8 space-y-6 shadow-sm">
+            <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[1.6rem] p-6 sm:p-8 space-y-6 shadow-sm">
               <h3 className="font-display text-2xl text-deep-navy font-normal hairline-b border-charcoal/15 pb-3">
                 Resort Direct Details
               </h3>
@@ -335,11 +335,11 @@ export default function ContactPage() {
 
               {/* Timings */}
               <div className="hairline-t border-charcoal/15 pt-4 grid grid-cols-2 gap-4 text-center font-sans text-xs">
-                <div className="p-3 bg-warm-ivory/50 rounded-[2px]">
+                <div className="p-3 bg-warm-ivory/50 rounded-xl">
                   <span className="text-[10px] uppercase font-mono text-champagne-gold block mb-1">Check-in</span>
                   <span className="font-semibold text-deep-navy text-sm">12:00 PM</span>
                 </div>
-                <div className="p-3 bg-warm-ivory/50 rounded-[2px]">
+                <div className="p-3 bg-warm-ivory/50 rounded-xl">
                   <span className="text-[10px] uppercase font-mono text-champagne-gold block mb-1">Check-out</span>
                   <span className="font-semibold text-deep-navy text-sm">10:00 AM</span>
                 </div>
@@ -347,7 +347,7 @@ export default function ContactPage() {
             </div>
 
             {/* Interactive Travel Directions Accordion */}
-            <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[3px] p-6 shadow-sm space-y-4 font-sans">
+            <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[1.6rem] p-6 shadow-sm space-y-4 font-sans">
               <span className="text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
                 How to Reach Us
               </span>
@@ -356,7 +356,7 @@ export default function ContactPage() {
                   <button
                     key={idx}
                     onClick={() => setActiveRouteTab(idx)}
-                    className={`px-3 py-1.5 text-[11px] rounded-[2px] transition-colors cursor-pointer ${
+                    className={`px-3 py-1.5 text-[11px] rounded-xl transition-colors cursor-pointer ${
                       activeRouteTab === idx
                         ? "bg-deep-navy text-warm-ivory font-medium"
                         : "bg-warm-ivory/60 text-charcoal/70 hover:text-deep-navy"
@@ -378,7 +378,7 @@ export default function ContactPage() {
             </div>
 
             {/* Embedded Google Map */}
-            <div className="w-full aspect-[16/10] rounded-[3px] overflow-hidden border border-champagne-gold/30 shadow-sm relative group">
+            <div className="w-full aspect-[16/10] rounded-[1.6rem] overflow-hidden border border-champagne-gold/30 shadow-sm relative group">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.844915862447!2d72.72960557531687!3d19.612193034920868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be703c22891dba7%3A0x7b4e7743d1ccd07a!2sBeyond%20Sands%20Pure%20Veg%20Resort!5e1!3m2!1sen!2sin!4v1779344489056!5m2!1sen!2sin"
                 width="100%"

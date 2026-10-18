@@ -208,7 +208,7 @@ export function GoogleReviews() {
   return (
     <section
       id="reviews-section"
-      className="relative w-full overflow-hidden py-20 sm:py-28 text-white min-h-[720px] flex flex-col justify-center bg-neutral-900"
+      className="relative w-full overflow-hidden py-24 sm:py-32 text-white min-h-[720px] flex flex-col justify-center bg-[#0b2238]"
     >
       {/* Background Resort Greenery Landscape */}
       <div className="absolute inset-0 z-0">
@@ -236,8 +236,8 @@ export function GoogleReviews() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header: All-caps bold "REVIEWS" */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[0.18em] text-white uppercase text-center drop-shadow-md">
-          REVIEWS
+        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white text-center">
+          Guest words
         </h2>
 
         {/* Rating Banner: Google Icon + Authentic 4.2 + Beyond Sands Resort + Stars + 40+ Reviews */}
@@ -303,7 +303,7 @@ export function GoogleReviews() {
                     style={{ width: `${100 / visibleCount}%` }}
                   >
                     {/* White Card */}
-                    <div className="bg-white rounded-md shadow-[0_12px_36px_rgba(0,0,0,0.28)] p-6 sm:p-8 flex flex-col items-center justify-between min-h-[370px] sm:min-h-[390px] w-full text-center border border-white/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.36)]">
+                    <div className="bg-white rounded-[1.6rem] shadow-[0_20px_50px_-28px_rgba(0,0,0,0.45)] p-6 sm:p-8 flex flex-col items-center justify-between min-h-[340px] sm:min-h-[370px] w-full text-center border border-white/40 transition-transform duration-500 ease-luxury hover:-translate-y-1">
                       {/* Top: Large Centered Avatar */}
                       <div className="flex flex-col items-center pt-2">
                         <div

@@ -11,7 +11,7 @@ export const metadata = {
 export default function WeddingsEventsPage() {
   return (
     <>
-      <div className="pt-28 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
+      <div className="pt-32 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
         {/* Navigation Breadcrumb */}
         <Link
           href="/"
