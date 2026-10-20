@@ -55,8 +55,9 @@ export function Header() {
       >
         <header
           role="banner"
-          className={`island-nav ${islandTone} max-w-6xl mx-auto h-[4rem] sm:h-[4.5rem] px-6 sm:px-8 md:px-10 flex items-center justify-between transition-all duration-300`}
+          className={`island-nav ${islandTone} max-w-6xl mx-auto h-[3.75rem] sm:h-[4.5rem] px-4 sm:px-8 md:px-10 flex items-center justify-between transition-all duration-300`}
         >
+          {/* Desktop Left Primary Nav */}
           <nav className="hidden md:flex flex-1 items-center justify-start gap-8 lg:gap-10" aria-label="Primary">
             <Link href="/about" className={navLink}>
               <span>About</span>
@@ -68,10 +69,22 @@ export function Header() {
             </Link>
           </nav>
 
-          <div className="flex-1 md:flex-initial flex items-center justify-center shrink-0 py-1">
+          {/* Mobile Left Quick Action: Balances header symmetry & gives instant room access */}
+          <div className="flex-1 flex md:hidden items-center justify-start">
+            <Link
+              href="/rooms-tariff"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#F5DEB3] hover:text-white font-sans text-[9.5px] uppercase tracking-[0.16em] font-medium shadow-xs active:scale-95 transition-all"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
+              <span>Book</span>
+            </Link>
+          </div>
+
+          {/* Center Brand Logo: Perfectly centered on mobile and desktop */}
+          <div className="flex-initial flex items-center justify-center shrink-0 py-1">
             <Link
               href="/"
-              className="relative block w-32 sm:w-44 md:w-52 h-12 sm:h-14 md:h-[3.85rem] transition-transform duration-500 ease-luxury hover:scale-[1.03] outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0"
+              className="relative block w-32 sm:w-44 md:w-52 h-11 sm:h-14 md:h-[3.85rem] transition-transform duration-500 ease-luxury hover:scale-[1.03] outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0"
             >
               <Image
                 src={logoSrc}
@@ -84,6 +97,7 @@ export function Header() {
             </Link>
           </div>
 
+          {/* Right Links & Menu Trigger */}
           <div className="flex-1 flex items-center justify-end gap-6 sm:gap-8">
             <Link href="/rooms" className={navLink}>
               <span>Rooms</span>
@@ -97,7 +111,7 @@ export function Header() {
             <button
               onClick={() => setIsMenuOpen(true)}
               aria-label="Open full site menu"
-              className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-current/20 hover:border-champagne-gold hover:text-champagne-gold flex items-center justify-center shrink-0 ${textColorClass} transition-all duration-500 ease-luxury cursor-pointer ml-1 sm:ml-2`}
+              className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-current/20 hover:border-champagne-gold hover:text-champagne-gold flex items-center justify-center shrink-0 ${textColorClass} transition-all duration-500 ease-luxury cursor-pointer ml-1 sm:ml-2`}
             >
               <span className="menu-lines" aria-hidden="true">
                 <span />

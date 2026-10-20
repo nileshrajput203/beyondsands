@@ -42,11 +42,11 @@ export function Gallery() {
   return (
     <section
       id="gallery-section"
-      className="relative w-full py-16 sm:py-24 bg-transparent text-charcoal select-none overflow-hidden"
+      className="relative w-full py-12 sm:py-24 bg-transparent text-charcoal select-none overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-12 mb-8 sm:mb-10">
-        <span className="section-kicker mb-3">Gallery</span>
-        <h2 className="font-display text-3xl sm:text-5xl font-normal text-deep-navy tracking-tight">
+      <div className="max-w-7xl mx-auto px-4 sm:px-12 mb-6 sm:mb-10">
+        <span className="section-kicker mb-2.5 sm:mb-3">Gallery</span>
+        <h2 className="font-display text-2xl sm:text-5xl font-normal text-deep-navy tracking-tight">
           The grounds, in motion
         </h2>
       </div>
@@ -60,7 +60,7 @@ export function Gallery() {
           axis={54}
           curve={75}
           fade={0}
-          className="h-[540px] sm:h-[620px] lg:h-[700px] w-full"
+          className="h-[380px] sm:h-[620px] lg:h-[700px] w-full"
         />
       </div>
     </section>

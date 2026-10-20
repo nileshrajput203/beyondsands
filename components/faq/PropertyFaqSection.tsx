@@ -133,23 +133,23 @@ export function PropertyFaqSection() {
   return (
     <section
       id="property-faq-section"
-      className="relative w-full py-24 sm:py-32 bg-transparent text-charcoal select-none overflow-hidden"
+      className="relative w-full py-12 sm:py-32 bg-transparent text-charcoal select-none overflow-hidden"
       aria-label="Property Details and Frequently Asked Questions"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-24">
         {/* ======================================================== */}
         {/* SECTION 1: PROPERTY DETAILS (ACCORDION WITH VISUALS)    */}
         {/* ======================================================== */}
         <div>
           {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-champagne-gold/15 border border-champagne-gold/30 text-xs font-medium text-[#b38547] uppercase tracking-widest mb-4">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-champagne-gold/15 border border-champagne-gold/30 text-[10px] sm:text-xs font-medium text-[#b38547] uppercase tracking-widest mb-3 sm:mb-4">
               <span>Resort Architecture &amp; Amenities</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-deep-navy font-display tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-deep-navy font-display tracking-tight">
               Property Details
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-sans">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-gray-600 leading-relaxed font-sans">
               Discover what makes Beyond Sands a premier pure-vegetarian sanctuary on the Kelva coastline.
             </p>
           </div>
@@ -224,15 +224,15 @@ export function PropertyFaqSection() {
         {/* ======================================================== */}
         <div>
           {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-deep-navy/5 border border-deep-navy/10 text-xs font-medium text-deep-navy uppercase tracking-widest mb-4">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-deep-navy/5 border border-deep-navy/10 text-[10px] sm:text-xs font-medium text-deep-navy uppercase tracking-widest mb-3 sm:mb-4">
               <HelpCircle className="w-3.5 h-3.5 text-champagne-gold" />
               <span>Guest Guidance · Kelve Beach Resort</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-deep-navy font-display tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-deep-navy font-display tracking-tight">
               Frequently Asked Questions About Our Kelve Beach Resort
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-sans">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-gray-600 leading-relaxed font-sans">
               Find clear answers to common inquiries regarding timings, dining, accessibility, and bookings.
             </p>
           </div>
@@ -264,12 +264,12 @@ export function PropertyFaqSection() {
                 value={faq.id}
                 className="bg-white/75 border border-charcoal/10 rounded-2xl overflow-hidden data-[state=open]:border-champagne-gold/50"
               >
-                <AccordionTrigger className="px-5 sm:px-7 py-4 sm:py-5 hover:no-underline transition-colors hover:bg-gray-50/60 text-left">
-                  <span className="font-medium text-sm sm:text-base text-deep-navy pr-4">
+                <AccordionTrigger className="px-4 sm:px-7 py-3.5 sm:py-5 hover:no-underline transition-colors hover:bg-gray-50/60 text-left">
+                  <span className="font-medium text-xs sm:text-base text-deep-navy pr-4">
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="px-5 sm:px-7 pb-5 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed font-sans font-light border-t border-gray-100">
+                <AccordionContent className="px-4 sm:px-7 pb-4 sm:pb-5 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed font-sans font-light border-t border-gray-100">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -277,7 +277,7 @@ export function PropertyFaqSection() {
           </Accordion>
 
           {/* Concierge Support CTA */}
-          <div className="mt-12 bg-deep-navy text-warm-ivory rounded-[1.8rem] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-champagne-gold/20">
+          <div className="mt-8 sm:mt-12 bg-deep-navy text-warm-ivory rounded-2xl sm:rounded-[1.8rem] p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 border border-champagne-gold/20">
             <div className="text-center sm:text-left space-y-1">
               <span className="text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
                 Direct Guest Support

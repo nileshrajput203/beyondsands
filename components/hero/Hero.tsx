@@ -11,7 +11,8 @@ type NetworkInformation = {
 export function Hero() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState<boolean>(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -28,15 +29,16 @@ export function Hero() {
 
   useEffect(() => {
     if (!shouldLoadVideo) return;
-    const video = videoRef.current;
-    if (!video) return;
-
-    video
-      .play()
-      .then(() => setIsPlaying(true))
-      .catch(() => {
-        // Autoplay policy fallback (browser policy)
-      });
+    const playVideo = (v: HTMLVideoElement | null) => {
+      if (!v) return;
+      v.play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          // Autoplay policy fallback (browser policy)
+        });
+    };
+    playVideo(desktopVideoRef.current);
+    playVideo(mobileVideoRef.current);
   }, [shouldLoadVideo]);
 
   return (
@@ -44,33 +46,66 @@ export function Hero() {
       id="hero-section"
       className="relative w-full min-h-[100dvh] overflow-hidden flex items-end bg-deep-navy text-warm-ivory select-none"
     >
+      {/* Desktop Poster (Strictly unchanged on desktop >= 768px) */}
       <Image
         src="/assets/hero/hero-canopy-poster.jpg"
         alt="Beyond Sands Resort coastal canopy overlooking Kelva Beach"
         fill
         priority
         sizes="100vw"
-        className={`object-cover object-center transition-opacity duration-1000 ${
+        className={`hidden md:block object-cover object-center transition-opacity duration-1000 ${
+          isPlaying ? "opacity-0" : "opacity-100"
+        }`}
+      />
+
+      {/* Mobile-Only Poster from IMG_7204 (< 768px) */}
+      <Image
+        src="/assets/hero/hero-mobile-poster.jpg"
+        alt="Beyond Sands Resort Kelva Beach"
+        fill
+        priority
+        sizes="100vw"
+        className={`block md:hidden object-cover object-center transition-opacity duration-1000 ${
           isPlaying ? "opacity-0" : "opacity-100"
         }`}
       />
 
       {shouldLoadVideo && (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/assets/hero/hero-canopy-poster.jpg"
-          onPlaying={() => setIsPlaying(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            isPlaying ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
-          <source src="/assets/hero/hero-video.webm" type="video/webm" />
-        </video>
+        <>
+          {/* Desktop Video (Strictly 100% untouched for desktop >= 768px) */}
+          <video
+            ref={desktopVideoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/assets/hero/hero-canopy-poster.jpg"
+            onPlaying={() => setIsPlaying(true)}
+            className={`hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              isPlaying ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
+            <source src="/assets/hero/hero-video.webm" type="video/webm" />
+          </video>
+
+          {/* Mobile-Only Video: IMG_7204 (Strictly for mobile viewport < 768px) */}
+          <video
+            ref={mobileVideoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/assets/hero/hero-mobile-poster.jpg"
+            onPlaying={() => setIsPlaying(true)}
+            className={`block md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              isPlaying ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <source src="/assets/hero/hero-mobile-video.mp4" type="video/mp4" />
+            <source src="/assets/hero/hero-mobile-video.mov" type="video/quicktime" />
+          </video>
+        </>
       )}
 
       {/* Screen-reader and SEO accessible heading */}

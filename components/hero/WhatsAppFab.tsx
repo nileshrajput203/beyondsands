@@ -15,7 +15,7 @@ export function WhatsAppFab() {
 
   return (
     <div
-      className={`fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-[60] transition-all duration-700 ease-luxury ${
+      className={`fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-[60] transition-all duration-700 ease-luxury ${
         isPastHero ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-3 pointer-events-none"
       } ${isFooterVisible ? "opacity-30 hover:opacity-100" : ""}`}
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
@@ -23,9 +23,14 @@ export function WhatsAppFab() {
       <button
         onClick={handleClick}
         aria-label="Chat with Beyond Sands on WhatsApp"
-        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_18px_40px_-16px_rgba(37,211,102,0.7)] transition-transform duration-500 ease-luxury hover:scale-105 cursor-pointer"
+        className="relative group w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-[0_18px_40px_-16px_rgba(37,211,102,0.7)] transition-transform duration-500 ease-luxury hover:scale-105 cursor-pointer"
       >
-        <WhatsAppIcon size={24} />
+        <span className="sm:hidden flex items-center justify-center">
+          <WhatsAppIcon size={20} />
+        </span>
+        <span className="hidden sm:flex items-center justify-center">
+          <WhatsAppIcon size={24} />
+        </span>
       </button>
     </div>
   );

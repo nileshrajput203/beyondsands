@@ -160,6 +160,35 @@ const ROOMS_DATA = [
     ],
     whatsappMsg: "Hi! I would like to book the Grand Family Dormitory at Beyond Sands Palghar.",
   },
+  {
+    id: "garden-view-family",
+    name: "Garden-View AC Family Suite",
+    tagline: "Serene garden sanctuary with king & twin beds for family retreats",
+    badge: "Family Suite",
+    price: "₹6,000",
+    period: "per night (Sun–Thu)",
+    weekendPrice: "₹7,499 / night (Fri–Sat)",
+    capacity: "4 to 6 Guests",
+    size: "480 sq. ft.",
+    bed: "King Bed + Twin Beds",
+    view: "Lush Emerald Garden & Palm Canopies",
+    image: "/assets/rooms/garden-view-thumb3.jpg",
+    gallery: [
+      "/assets/rooms/garden-view-thumb3.jpg",
+      "/assets/rooms/garden-view-thumb1.jpg",
+      "/assets/rooms/garden-courtyard.png",
+      "/assets/rooms/garden-view-thumb4.jpg",
+    ],
+    features: [
+      "Expansive family layout featuring bespoke King and Twin bedding",
+      "Direct walk-out verandah facing coconut groves and manicured lawns",
+      "Whisper-quiet Daikin Split AC & modern ceiling fans",
+      "Spacious designer bathroom with 24/7 hot solar shower",
+      "High-speed fiber Wi-Fi & Smart TV entertainment",
+      "Complimentary wholesome pure veg coastal breakfast included",
+    ],
+    whatsappMsg: "Hi! I would like to book the Garden-View AC Family Suite at Beyond Sands Palghar.",
+  },
 ];
 
 const AMENITIES = [

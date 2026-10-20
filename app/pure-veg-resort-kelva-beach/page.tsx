@@ -207,7 +207,7 @@ export default function PureVegResortPage() {
                 href="/rooms-and-tariff"
                 className="w-full py-3.5 px-6 border border-white/20 hover:border-champagne-gold text-warm-ivory hover:text-champagne-gold font-sans text-xs uppercase tracking-widest font-semibold rounded-lg text-center transition-all"
               >
-                Explore Room Tariffs &amp; Packages
+                Explore Rooms &amp; Suites
               </Link>
             </div>
           </div>

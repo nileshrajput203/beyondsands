@@ -44,7 +44,7 @@ export default function KelveBeachResortPackagesPage() {
 
   const whatsappStayUrl =
     "https://wa.me/919923895055?text=" +
-    encodeURIComponent("Hi Beyond Sands! I'm inquiring about overnight room packages and tariff at your Kelve resort.");
+    encodeURIComponent("Hi Beyond Sands! I'm inquiring about overnight room packages and rates at your Kelve resort.");
 
   const packages = [
     {

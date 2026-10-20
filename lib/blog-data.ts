@@ -383,7 +383,7 @@ export const BLOG_POSTS: BlogPost[] = [
     metaDescription: "Host 25 to 150 guests for society picnics, corporate outings, and family reunions at Beyond Sands Resort Kelwa. 15,000 sq ft lawns, AC dormitories, buffet dining & pool.",
     category: "groups",
     categoryLabel: "Group Outings & Events",
-    badge: "Group Tariff",
+    badge: "Group Rates",
     readTime: "5 min read",
     publishDate: "October 2026",
     featuredImage: "/assets/events/lawn-reception.jpg",
@@ -403,7 +403,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ctaBox: {
       headline: "Get Custom Group Package Rates (25+ Guests)",
       text: "Special group pricing for Day Picnics and Overnight Stays including dedicated buffet setups, lawn turf games, and AC dormitory options.",
-      buttonText: "Request Group Tariff on WhatsApp",
+      buttonText: "Request Group Rates on WhatsApp",
       buttonHref: "https://wa.me/919923895055?text=Hi%20Beyond%20Sands!%20We%20are%20planning%20a%20group%20outing%20for%20our%20society/company.%20Please%20share%20group%20rates.",
       whatsappMessage: "Hi Beyond Sands! We are planning a group outing for our society/company. Please share group rates.",
     },

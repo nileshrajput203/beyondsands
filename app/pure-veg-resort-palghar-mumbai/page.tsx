@@ -108,7 +108,7 @@ export default function PureVegResortPalgharMumbaiPage() {
               href="/rooms-tariff"
               className="px-8 py-3.5 rounded-full bg-white border border-charcoal/20 text-deep-navy text-xs uppercase tracking-wider font-medium hover:border-champagne-gold transition-all duration-300"
             >
-              View Rooms &amp; Tariff
+              View Rooms &amp; Suites
             </Link>
           </div>
         </header>

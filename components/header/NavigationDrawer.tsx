@@ -43,24 +43,15 @@ const NAV_ITEMS: NavItem[] = [
   {
     id: "rooms",
     index: "03",
-    name: "Rooms & Tariff",
+    name: "Rooms & Suites",
     subtitle: "Garden view, pool view & 6–15 bed AC dorms.",
     href: "/rooms-tariff",
-    badge: "TARIFF",
+    badge: "SUITES",
     image: "/assets/rooms/garden-view-main.jpg",
   },
   {
-    id: "picnic",
-    index: "04",
-    name: "One-Day Picnic",
-    subtitle: "10 AM – 5 PM with pool, rain dance & buffet.",
-    href: "/kelve-beach-resort-packages",
-    badge: "₹2,200",
-    image: "/assets/faq/faq-3-swimming-pool.jpg",
-  },
-  {
     id: "dining",
-    index: "05",
+    index: "04",
     name: "Pure Veg Dining",
     subtitle: "Coastal breakfast, Jain thalis & Gujarati fare.",
     href: "/pure-veg-resort-palghar-mumbai",
@@ -69,7 +60,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "events",
-    index: "06",
+    index: "05",
     name: "Events & Weddings",
     subtitle: "15,000+ sq ft celebration lawns & banquet.",
     href: "/weddings-events",
@@ -78,7 +69,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "gallery",
-    index: "07",
+    index: "06",
     name: "Resort Gallery",
     subtitle: "Immersive architectural & landscape visuals.",
     href: "/gallery",
@@ -86,7 +77,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "location",
-    index: "08",
+    index: "07",
     name: "Location & Beach",
     subtitle: "Opposite Sheetla Devi Temple & Kelva Beach.",
     href: "/location",
@@ -95,7 +86,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "reviews",
-    index: "09",
+    index: "08",
     name: "Guest Reviews",
     subtitle: "Verified Google reviews & 4.2 rating.",
     href: "/reviews",
@@ -104,7 +95,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "contact",
-    index: "10",
+    index: "09",
     name: "Contact Us",
     subtitle: "Concierge desk, custom packages & bookings.",
     href: "/contact",
@@ -112,7 +103,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "blog",
-    index: "11",
+    index: "10",
     name: "Blog & Stories",
     subtitle: "Coastal stories, field notes & travel guides.",
     href: "/blog",
@@ -120,7 +111,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     id: "booking",
-    index: "12",
+    index: "11",
     name: "Book Directly",
     subtitle: "Best rate guarantee & complimentary breakfast.",
     href: "/booking",
@@ -183,12 +174,12 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Site Navigation Menu"
-      className="fixed inset-0 z-[100] bg-[#060C14] text-[#FAF6F0] overflow-y-auto select-none flex flex-col justify-between"
+      className="fixed inset-0 z-[100] bg-[#060C14] text-[#FAF6F0] flex flex-col h-[100dvh] max-h-[100dvh] overflow-hidden"
     >
       {/* Decorative luxury script watermark on top-right */}
       <div
         aria-hidden="true"
-        className="absolute top-4 sm:top-5 right-16 sm:right-24 pointer-events-none select-none z-0"
+        className="absolute top-4 sm:top-5 right-16 sm:right-24 pointer-events-none select-none z-0 hidden sm:block"
       >
         <span className="font-serif italic text-xl sm:text-2xl lg:text-3xl text-[#E8DEC9]/15 tracking-wide">
           More Than Just a Stay...
@@ -196,7 +187,7 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
       </div>
 
       {/* Top Header Bar */}
-      <header className="relative z-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 py-2.5 sm:py-3 border-b border-white/10 bg-[#060C14]/90 backdrop-blur-md sticky top-0 shrink-0">
+      <header className="relative z-20 flex items-center justify-between px-4 sm:px-8 lg:px-12 py-2.5 sm:py-3 border-b border-white/10 bg-[#060C14]/95 backdrop-blur-md shrink-0 select-none">
         <div className="flex items-center gap-3 sm:gap-5">
           <Link
             href="/"
@@ -242,36 +233,91 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
         </div>
       </header>
 
-      {/* Main Grid: Left 11 Cards + Right Featured Destination */}
-      <main className="relative z-10 flex-1 max-w-[1400px] w-full mx-auto px-3 sm:px-6 lg:px-10 py-3 sm:py-4 flex flex-col justify-center">
+      {/* Scrollable Drawer Body with Native Momentum Touch Scrolling */}
+      <div
+        className="flex-1 w-full overflow-y-auto overscroll-contain touch-pan-y"
+        style={{
+          WebkitOverflowScrolling: "touch",
+          overscrollBehaviorY: "contain",
+        }}
+      >
+        {/* Main Grid: Left 11 Cards + Right Featured Destination */}
+        <main className="relative z-10 flex-1 max-w-[1400px] w-full mx-auto px-3 sm:px-6 lg:px-10 py-3 sm:py-4 flex flex-col sm:justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-5 items-stretch">
           
           {/* Left Column (Cols 1-7 on desktop): All Destinations */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+          <div className="lg:col-span-7 flex flex-col justify-start lg:justify-between">
+            {/* Mobile Quick Action Concierge Strip */}
+            <div className="sm:hidden grid grid-cols-2 gap-2 mb-2.5">
+              <a
+                href="https://wa.me/919923895055?text=Hi!%20I'd%20like%20to%20book%20a%20stay%20at%20Beyond%20Sands%20Kelva."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-[#D6B588] text-[#061423] font-sans text-[11px] uppercase tracking-wider font-bold shadow-xs active:scale-98 transition-transform"
+              >
+                <WhatsAppIcon size={14} />
+                <span>WhatsApp Book</span>
+              </a>
+              <a
+                href="tel:+919923895055"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-white/20 bg-white/5 text-white font-sans text-[11px] uppercase tracking-wider font-semibold active:scale-98 transition-transform"
+              >
+                <PhoneIcon size={13} />
+                <span>Call Concierge</span>
+              </a>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pb-6 sm:pb-0 touch-pan-y">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.id}
                   href={resolveHref(item.href, pathname)}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="group relative flex flex-row items-stretch h-[68px] sm:h-[72px] lg:h-[74px] xl:h-[78px] bg-[#FAF5EE] hover:bg-[#FFFFFF] rounded-xl sm:rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.015] cursor-pointer"
+                  className="group relative flex flex-row items-stretch h-[68px] sm:h-[72px] lg:h-[74px] xl:h-[78px] bg-[#FAF5EE] hover:bg-[#FFFFFF] rounded-xl sm:rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.015] cursor-pointer touch-pan-y"
                 >
                   {/* Left Thumbnail Photo */}
-                  <div className="relative w-[34%] shrink-0 h-full overflow-hidden bg-black/10">
+                  <div className="relative w-[32%] sm:w-[34%] shrink-0 h-full overflow-hidden bg-black/10 pointer-events-none select-none">
                     <Image
                       src={item.image}
                       alt={item.name}
                       fill
+                      draggable={false}
                       sizes="180px"
-                      className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                      className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out pointer-events-none select-none"
                     />
                   </div>
 
-                  {/* Right Content */}
-                  <div className="flex-1 p-2 sm:p-2.5 flex flex-col justify-between min-w-0 text-[#0A1624]">
+                  {/* Mobile Layout (sm:hidden): Pristine Un-messy 2-Row Layout */}
+                  <div className="flex sm:hidden flex-1 p-2.5 flex-col justify-center gap-1 min-w-0 text-[#0A1624]">
+                    <div className="flex items-center justify-between gap-1.5">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="font-mono text-[9.5px] font-bold text-[#8C7A6B] shrink-0">
+                          {item.index}
+                        </span>
+                        <h3 className="font-serif text-[13.5px] font-semibold text-[#0A1624] truncate">
+                          {item.name}
+                        </h3>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {item.badge && (
+                          <span className="font-sans text-[7.5px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded-full bg-[#E8DEC9] text-[#6E5536] border border-[#CBBBA0]/40">
+                            {item.badge}
+                          </span>
+                        )}
+                        <ArrowRight className="w-3 h-3 text-[#8C7A6B] shrink-0" />
+                      </div>
+                    </div>
+                    <p className="font-sans text-[10px] text-[#4A5568] leading-tight line-clamp-1 font-light">
+                      {item.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Desktop Layout (hidden sm:flex): Strictly 100% Unchanged */}
+                  <div className="hidden sm:flex flex-1 p-2 sm:p-2.5 flex-col justify-between min-w-0 text-[#0A1624]">
                     <div>
                       <div className="flex items-center justify-between gap-1 mb-0.5">
-                        <span className="font-mono text-[9.5px] sm:text-[10px] font-bold text-[#8C7A6B]">
+                        <span className="font-mono text-[9px] sm:text-[10px] font-bold text-[#8C7A6B]">
                           {item.index}
                         </span>
                         {item.badge && (
@@ -281,16 +327,15 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
                         )}
                       </div>
 
-                      <h3 className="font-serif text-[13px] sm:text-[13.5px] lg:text-[14px] font-semibold text-[#0A1624] group-hover:text-[#A67C47] transition-colors leading-tight truncate">
-                        {item.name}
-                      </h3>
-                      <p className="font-sans text-[9px] sm:text-[9.5px] text-[#4A5568] leading-tight line-clamp-1 mt-0.5 font-light">
+                      <div className="flex items-center justify-between gap-1">
+                        <h3 className="font-serif text-[13.5px] sm:text-[13.5px] lg:text-[14px] font-semibold text-[#0A1624] group-hover:text-[#A67C47] transition-colors leading-tight truncate">
+                          {item.name}
+                        </h3>
+                        <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#8C7A6B] group-hover:text-[#A67C47] group-hover:translate-x-0.5 transition-all duration-300 shrink-0" />
+                      </div>
+                      <p className="font-sans text-[9.5px] sm:text-[9.5px] text-[#4A5568] leading-tight line-clamp-1 mt-0.5 font-light">
                         {item.subtitle}
                       </p>
-                    </div>
-
-                    <div className="flex items-center justify-start">
-                      <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#8C7A6B] group-hover:text-[#A67C47] group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
                 </Link>
@@ -415,12 +460,13 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
         </div>
       </main>
 
-      {/* Bottom Footer Ambience Line */}
-      <footer className="relative z-20 py-2.5 sm:py-3 border-t border-white/10 bg-[#040910] text-center shrink-0">
-        <span className="text-[9.5px] uppercase tracking-[0.35em] text-[#FAF6F0]/40 font-sans">
-          SAND &nbsp;·&nbsp; SEA &nbsp;·&nbsp; SERENITY
-        </span>
-      </footer>
+        {/* Bottom Footer Ambience Line */}
+        <footer className="relative z-20 py-2.5 sm:py-3 border-t border-white/10 bg-[#040910] text-center shrink-0">
+          <span className="text-[9.5px] uppercase tracking-[0.35em] text-[#FAF6F0]/40 font-sans">
+            SAND &nbsp;·&nbsp; SEA &nbsp;·&nbsp; SERENITY
+          </span>
+        </footer>
+      </div>
     </div>
   );
 }

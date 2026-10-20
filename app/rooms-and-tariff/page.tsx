@@ -19,14 +19,12 @@ import {
 import { WhatsAppIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Rooms & Tariff | Beyond Sands Resort Kelva Beach, Palghar (Rates & Packages)",
+  title: "Rooms & Suites | Beyond Sands Resort Kelva Beach, Palghar (Rates & Packages)",
   description:
-    "Official room tariff and packages for Beyond Sands Resort, Kelva Beach, Palghar. Garden View AC Deluxe (₹3,000–₹3,500), Pool View AC Deluxe (₹3,500–₹4,000), and 6-Bed AC Family Dormitory (₹4,000–₹5,000). Book direct for 0% commission.",
+    "Official room rates and packages for Beyond Sands Resort, Kelva Beach, Palghar. Garden View AC Deluxe (₹3,000–₹3,500), Pool View AC Deluxe (₹3,500–₹4,000), and 6-Bed AC Family Dormitory (₹4,000–₹5,000). Book direct for 0% commission.",
   keywords: [
-    "beyond sands resort tariff",
     "beyond sands resort room rates",
     "kelva beach resort prices",
-    "palghar resort room tariff",
     "family dormitory kelva beach rates",
     "ac deluxe room palghar price",
     "cheap and best resort in kelva beach",
@@ -36,7 +34,7 @@ export const metadata: Metadata = {
     canonical: "/rooms-and-tariff",
   },
   openGraph: {
-    title: "Rooms & Tariff | Beyond Sands Resort Kelva Beach, Palghar",
+    title: "Rooms & Suites | Beyond Sands Resort Kelva Beach, Palghar",
     description:
       "Transparent room rates and meal packages. Book direct on WhatsApp for exclusive direct discounts on Garden View, Pool View and Family Dormitories.",
     url: "https://www.beyondsands.in/rooms-and-tariff",
@@ -184,7 +182,7 @@ export default function RoomsAndTariffPage() {
   const generalWhatsappUrl =
     "https://wa.me/919923895055?text=" +
     encodeURIComponent(
-      "Hi Beyond Sands! I'd like to check room availability and get the best direct tariff for an upcoming stay."
+      "Hi Beyond Sands! I'd like to check room availability and get the best direct rates for an upcoming stay."
     );
 
   const tariffSchema = {
@@ -217,7 +215,7 @@ export default function RoomsAndTariffPage() {
             Home
           </Link>
           <span>/</span>
-          <span className="text-deep-navy font-medium">Rooms &amp; Tariff</span>
+          <span className="text-deep-navy font-medium">Rooms &amp; Suites</span>
         </nav>
 
         {/* Hero Section */}
@@ -230,7 +228,7 @@ export default function RoomsAndTariffPage() {
           </div>
 
           <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-deep-navy font-normal tracking-tight leading-[1.12] max-w-4xl">
-            Beyond Sands Resort Rooms &amp; Tariff — Kelva Beach, Palghar
+            Beyond Sands Resort Rooms &amp; Suites — Kelva Beach, Palghar
           </h1>
 
           <p className="font-sans text-base sm:text-lg text-charcoal/80 font-light mt-5 max-w-3xl leading-relaxed">

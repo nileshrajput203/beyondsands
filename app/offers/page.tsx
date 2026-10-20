@@ -23,7 +23,7 @@ export default function OffersPage() {
         {/* Header */}
         <div className="mb-14">
           <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold block mb-2">
-            07 · Tariff Architecture
+            07 · Rate Architecture
           </span>
           <h1 className="font-display text-4xl sm:text-6xl text-deep-navy font-normal tracking-wide max-w-3xl">
             Thoughtfully packaged coastal retreats.
@@ -38,14 +38,14 @@ export default function OffersPage() {
           <OffersInteractive />
         </div>
 
-        {/* Tariff Policies Hairline Spec */}
+        {/* Rate Policies Hairline Spec */}
         <div className="p-8 bg-white/60 border border-charcoal/15 rounded-[2px] grid grid-cols-1 md:grid-cols-3 gap-6 font-sans text-xs text-charcoal/80">
           <div>
             <span className="font-semibold text-deep-navy block mb-1 uppercase tracking-wider text-[11px]">
               Direct Booking Assurance
             </span>
             <p className="font-light leading-relaxed">
-              Booking directly via our concierge guarantees our lowest available tariff with zero platform booking commissions.
+              Booking directly via our concierge guarantees our lowest available rates with zero platform booking commissions.
             </p>
           </div>
           <div>

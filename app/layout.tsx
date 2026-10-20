@@ -147,7 +147,7 @@ export default function RootLayout({
           <ScrollProgressBar />
           <SkySystem />
           <Header />
-          <main id="main-content" role="main" className="relative z-10 w-full overflow-visible">
+          <main id="main-content" role="main" className="relative z-10 w-full max-w-full overflow-x-clip md:overflow-visible">
             {children}
           </main>
           <div className="noise-overlay" aria-hidden="true" />

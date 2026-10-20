@@ -23,7 +23,7 @@ export default function BookingPage() {
     name: "",
     phone: "",
     email: "",
-    roomType: "Garden View Deluxe Verandah (₹3,499/night)",
+    roomType: "Garden-View AC Family Room (2–4 Guests)",
     checkIn: "",
     checkOut: "",
     adults: "2",
@@ -168,10 +168,12 @@ export default function BookingPage() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-warm-ivory/60 border border-charcoal/20 text-charcoal font-sans text-sm focus:outline-none focus:border-champagne-gold transition-colors"
                     >
-                      <option value="Garden View Deluxe Verandah (₹3,499/night)">Garden View Deluxe Verandah (₹3,499/night)</option>
-                      <option value="Pool View Executive Suite (₹3,999/night)">Pool View Executive Suite (₹3,999/night)</option>
-                      <option value="Couple Romantic Coastal Nook (₹3,299/night)">Couple Romantic Coastal Nook (₹3,299/night)</option>
-                      <option value="Grand Family Dormitory (₹6,999/night for up to 6)">Grand Family Dormitory (₹6,999/night for up to 6)</option>
+                      <option value="Garden-View AC Family Room (2–4 Guests)">Garden-View AC Family Room (2–4 Guests)</option>
+                      <option value="Pool-View AC Deluxe Room (2–4 Guests)">Pool-View AC Deluxe Room (2–4 Guests)</option>
+                      <option value="Couple Room in Kelve Beach (2–3 Guests)">Couple Room in Kelve Beach (2–3 Guests)</option>
+                      <option value="AC Group Dormitory in Kelve Beach (6–15 Guests)">AC Group Dormitory in Kelve Beach (6–15 Guests)</option>
+                      <option value="Garden-View AC Family Suite (4–6 Guests)">Garden-View AC Family Suite (4–6 Guests)</option>
+                      <option value="One-Day Picnic Package (10 AM – 5 PM)">One-Day Picnic Package (10 AM – 5 PM)</option>
                     </select>
                   </div>
                 </div>

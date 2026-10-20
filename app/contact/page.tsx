@@ -62,7 +62,7 @@ export default function ContactPage() {
       `Check-in: ${formData.checkIn || "Flexible"}\n` +
       `Check-out: ${formData.checkOut || "Flexible"}\n` +
       `Number of Guests: ${formData.guests}\n` +
-      `Notes/Requests: ${formData.message || "Please share tariff, package inclusions, and availability."}`
+      `Notes/Requests: ${formData.message || "Please share rates, package inclusions, and availability."}`
     );
     window.open(`https://wa.me/919923895055?text=${text}`, "_blank");
   };

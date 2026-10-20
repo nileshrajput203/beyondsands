@@ -52,27 +52,6 @@ const VALUES = [
   },
 ];
 
-const TEAM = [
-  {
-    name: "Priya Sharma",
-    role: "Founder & Resident Host",
-    bio: "Found solace on the Kelva shoreline after years in Mumbai's fast lane, envisioning a peaceful sanctuary where families reconnect without rush.",
-    accent: "Host Concierge",
-  },
-  {
-    name: "Rajesh Kulkarni",
-    role: "Head of Experiences & Trails",
-    bio: "A lifelong Palghar native who guides guests to hidden Kelva Fort vantage points, private tide pools, and tranquil sunset trails.",
-    accent: "Local Botanist & Guide",
-  },
-  {
-    name: "Chef Suresh Maharaj",
-    role: "Executive Vegetarian Chef",
-    bio: "Master of stone-ground Maharashtrian spices, authentic Gujarati thalis, and wholesome coastal delicacies prepared fresh every day.",
-    accent: "Pure Veg Specialist",
-  },
-];
-
 const STATS = [
   { number: "4.8 ★", label: "Google Guest Rating", sub: "Based on 280+ verified reviews" },
   { number: "150+", label: "Happy Family Gatherings", sub: "Weddings, reunions & celebrations" },
@@ -261,50 +240,6 @@ export default function AboutPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        {/* Team Section */}
-        <div className="mb-20 hairline-b border-charcoal/15 pb-16">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold block mb-2">
-                People of Beyond Sands
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl text-deep-navy font-normal">
-                Your Resident Hosts
-              </h2>
-            </div>
-            <p className="font-sans text-xs sm:text-sm text-charcoal/70 max-w-md font-light">
-              We live on the property and cherish the land. Here to ensure your stay feels less like a hotel and more like coming home.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {TEAM.map((member, idx) => (
-              <div
-                key={idx}
-                className="space-y-4 p-7 bg-white/70 border border-charcoal/15 rounded-[1.6rem] hover:border-champagne-gold/60 transition-all duration-300 shadow-sm"
-              >
-                <div className="w-14 h-14 rounded-full bg-deep-navy text-warm-ivory flex items-center justify-center font-display text-xl border border-champagne-gold/40 shadow-inner">
-                  {member.name.split(" ").map((n) => n[0]).join("")}
-                </div>
-                <div>
-                  <h3 className="font-display text-2xl text-deep-navy font-normal">
-                    {member.name}
-                  </h3>
-                  <span className="font-sans text-[11px] text-champagne-gold uppercase tracking-wider font-semibold block mt-0.5">
-                    {member.role}
-                  </span>
-                  <span className="font-sans text-[10px] text-charcoal/50 uppercase tracking-widest font-mono">
-                    {member.accent}
-                  </span>
-                </div>
-                <p className="font-sans text-xs text-charcoal/75 leading-relaxed font-light">
-                  {member.bio}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 

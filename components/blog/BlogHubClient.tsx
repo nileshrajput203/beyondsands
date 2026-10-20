@@ -330,7 +330,7 @@ export function BlogHubClient() {
                 href="/booking"
                 className="inline-flex items-center gap-1.5 px-4 py-3 text-white/80 hover:text-white font-sans text-xs uppercase tracking-wider underline underline-offset-4 transition-colors"
               >
-                <span>View Tariff &amp; Rooms</span>
+                <span>View Rooms &amp; Suites</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

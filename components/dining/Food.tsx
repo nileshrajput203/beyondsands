@@ -184,10 +184,10 @@ export function Food() {
       >
         <div className="w-full max-w-[1500px] mx-auto text-center flex flex-col items-center">
           {/* Top Bar: Section Title + Direct Contact for Menu Link */}
-          <div className="w-full flex items-center justify-between mb-4 sm:mb-6 border-b border-current/15 pb-3">
-            <div className="flex items-center gap-2.5">
+          <div className="w-full flex items-center justify-between mb-3 sm:mb-6 border-b border-current/15 pb-2 sm:pb-3">
+            <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold animate-pulse" />
-              <span className="font-display text-2xl sm:text-3xl font-normal tracking-wide">
+              <span className="font-display text-lg sm:text-3xl font-normal tracking-wide">
                 PURE VEGETARIAN DINING
               </span>
             </div>
@@ -197,9 +197,10 @@ export function Food() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contact Beyond Sands on WhatsApp for today's dining menu"
-              className="group flex items-center gap-2 text-xs sm:text-sm font-sans uppercase tracking-widest text-champagne-gold hover:opacity-80 transition-opacity cursor-pointer font-medium"
+              className="group flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-sm font-sans uppercase tracking-widest text-champagne-gold hover:opacity-80 transition-opacity cursor-pointer font-medium"
             >
-              <span>Contact for Menu</span>
+              <span className="sm:hidden">Menu</span>
+              <span className="hidden sm:inline">Contact for Menu</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
           </div>
@@ -207,14 +208,14 @@ export function Food() {
           {/* Heading */}
           <h2
             id="dining-heading"
-            className="m-0 font-normal text-[clamp(32px,4.5vw,68px)] leading-[1.15] tracking-[-1.5px] font-display"
+            className="m-0 font-normal text-2xl sm:text-[clamp(32px,4.5vw,68px)] leading-[1.15] tracking-tight sm:tracking-[-1.5px] font-display"
           >
             100% pure vegetarian.
           </h2>
 
           {/* Pure Vegetarian FSSAI Quality Badge */}
           <div
-            className="inline-flex items-center justify-center gap-3.5 sm:gap-4 my-3 sm:my-4 px-5 sm:px-6 py-2 sm:py-2.5 border border-[#d6a05c] rounded-full shadow-sm text-[10px] sm:text-xs font-semibold tracking-[3px] sm:tracking-[4px] uppercase leading-none transition-colors duration-500"
+            className="inline-flex items-center justify-center gap-2 sm:gap-4 my-2 sm:my-4 px-3 sm:px-6 py-1.5 sm:py-2.5 border border-[#d6a05c] rounded-full shadow-sm text-[8.5px] sm:text-xs font-semibold tracking-[1.5px] sm:tracking-[4px] uppercase leading-none transition-colors duration-500"
             style={{
               backgroundColor: isDark ? "#0E243E" : "#FFFFFF",
               color: isDark ? "#F8F6F1" : "#17365d",
@@ -222,10 +223,10 @@ export function Food() {
           >
             {/* Green Veg Square & Dot Mark */}
             <span
-              className="relative w-[22px] sm:w-[26px] h-[22px] sm:h-[26px] flex-shrink-0 border-2 border-[#159b4d] flex items-center justify-center rounded-[2px]"
+              className="relative w-4 sm:w-[26px] h-4 sm:h-[26px] flex-shrink-0 border-2 border-[#159b4d] flex items-center justify-center rounded-[2px]"
               aria-hidden="true"
             >
-              <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#159b4d]" />
+              <span className="w-1.5 sm:w-3 h-1.5 sm:h-3 rounded-full bg-[#159b4d]" />
             </span>
             <span>
               Fully vegetarian resort &nbsp;·&nbsp; every meal, every day
@@ -233,7 +234,7 @@ export function Food() {
           </div>
 
           {/* Wooden Food Display Panel */}
-          <div className="relative w-full h-[clamp(260px,38vh,420px)] my-2 sm:my-3 mx-auto overflow-hidden rounded-[20px] sm:rounded-[28px] bg-[#493022] shadow-[0_40px_70px_-35px_rgba(60,30,10,0.55)] border border-black/10">
+          <div className="relative w-full h-[clamp(210px,32vh,420px)] sm:h-[clamp(260px,38vh,420px)] my-2 sm:my-3 mx-auto overflow-hidden rounded-2xl sm:rounded-[28px] bg-[#493022] shadow-[0_40px_70px_-35px_rgba(60,30,10,0.55)] border border-black/10">
             {/* Rustic Wood Table Top Image */}
             <div className="absolute inset-0 w-full h-full">
               <Image
@@ -282,7 +283,7 @@ export function Food() {
 
           {/* Meal Navigation Tabs */}
           <nav
-            className="flex items-center justify-center gap-6 sm:gap-12 lg:gap-16 mt-5 sm:mt-7"
+            className="flex items-center justify-center gap-4 sm:gap-12 lg:gap-16 mt-3.5 sm:mt-7"
             aria-label="Select a meal"
           >
             {MEALS.map((meal, index) => {
@@ -299,7 +300,7 @@ export function Food() {
                     borderBottomColor: isSelected ? "#c49a63" : "transparent",
                     opacity: isSelected ? 1 : 0.45,
                   }}
-                  className="relative pb-2.5 sm:pb-3 border-b-[3px] bg-transparent text-[clamp(16px,2.2vw,28px)] font-normal tracking-[3px] sm:tracking-[5px] uppercase cursor-pointer transition-all duration-300 hover:opacity-100 focus-visible:outline-2 focus-visible:outline-[#c49a63] focus-visible:outline-offset-4"
+                  className="relative pb-1.5 sm:pb-3 border-b-[2px] sm:border-b-[3px] bg-transparent text-sm sm:text-[clamp(16px,2.2vw,28px)] font-normal tracking-[2px] sm:tracking-[5px] uppercase cursor-pointer transition-all duration-300 hover:opacity-100 focus-visible:outline-2 focus-visible:outline-[#c49a63] focus-visible:outline-offset-4"
                 >
                   {meal.name}
                 </button>

@@ -129,13 +129,13 @@ export function RoomsRail() {
       <section
         ref={sectionRef}
         id="rooms-section"
-        className="relative w-full min-h-[100dvh] py-10 lg:py-6 flex flex-col justify-between lg:justify-center overflow-hidden bg-transparent select-none"
+        className="relative w-full min-h-[100dvh] py-6 sm:py-8 lg:py-6 flex flex-col justify-between lg:justify-center overflow-hidden bg-transparent select-none"
       >
         {/* Top Header Block */}
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 md:px-12 pt-2 sm:pt-3 pb-1 sm:pb-1.5 flex items-baseline justify-between z-10 flex-shrink-0">
           <div>
-            <span className="section-kicker mb-3">Stay</span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-deep-navy tracking-tight">
+            <span className="section-kicker mb-2 sm:mb-3">Stay</span>
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-normal text-deep-navy tracking-tight">
               Rooms & suites
             </h2>
           </div>
@@ -169,7 +169,7 @@ export function RoomsRail() {
           {ROOMS_DATA.map((room) => (
             <div
               key={room.id}
-              className="w-screen flex-shrink-0 snap-center flex items-center"
+              className="w-full max-w-full lg:w-screen flex-shrink-0 snap-center flex items-center"
             >
               <RoomPanel room={room} />
             </div>
@@ -177,14 +177,14 @@ export function RoomsRail() {
         </div>
 
         {/* Floating Left / Right Navigation Pill Bar */}
-        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 pointer-events-auto">
+        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-1.5 sm:gap-2 max-w-[calc(100vw-1.5rem)] pointer-events-auto">
           {/* Previous Room Button */}
           <button
             onClick={handlePrevSlide}
             aria-label="Previous room suite"
-            className="w-10 h-10 rounded-full bg-deep-navy/90 hover:bg-deep-navy text-champagne-gold border border-champagne-gold/30 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-deep-navy/95 hover:bg-deep-navy text-champagne-gold border border-champagne-gold/30 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer shrink-0"
           >
-            <span className="text-sm font-bold">←</span>
+            <span className="text-xs sm:text-sm font-bold">←</span>
           </button>
 
           {/* Stepper Pill */}
@@ -198,9 +198,9 @@ export function RoomsRail() {
           <button
             onClick={handleNextSlide}
             aria-label="Next room suite"
-            className="w-10 h-10 rounded-full bg-deep-navy/90 hover:bg-deep-navy text-champagne-gold border border-champagne-gold/30 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-deep-navy/95 hover:bg-deep-navy text-champagne-gold border border-champagne-gold/30 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer shrink-0"
           >
-            <span className="text-sm font-bold">→</span>
+            <span className="text-xs sm:text-sm font-bold">→</span>
           </button>
         </div>
       </section>
