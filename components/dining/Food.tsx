@@ -124,24 +124,47 @@ export function Food() {
 
     updatePhysics(0);
 
-    const st = ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: "+=1700",
-      pin: true,
-      scrub: 0.65,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        updatePhysics(self.progress);
-      },
+    const mm = gsap.matchMedia();
+
+    // Mobile view only: scroll entire sequence from Breakfast to Dinner in one single scroll gesture
+    mm.add("(max-width: 767px)", () => {
+      const st = ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=420",
+        pin: true,
+        scrub: 0.3,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          updatePhysics(self.progress);
+        },
+      });
+      scrollTriggerRef.current = st;
+      return () => st.kill(true);
     });
 
-    scrollTriggerRef.current = st;
+    // Desktop view (>= 768px): Strictly untouched 1700px scrub distance
+    mm.add("(min-width: 768px)", () => {
+      const st = ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=1700",
+        pin: true,
+        scrub: 0.65,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          updatePhysics(self.progress);
+        },
+      });
+      scrollTriggerRef.current = st;
+      return () => st.kill(true);
+    });
 
     return () => {
       window.removeEventListener("resize", measurePanelWidth);
-      st.kill(true);
+      mm.revert();
     };
   }, []);
 
