@@ -7,8 +7,15 @@ export function usePastHero() {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      setIsPastHero(window.scrollY > window.innerHeight * 0.72);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const next = window.scrollY > window.innerHeight * 0.72;
+        setIsPastHero((prev) => (prev !== next ? next : prev));
+      });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

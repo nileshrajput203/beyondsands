@@ -220,7 +220,7 @@ export function GoogleReviews() {
           className="object-cover object-center scale-105"
         />
         {/* Soft Vignette / Gradient Overlay to replicate the lush overcast aesthetic */}
-        <div className="absolute inset-0 bg-black/45 md:bg-black/40 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-black/45 md:bg-black/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60 pointer-events-none" />
       </div>
 

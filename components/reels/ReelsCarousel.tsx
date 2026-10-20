@@ -65,13 +65,43 @@ const REELS_DATA: ReelItem[] = [
 export function ReelsCarousel() {
   const [activeReelIndex, setActiveReelIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isSectionInView, setIsSectionInView] = useState<boolean>(false);
 
+  const sectionRef = useRef<HTMLElement | null>(null);
   const modalVideoRef = useRef<HTMLVideoElement | null>(null);
+  const previewVideosRef = useRef<(HTMLVideoElement | null)[]>([]);
 
   // Seamless continuous marquee loop (2x data for -50% translateX loop)
   const marqueeItems = [...REELS_DATA, ...REELS_DATA];
 
   const activeReel = activeReelIndex !== null ? REELS_DATA[activeReelIndex] : null;
+
+  // IntersectionObserver to only decode/play preview videos when reels section is near or in viewport
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const inView = entry.isIntersecting;
+        setIsSectionInView(inView);
+
+        // Pause/play preview videos to save hardware video decoders and GPU cycles
+        previewVideosRef.current.forEach((v) => {
+          if (!v) return;
+          if (inView) {
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
+        });
+      },
+      { rootMargin: "350px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Open reel modal
   const handleOpenReel = (index: number) => {
@@ -149,6 +179,7 @@ export function ReelsCarousel() {
 
   return (
     <section
+      ref={sectionRef}
       id="reels-section"
       className="relative w-full py-12 sm:py-20 overflow-hidden select-none bg-transparent"
       aria-label="Beyond Sands Resort Reels Carousel"
@@ -180,13 +211,16 @@ export function ReelsCarousel() {
             >
               {/* Pure Clean Video Loop - Optimized lightweight preview, NO overlay text, NO timer, NO sound */}
               <video
-                src={reel.src}
+                ref={(el) => {
+                  previewVideosRef.current[idx] = el;
+                }}
+                src={isSectionInView ? reel.src : undefined}
                 poster={reel.poster}
-                autoPlay
+                autoPlay={isSectionInView}
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 style={{ transform: "translateZ(0)" }}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none"
               />

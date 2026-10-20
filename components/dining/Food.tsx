@@ -83,7 +83,7 @@ export function Food() {
       // p: 0.0 => Breakfast (0) | 0.5 => Lunch (1) | 1.0 => Dinner (2)
       const currentPos = p * 2;
       const activeIdx = Math.min(2, Math.max(0, Math.round(currentPos)));
-      setActiveMeal(activeIdx);
+      setActiveMeal((prev) => (prev !== activeIdx ? activeIdx : prev));
 
       // Revert dynamic background color change: #fffaf2 -> #f6debE -> #102242
       let bg = "#fffaf2";

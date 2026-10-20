@@ -74,6 +74,16 @@ export function SkySystem() {
       sky.style.background = `linear-gradient(180deg, ${topColor} 0%, ${bottomColor} 100%)`;
     };
 
+    let ticking = false;
+    const scheduleUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        updateSkyGradient();
+      });
+    };
+
     // Initialize initial state
     updateSkyGradient();
 
@@ -86,7 +96,7 @@ export function SkySystem() {
       scrub: 1,
       onUpdate: (self) => {
         p1 = self.progress;
-        updateSkyGradient();
+        scheduleUpdate();
       },
     });
 
@@ -99,7 +109,7 @@ export function SkySystem() {
       scrub: 1,
       onUpdate: (self) => {
         p2 = self.progress;
-        updateSkyGradient();
+        scheduleUpdate();
       },
     });
 
@@ -112,7 +122,7 @@ export function SkySystem() {
       scrub: 1,
       onUpdate: (self) => {
         p3 = self.progress;
-        updateSkyGradient();
+        scheduleUpdate();
         if (starsRef.current) {
           starsRef.current.style.opacity = (p3 * 0.06).toFixed(4);
         }
@@ -134,6 +144,8 @@ export function SkySystem() {
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
       style={{
         background: "linear-gradient(180deg, #F8F6F1 0%, #F0E9DC 100%)",
+        contain: "strict",
+        transform: "translateZ(0)",
       }}
     >
       {/* Subtle Static Starfield Canvas/SVG (under 6% opacity) for deep night */}

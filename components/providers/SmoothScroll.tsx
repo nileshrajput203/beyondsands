@@ -22,7 +22,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1,
     });
 
     lenisRef.current = lenis;
@@ -36,7 +36,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     };
 
     gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     // Consolidated refresh: after initial mount, once webfonts load, and on full window load
     let disposed = false;

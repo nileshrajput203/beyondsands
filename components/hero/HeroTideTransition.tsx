@@ -64,15 +64,21 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
       };
     };
 
-    let rafId: number;
+    let rafId: number | null = null;
+    let isVisible = true;
 
     const frame = (ts: number) => {
+      if (!isVisible) {
+        rafId = null;
+        return;
+      }
+
       const r = track.getBoundingClientRect();
       const max = track.offsetHeight - H;
       const p = max > 0 ? clamp(-r.top / max) : 0;
 
       // When scrolled far past the hero track, bypass calculations to save GPU/CPU cycles
-      if (r.bottom < -200) {
+      if (r.bottom < -100) {
         rafId = requestAnimationFrame(frame);
         return;
       }
@@ -127,10 +133,31 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
       rafId = requestAnimationFrame(frame);
     };
 
-    rafId = requestAnimationFrame(frame);
+    const startAnimation = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(frame);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          startAnimation();
+        } else if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      },
+      { rootMargin: "150px 0px" }
+    );
+
+    observer.observe(track);
+    startAnimation();
 
     return () => {
-      cancelAnimationFrame(rafId);
+      observer.disconnect();
+      if (rafId !== null) cancelAnimationFrame(rafId);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
