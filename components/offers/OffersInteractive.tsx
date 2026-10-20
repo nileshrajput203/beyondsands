@@ -159,7 +159,7 @@ export function OffersInteractive() {
           return (
             <div
               key={offer.id}
-              className={`relative bg-white/80 backdrop-blur-md rounded-[2px] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 border ${
+              className={`relative bg-white/80 backdrop-blur-md rounded-2xl p-5 sm:p-8 flex flex-col justify-between transition-all duration-300 border ${
                 offer.badgeHighlight
                   ? "border-champagne-gold shadow-lg ring-1 ring-champagne-gold/30 -translate-y-1"
                   : "border-charcoal/15 shadow-sm hover:border-champagne-gold/60"
@@ -167,7 +167,7 @@ export function OffersInteractive() {
             >
               {offer.badgeHighlight && (
                 <div className="absolute -top-3.5 left-6">
-                  <span className="px-3 py-1 bg-champagne-gold text-deep-navy text-[10px] font-sans font-bold uppercase tracking-widest rounded-[2px] shadow-sm">
+                  <span className="px-3 py-1 bg-champagne-gold text-deep-navy text-[10px] font-sans font-bold uppercase tracking-widest rounded-full shadow-sm">
                     Recommended
                   </span>
                 </div>
@@ -248,9 +248,9 @@ export function OffersInteractive() {
                 href={`https://wa.me/919923895055?text=${whatsappText}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-4 font-sans text-xs uppercase tracking-widest font-semibold rounded-[2px] transition-all flex items-center justify-center gap-2 text-center cursor-pointer ${
+                className={`w-full py-3.5 sm:py-4 font-sans text-xs uppercase tracking-widest font-semibold rounded-full transition-all flex items-center justify-center gap-2 text-center cursor-pointer ${
                   offer.badgeHighlight
-                    ? "bg-deep-navy hover:bg-navy-blue text-warm-ivory shadow-md hover:scale-105"
+                    ? "bg-deep-navy hover:bg-navy-blue text-warm-ivory shadow-md hover:scale-[1.02]"
                     : "bg-white border border-deep-navy/30 text-deep-navy hover:bg-deep-navy hover:text-warm-ivory"
                 }`}
               >

@@ -62,29 +62,29 @@ const STATS = [
 export default function AboutPage() {
   return (
     <>
-      <div className="pt-32 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
+      <div className="pt-24 sm:pt-36 pb-20 sm:pb-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto select-none">
         {/* Navigation Breadcrumb */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-champagne-gold hover:text-deep-navy transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-champagne-gold hover:text-deep-navy transition-colors mb-6 sm:mb-10 group"
         >
           <span className="transition-transform group-hover:-translate-x-1">←</span>
           <span>Return to Home</span>
         </Link>
 
         {/* Section Header */}
-        <div className="mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/10 border border-champagne-gold/30 rounded-full mb-4">
+        <div className="mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/10 border border-champagne-gold/30 rounded-full mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold animate-pulse" />
-            <span className="font-sans text-[11px] uppercase tracking-widest text-deep-navy font-semibold">
+            <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-deep-navy font-semibold">
               02 · Our Heritage & Sanctuary
             </span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl text-deep-navy font-normal tracking-wide max-w-4xl leading-[1.08]">
+          <h1 className="font-display text-2xl min-[360px]:text-[1.85rem] sm:text-6xl lg:text-7xl text-deep-navy font-normal tracking-wide max-w-4xl leading-[1.18] sm:leading-[1.08]">
             Born from a deep love for coastal serenity & authentic hospitality.
           </h1>
-          <p className="font-sans text-base sm:text-lg text-charcoal/80 font-light mt-6 max-w-2xl leading-relaxed">
+          <p className="font-sans text-xs sm:text-base text-charcoal/80 font-light mt-3 sm:mt-6 max-w-2xl leading-relaxed">
             Beyond Sands is more than a resort—it is a tranquil sanctuary nestled in Kelva&apos;s whispering palm groves, where the noise of the city gives way to the timeless rhythm of the Arabian Sea.
           </p>
         </div>
@@ -244,14 +244,14 @@ export default function AboutPage() {
         </div>
 
         {/* Interactive Concierge Callout */}
-        <div className="p-8 sm:p-12 bg-deep-navy text-warm-ivory rounded-[1.6rem] border border-champagne-gold/30 shadow-md relative overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div className="p-6 sm:p-12 bg-deep-navy text-warm-ivory rounded-2xl sm:rounded-[1.6rem] border border-champagne-gold/30 shadow-md relative overflow-hidden flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8">
           <div className="absolute top-0 right-0 w-80 h-80 bg-champagne-gold/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-3 max-w-2xl">
             <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold block">
               Plan Your Visit
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl text-warm-ivory font-normal">
+            <h2 className="font-display text-2xl sm:text-4xl text-warm-ivory font-normal">
               Experience the Blue Hour in person.
             </h2>
             <p className="font-sans text-xs sm:text-sm text-warm-ivory/80 font-light leading-relaxed">
@@ -259,19 +259,19 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
             <a
               href="https://wa.me/919923895055?text=Hello%20Beyond%20Sands%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20resort%20and%20heritage."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-champagne-gold hover:bg-champagne-gold/90 text-navy-blue font-sans text-xs uppercase tracking-widest font-semibold rounded-full inline-flex items-center gap-2 transition-all shadow-sm"
+              className="w-full sm:w-auto justify-center px-6 py-3.5 bg-champagne-gold hover:bg-champagne-gold/90 text-navy-blue font-sans text-xs uppercase tracking-widest font-semibold rounded-full inline-flex items-center gap-2 transition-all shadow-sm"
             >
               <WhatsAppIcon size={16} />
               <span>Message Concierge</span>
             </a>
             <Link
               href="/offers"
-              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-warm-ivory border border-white/20 font-sans text-xs uppercase tracking-widest font-semibold rounded-full transition-colors"
+              className="w-full sm:w-auto text-center px-6 py-3.5 bg-white/10 hover:bg-white/20 text-warm-ivory border border-white/20 font-sans text-xs uppercase tracking-widest font-semibold rounded-full transition-colors"
             >
               <span>Explore Offers</span>
             </Link>

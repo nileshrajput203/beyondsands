@@ -85,45 +85,45 @@ export function WeddingsInteractive() {
   };
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-12 sm:space-y-16">
       {/* 21st.dev Style Interactive Event Selector */}
-      <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[3px] p-6 sm:p-10 shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 hairline-b border-charcoal/15 pb-6">
+      <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-2xl sm:rounded-3xl p-4 sm:p-10 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 hairline-b border-charcoal/15 pb-4 sm:pb-6">
           <div>
-            <span className="font-sans text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block mb-1">
+            <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block mb-1">
               Step 01 · Select Celebration Vision
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl text-deep-navy font-normal">
+            <h2 className="font-display text-xl sm:text-3xl text-deep-navy font-normal">
               Tailored Event Formats
             </h2>
           </div>
           <span className="font-sans text-xs text-charcoal/60">
-            Click any format to explore layout & inclusions
+            Click any format to explore layout &amp; inclusions
           </span>
         </div>
 
         {/* Filter Pills */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-6 sm:mb-8">
           {EVENT_TYPES.map((type) => {
             const isActive = selectedType.id === type.id;
             return (
               <button
                 key={type.id}
                 onClick={() => setSelectedType(type)}
-                className={`p-4 text-left rounded-[2px] transition-all duration-200 border cursor-pointer ${
+                className={`p-3 sm:p-4 text-left rounded-xl transition-all duration-200 border cursor-pointer ${
                   isActive
                     ? "bg-deep-navy text-warm-ivory border-deep-navy shadow-sm"
                     : "bg-warm-ivory/60 text-deep-navy border-charcoal/15 hover:border-champagne-gold/60"
                 }`}
               >
                 <span
-                  className={`text-[10px] uppercase font-mono block mb-1 ${
+                  className={`text-[9.5px] sm:text-[10px] uppercase font-mono block mb-1 ${
                     isActive ? "text-champagne-gold" : "text-charcoal/50"
                   }`}
                 >
                   {type.recommendedGuests}
                 </span>
-                <span className="font-display text-base sm:text-lg font-normal block leading-snug">
+                <span className="font-display text-sm sm:text-lg font-normal block leading-snug">
                   {type.name}
                 </span>
               </button>
@@ -132,18 +132,18 @@ export function WeddingsInteractive() {
         </div>
 
         {/* Selected Type Detail Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-warm-ivory/40 p-6 sm:p-8 rounded-[2px] border border-charcoal/10">
-          <div className="lg:col-span-7 space-y-4 font-sans">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start bg-warm-ivory/40 p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-charcoal/10">
+          <div className="lg:col-span-7 space-y-3.5 sm:space-y-4 font-sans">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/15 text-deep-navy text-[10px] font-mono uppercase tracking-widest rounded-full">
               <span>Ideal for: {selectedType.idealFor}</span>
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl text-deep-navy font-normal">
+            <h3 className="font-display text-xl sm:text-3xl text-deep-navy font-normal leading-snug">
               {selectedType.tagline}
             </h3>
-            <div className="space-y-2 pt-2">
+            <div className="space-y-2 pt-1 sm:pt-2">
               {selectedType.highlights.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-charcoal/80">
-                  <span className="text-champagne-gold text-sm leading-none mt-0.5">✦</span>
+                  <span className="text-champagne-gold text-sm leading-none mt-0.5 shrink-0">✦</span>
                   <span className="font-light">{item}</span>
                 </div>
               ))}
@@ -151,15 +151,16 @@ export function WeddingsInteractive() {
           </div>
 
           {/* Interactive Quick Parameters */}
-          <div className="lg:col-span-5 bg-white p-6 rounded-[2px] border border-charcoal/15 space-y-5 shadow-xs">
+          <div className="lg:col-span-5 bg-white p-4 sm:p-6 rounded-xl border border-charcoal/15 space-y-4 sm:space-y-5 shadow-xs w-full">
             <h4 className="font-display text-lg text-deep-navy font-normal hairline-b border-charcoal/15 pb-2">
               Plan Your Gathering
             </h4>
 
             <div>
-              <label className="block text-[11px] uppercase tracking-wider text-charcoal/70 mb-2 font-sans">
-                Estimated Guests: <span className="font-semibold text-deep-navy">{guestCount} Guests</span>
-              </label>
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-wider text-charcoal/70 mb-2 font-sans">
+                <span>Estimated Guests</span>
+                <span className="font-semibold text-deep-navy">{guestCount} Guests</span>
+              </div>
               <input
                 type="range"
                 min="20"
@@ -169,10 +170,10 @@ export function WeddingsInteractive() {
                 onChange={(e) => setGuestCount(Number(e.target.value))}
                 className="w-full accent-champagne-gold cursor-pointer"
               />
-              <div className="flex justify-between text-[10px] font-mono text-charcoal/50 mt-1">
-                <span>20 Guests</span>
-                <span>100 Guests</span>
-                <span>200+ Guests</span>
+              <div className="flex justify-between text-[10px] font-mono text-charcoal/50 mt-1 px-0.5">
+                <span>20</span>
+                <span>100</span>
+                <span>200+</span>
               </div>
             </div>
 
@@ -180,15 +181,15 @@ export function WeddingsInteractive() {
               <label className="block text-[11px] uppercase tracking-wider text-charcoal/70 mb-2 font-sans">
                 Celebration Duration
               </label>
-              <div className="grid grid-cols-3 gap-2 text-xs font-sans">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 font-sans">
                 {["1 Day Event", "2 Days / 1 Night", "3 Days / 2 Nights"].map((dur) => (
                   <button
                     key={dur}
                     type="button"
                     onClick={() => setDuration(dur)}
-                    className={`py-2 px-1 text-center rounded-[2px] border text-[11px] transition-colors cursor-pointer ${
+                    className={`py-2 sm:py-2.5 px-2 text-center rounded-lg border text-[11px] transition-colors cursor-pointer whitespace-nowrap font-medium ${
                       duration === dur
-                        ? "bg-deep-navy text-warm-ivory border-deep-navy"
+                        ? "bg-deep-navy text-warm-ivory border-deep-navy shadow-xs"
                         : "bg-warm-ivory/60 text-charcoal/80 border-charcoal/15 hover:border-champagne-gold"
                     }`}
                   >
@@ -202,9 +203,9 @@ export function WeddingsInteractive() {
               href={buildWhatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-deep-navy hover:bg-navy-blue text-warm-ivory py-3.5 rounded-[2px] font-sans text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm"
+              className="w-full h-11 sm:h-12 bg-deep-navy hover:bg-navy-blue text-warm-ivory rounded-full font-sans text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer whitespace-nowrap"
             >
-              <WhatsAppIcon size={16} />
+              <WhatsAppIcon size={16} className="shrink-0" />
               <span>Inquire This Setup</span>
             </a>
           </div>
@@ -213,18 +214,18 @@ export function WeddingsInteractive() {
 
       {/* 21st.dev Style Bento Grid for Event Venues */}
       <div>
-        <div className="mb-8">
-          <span className="font-sans text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block mb-1">
-            Venues & Facilities
+        <div className="mb-6 sm:mb-8">
+          <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block mb-1">
+            Venues &amp; Facilities
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl text-deep-navy font-normal">
+          <h2 className="font-display text-2xl sm:text-4xl text-deep-navy font-normal">
             Bespoke Coastal Spaces
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
           {/* Hero Venue: Casuarina Lawns (8 cols) */}
-          <div className="lg:col-span-8 relative min-h-[380px] rounded-[3px] overflow-hidden border border-charcoal/15 shadow-sm group">
+          <div className="lg:col-span-8 relative min-h-[320px] sm:min-h-[380px] rounded-2xl overflow-hidden border border-charcoal/15 shadow-sm group">
             <Image
               src="/assets/weddings/wedding-banner.webp"
               alt="Open-air wedding lawn setup at Beyond Sands"
@@ -233,11 +234,11 @@ export function WeddingsInteractive() {
               className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/30 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 text-warm-ivory">
-              <span className="px-2.5 py-0.5 bg-champagne-gold text-deep-navy text-[10px] font-mono uppercase tracking-widest font-semibold rounded-[2px] inline-block mb-2">
+            <div className="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 text-warm-ivory">
+              <span className="px-2.5 py-0.5 bg-champagne-gold text-deep-navy text-[10px] font-mono uppercase tracking-widest font-semibold rounded-full inline-block mb-2">
                 4,000 SQ FT OPEN LAWN
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl text-warm-ivory font-normal mb-2">
+              <h3 className="font-display text-xl sm:text-3xl text-warm-ivory font-normal mb-1.5 sm:mb-2">
                 The Whispering Casuarina Lawns
               </h3>
               <p className="font-sans text-xs text-warm-ivory/80 font-light max-w-xl leading-relaxed">
@@ -247,7 +248,7 @@ export function WeddingsInteractive() {
           </div>
 
           {/* Venue 2: Banquet Hall (4 cols) */}
-          <div className="lg:col-span-4 relative min-h-[380px] rounded-[3px] overflow-hidden border border-charcoal/15 shadow-sm group">
+          <div className="lg:col-span-4 relative min-h-[320px] sm:min-h-[380px] rounded-2xl overflow-hidden border border-charcoal/15 shadow-sm group">
             <Image
               src="/assets/weddings/banquet-hall.jpg"
               alt="Climate-Controlled AC Banquet Hall at Beyond Sands"
@@ -256,11 +257,11 @@ export function WeddingsInteractive() {
               className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/90 via-deep-navy/30 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 text-warm-ivory">
-              <span className="px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-warm-ivory text-[10px] font-mono uppercase tracking-widest rounded-[2px] inline-block mb-2">
+            <div className="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 text-warm-ivory">
+              <span className="px-2.5 py-0.5 bg-white/20 backdrop-blur-md text-warm-ivory text-[10px] font-mono uppercase tracking-widest rounded-full inline-block mb-2">
                 INDOOR AC COMFORT
               </span>
-              <h3 className="font-display text-2xl text-warm-ivory font-normal mb-2">
+              <h3 className="font-display text-xl sm:text-2xl text-warm-ivory font-normal mb-1.5 sm:mb-2">
                 The Blue Hour Banquet Hall
               </h3>
               <p className="font-sans text-xs text-warm-ivory/80 font-light leading-relaxed">
@@ -270,43 +271,43 @@ export function WeddingsInteractive() {
           </div>
 
           {/* Venue 3: Pure Veg Banqueting (6 cols) */}
-          <div className="lg:col-span-6 bg-white/80 p-8 rounded-[3px] border border-charcoal/15 shadow-sm flex flex-col justify-between">
-            <div className="space-y-4">
+          <div className="lg:col-span-6 bg-white/80 p-5 sm:p-8 rounded-2xl border border-charcoal/15 shadow-sm flex flex-col justify-between">
+            <div className="space-y-3 sm:space-y-4">
               <div className="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
                 <span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" />
               </div>
-              <span className="font-sans text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
+              <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
                 100% Pure Vegetarian Feasts
               </span>
-              <h3 className="font-display text-2xl text-deep-navy font-normal">
+              <h3 className="font-display text-xl sm:text-2xl text-deep-navy font-normal">
                 Authentic Ceremonial Catering
               </h3>
               <p className="font-sans text-xs sm:text-sm text-charcoal/75 font-light leading-relaxed">
                 Our master chefs curate multi-course royal feasts with dedicated Jain and Swaminarayan kitchen protocols. Fresh coastal coconut curries, stone-ground Konkani gravies, hand-rolled puris, and traditional sweets made without artificial additives.
               </p>
             </div>
-            <div className="pt-6 font-mono text-[11px] text-charcoal/60">
+            <div className="pt-4 sm:pt-6 font-mono text-[10.5px] sm:text-[11px] text-charcoal/60">
               Live Counters · High Tea Stations · Breakfast Buffets
             </div>
           </div>
 
           {/* Venue 4: Guest Stay & Exclusivity (6 cols) */}
-          <div className="lg:col-span-6 bg-white/80 p-8 rounded-[3px] border border-charcoal/15 shadow-sm flex flex-col justify-between">
-            <div className="space-y-4">
+          <div className="lg:col-span-6 bg-white/80 p-5 sm:p-8 rounded-2xl border border-charcoal/15 shadow-sm flex flex-col justify-between">
+            <div className="space-y-3 sm:space-y-4">
               <div className="w-10 h-10 rounded-full bg-deep-navy/5 border border-deep-navy/10 flex items-center justify-center text-deep-navy">
                 <HeartHandshakeIcon size={20} className="text-champagne-gold" />
               </div>
-              <span className="font-sans text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
+              <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block">
                 Stay In Coastal Comfort
               </span>
-              <h3 className="font-display text-2xl text-deep-navy font-normal">
+              <h3 className="font-display text-xl sm:text-2xl text-deep-navy font-normal">
                 Accommodations For Wedding Parties
               </h3>
               <p className="font-sans text-xs sm:text-sm text-charcoal/75 font-light leading-relaxed">
                 Spacious air-conditioned garden verandah rooms and executive family dorms allow your wedding entourage to stay together on-site. Ample parking, 24/7 power backup, and dedicated housekeeping hosts ensure smooth comfort.
               </p>
             </div>
-            <div className="pt-6 font-mono text-[11px] text-charcoal/60">
+            <div className="pt-4 sm:pt-6 font-mono text-[10.5px] sm:text-[11px] text-charcoal/60">
               Private Verandahs · Secure Parking · Swimming Pool Access
             </div>
           </div>

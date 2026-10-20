@@ -9,16 +9,16 @@ export const metadata = {
 export default function TermsPage() {
   return (
     <>
-      <div className="pt-32 pb-20 px-6 sm:px-12 max-w-4xl mx-auto select-none font-sans">
+      <div className="pt-24 sm:pt-32 pb-20 px-4 sm:px-8 max-w-4xl mx-auto select-none font-sans">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-champagne-gold hover:text-deep-navy transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-champagne-gold hover:text-deep-navy transition-colors mb-6 sm:mb-8"
         >
           <span>←</span>
           <span>Back to Home</span>
         </Link>
 
-        <h1 className="font-display text-4xl sm:text-5xl text-deep-navy font-normal mb-3">
+        <h1 className="font-display text-2xl sm:text-5xl text-deep-navy font-normal mb-3">
           Terms &amp; Conditions
         </h1>
         <p className="text-xs text-charcoal/60 uppercase tracking-wider mb-8">

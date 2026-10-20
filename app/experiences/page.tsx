@@ -50,33 +50,33 @@ export default function ExperiencesPage() {
 
   return (
     <>
-      <div className="pt-32 pb-24 px-6 sm:px-12 max-w-6xl mx-auto select-none">
+      <div className="pt-24 sm:pt-32 pb-20 sm:pb-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto select-none">
         {/* Breadcrumb */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-champagne-gold hover:text-deep-navy transition-colors mb-8"
+          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-champagne-gold hover:text-deep-navy transition-colors mb-6 sm:mb-8"
         >
           <span>←</span>
           <span>Back to Home</span>
         </Link>
 
         {/* Header */}
-        <div className="mb-14">
-          <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold block mb-2">
+        <div className="mb-10 sm:mb-14">
+          <span className="font-sans text-[11px] sm:text-xs uppercase tracking-widest text-champagne-gold font-semibold block mb-2">
             04 · Curated Local Excursions
           </span>
-          <h1 className="font-display text-4xl sm:text-6xl text-deep-navy font-normal tracking-wide max-w-3xl">
+          <h1 className="font-display text-2xl min-[360px]:text-[1.85rem] sm:text-5xl lg:text-6xl text-deep-navy font-normal tracking-wide max-w-3xl leading-[1.18] sm:leading-[1.08]">
             Pristine coastlines, historic bastions, and coastal calm.
           </h1>
-          <p className="font-sans text-sm sm:text-base text-charcoal/80 font-light mt-4 max-w-2xl leading-relaxed">
+          <p className="font-sans text-xs sm:text-base text-charcoal/80 font-light mt-3 sm:mt-4 max-w-2xl leading-relaxed">
             From ancient maritime forts to whispering suru groves, immerse yourself in the authentic character of Palghar&apos;s coastline.
           </p>
         </div>
 
         {/* 21st.dev Asymmetric Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-14 sm:mb-20">
           {/* Main Featured Bento Card (Spans 12 columns on mobile, 8 on desktop) */}
-          <div className="lg:col-span-8 group relative rounded-[2px] overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col justify-between">
+          <div className="lg:col-span-8 group relative rounded-2xl overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col justify-between">
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src={EXPERIENCES[0].image}
@@ -88,7 +88,7 @@ export default function ExperiencesPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/85 via-deep-navy/20 to-transparent" />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-[2px] font-medium">
+                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-full font-medium">
                   {EXPERIENCES[0].distance}
                 </span>
               </div>
@@ -96,7 +96,7 @@ export default function ExperiencesPage() {
                 <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-champagne-gold font-semibold block mb-1">
                   {EXPERIENCES[0].tag}
                 </span>
-                <h2 className="font-display text-2xl sm:text-3xl text-warm-ivory font-normal">
+                <h2 className="font-display text-xl sm:text-3xl text-warm-ivory font-normal">
                   {EXPERIENCES[0].title}
                 </h2>
               </div>
@@ -109,7 +109,7 @@ export default function ExperiencesPage() {
           </div>
 
           {/* Side Bento Card: Sheetla Devi Temple (Spans 4 columns) */}
-          <div className="lg:col-span-4 group relative rounded-[2px] overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col">
+          <div className="lg:col-span-4 group relative rounded-2xl overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col">
             <div className="relative aspect-[4/3] w-full overflow-hidden">
               <Image
                 src={EXPERIENCES[1].image}
@@ -119,7 +119,7 @@ export default function ExperiencesPage() {
                 className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-[2px] font-medium">
+                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-full font-medium">
                   {EXPERIENCES[1].distance}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export default function ExperiencesPage() {
           </div>
 
           {/* Bottom Card 1: Kelva Fort (Spans 6 columns) */}
-          <div className="lg:col-span-6 group relative rounded-[2px] overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col">
+          <div className="lg:col-span-6 group relative rounded-2xl overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col">
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src={EXPERIENCES[2].image}
@@ -150,7 +150,7 @@ export default function ExperiencesPage() {
                 className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-[2px] font-medium">
+                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-full font-medium">
                   {EXPERIENCES[2].distance}
                 </span>
               </div>
@@ -159,7 +159,7 @@ export default function ExperiencesPage() {
               <span className="text-[10px] uppercase tracking-wider text-champagne-gold font-semibold block">
                 {EXPERIENCES[2].tag}
               </span>
-              <h3 className="font-display text-2xl text-deep-navy font-normal">
+              <h3 className="font-display text-xl sm:text-2xl text-deep-navy font-normal">
                 {EXPERIENCES[2].title}
               </h3>
               <p className="text-xs text-charcoal/75 font-light leading-relaxed">
@@ -169,7 +169,7 @@ export default function ExperiencesPage() {
           </div>
 
           {/* Bottom Card 2: Kelva Dam (Spans 6 columns) */}
-          <div className="lg:col-span-6 group relative rounded-[2px] overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col">
+          <div className="lg:col-span-6 group relative rounded-2xl overflow-hidden border border-charcoal/15 bg-white/70 shadow-sm hover:border-champagne-gold/60 transition-all duration-500 flex flex-col">
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
                 src={EXPERIENCES[3].image}
@@ -179,7 +179,7 @@ export default function ExperiencesPage() {
                 className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-[2px] font-medium">
+                <span className="px-3 py-1 bg-deep-navy/80 backdrop-blur-md text-warm-ivory text-[10px] font-sans uppercase tracking-widest border border-warm-ivory/20 rounded-full font-medium">
                   {EXPERIENCES[3].distance}
                 </span>
               </div>
@@ -188,7 +188,7 @@ export default function ExperiencesPage() {
               <span className="text-[10px] uppercase tracking-wider text-champagne-gold font-semibold block">
                 {EXPERIENCES[3].tag}
               </span>
-              <h3 className="font-display text-2xl text-deep-navy font-normal">
+              <h3 className="font-display text-xl sm:text-2xl text-deep-navy font-normal">
                 {EXPERIENCES[3].title}
               </h3>
               <p className="text-xs text-charcoal/75 font-light leading-relaxed">
@@ -199,12 +199,12 @@ export default function ExperiencesPage() {
         </div>
 
         {/* 21st.dev Concierge Itinerary Planning Banner */}
-        <div className="bg-white/80 backdrop-blur-md rounded-[2px] p-8 sm:p-12 border border-champagne-gold/40 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 sm:p-12 border border-champagne-gold/40 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center sm:text-left">
             <span className="text-[10px] uppercase tracking-widest text-champagne-gold font-semibold block">
               Custom Day Itineraries
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl text-deep-navy font-normal">
+            <h2 className="font-display text-xl sm:text-3xl text-deep-navy font-normal">
               Need assistance planning your local excursions?
             </h2>
             <p className="font-sans text-xs sm:text-sm text-charcoal/75 font-light max-w-md leading-relaxed">
@@ -216,7 +216,7 @@ export default function ExperiencesPage() {
             href={`https://wa.me/919923895055?text=${whatsappMsg}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3.5 bg-deep-navy text-warm-ivory hover:bg-navy-blue transition-colors font-sans text-xs uppercase tracking-widest font-semibold rounded-[2px] flex items-center gap-2 shrink-0 shadow-md"
+            className="w-full sm:w-auto justify-center px-6 py-3.5 bg-deep-navy text-warm-ivory hover:bg-navy-blue transition-colors font-sans text-xs uppercase tracking-widest font-semibold rounded-full flex items-center gap-2 shrink-0 shadow-md"
           >
             <WhatsAppIcon size={16} />
             <span>Plan Sightseeing with Concierge</span>

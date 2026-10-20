@@ -69,37 +69,37 @@ export default function ContactPage() {
 
   return (
     <>
-      <div className="pt-32 sm:pt-36 pb-24 px-6 sm:px-12 max-w-7xl mx-auto select-none">
+      <div className="pt-24 sm:pt-36 pb-20 sm:pb-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto select-none">
         {/* Navigation Breadcrumb */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-champagne-gold hover:text-deep-navy transition-colors mb-10 group"
+          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-champagne-gold hover:text-deep-navy transition-colors mb-6 sm:mb-10 group"
         >
           <span className="transition-transform group-hover:-translate-x-1">←</span>
           <span>Return to Home</span>
         </Link>
 
         {/* Section Header */}
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/10 border border-champagne-gold/30 rounded-full mb-4">
+        <div className="mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/10 border border-champagne-gold/30 rounded-full mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold animate-pulse" />
-            <span className="font-sans text-[11px] uppercase tracking-widest text-deep-navy font-semibold">
+            <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-deep-navy font-semibold">
               11 · Direct Concierge & Bookings
             </span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl text-deep-navy font-normal tracking-wide max-w-4xl leading-[1.08]">
+          <h1 className="font-display text-2xl min-[360px]:text-[1.85rem] sm:text-6xl lg:text-7xl text-deep-navy font-normal tracking-wide max-w-4xl leading-[1.18] sm:leading-[1.08]">
             Connect with our coastal concierge.
           </h1>
-          <p className="font-sans text-base sm:text-lg text-charcoal/80 font-light mt-6 max-w-2xl leading-relaxed">
+          <p className="font-sans text-xs sm:text-base text-charcoal/80 font-light mt-3 sm:mt-6 max-w-2xl leading-relaxed">
             Ready to experience the quiet hush of the palms? Get in touch with our resident desk for direct reservations, family packages, celebration buyouts, or dining inquiries.
           </p>
         </div>
 
         {/* 2-Column Contact & Form Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start mb-14 sm:mb-20">
           {/* Form Column (7 cols) */}
-          <div className="lg:col-span-7 bg-white/80 border border-charcoal/10 rounded-[1.8rem] p-6 sm:p-10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.28)]">
+          <div className="lg:col-span-7 bg-white/80 border border-charcoal/10 rounded-2xl sm:rounded-[1.8rem] p-5 sm:p-10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.28)]">
             <div className="flex items-center justify-between mb-8 hairline-b border-charcoal/15 pb-4">
               <div>
                 <h2 className="font-display text-2xl sm:text-3xl text-deep-navy font-normal">
@@ -287,7 +287,7 @@ export default function ContactPage() {
           {/* Details & Interactive Map Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Direct Contact Card */}
-            <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-[1.6rem] p-6 sm:p-8 space-y-6 shadow-sm">
+            <div className="bg-white/80 backdrop-blur-sm border border-charcoal/15 rounded-2xl sm:rounded-[1.6rem] p-5 sm:p-8 space-y-6 shadow-sm">
               <h3 className="font-display text-2xl text-deep-navy font-normal hairline-b border-charcoal/15 pb-3">
                 Resort Direct Details
               </h3>

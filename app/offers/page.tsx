@@ -10,36 +10,36 @@ export const metadata = {
 export default function OffersPage() {
   return (
     <>
-      <div className="pt-32 pb-24 px-6 sm:px-12 max-w-6xl mx-auto select-none">
+      <div className="pt-24 sm:pt-32 pb-20 sm:pb-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto select-none">
         {/* Breadcrumb */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-champagne-gold hover:text-deep-navy transition-colors mb-8"
+          className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-wider text-champagne-gold hover:text-deep-navy transition-colors mb-6 sm:mb-8"
         >
           <span>←</span>
           <span>Back to Home</span>
         </Link>
 
         {/* Header */}
-        <div className="mb-14">
-          <span className="font-sans text-xs uppercase tracking-widest text-champagne-gold font-semibold block mb-2">
+        <div className="mb-10 sm:mb-14">
+          <span className="font-sans text-[11px] sm:text-xs uppercase tracking-widest text-champagne-gold font-semibold block mb-2">
             07 · Rate Architecture
           </span>
-          <h1 className="font-display text-4xl sm:text-6xl text-deep-navy font-normal tracking-wide max-w-3xl">
+          <h1 className="font-display text-2xl min-[360px]:text-[1.85rem] sm:text-5xl lg:text-6xl text-deep-navy font-normal tracking-wide max-w-3xl leading-[1.18] sm:leading-[1.08]">
             Thoughtfully packaged coastal retreats.
           </h1>
-          <p className="font-sans text-sm sm:text-base text-charcoal/80 font-light mt-4 max-w-2xl leading-relaxed">
+          <p className="font-sans text-xs sm:text-base text-charcoal/80 font-light mt-3 sm:mt-4 max-w-2xl leading-relaxed">
             Transparent pricing with zero hidden surcharges. Enjoy authentic 100% pure vegetarian hospitality, pristine pool access, and fresh sea air.
           </p>
         </div>
 
         {/* 21st.dev Interactive Offers Component */}
-        <div className="mb-20">
+        <div className="mb-14 sm:mb-20">
           <OffersInteractive />
         </div>
 
         {/* Rate Policies Hairline Spec */}
-        <div className="p-8 bg-white/60 border border-charcoal/15 rounded-[2px] grid grid-cols-1 md:grid-cols-3 gap-6 font-sans text-xs text-charcoal/80">
+        <div className="p-5 sm:p-8 bg-white/60 border border-charcoal/15 rounded-xl sm:rounded-2xl grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 font-sans text-xs text-charcoal/80">
           <div>
             <span className="font-semibold text-deep-navy block mb-1 uppercase tracking-wider text-[11px]">
               Direct Booking Assurance

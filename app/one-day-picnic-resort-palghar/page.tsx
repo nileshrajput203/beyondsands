@@ -127,7 +127,7 @@ export default function OneDayPicnicPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <div className="pt-28 sm:pt-36 pb-20 px-5 sm:px-10 lg:px-16 max-w-7xl mx-auto select-none">
+      <div className="pt-24 sm:pt-36 pb-20 px-4 sm:px-10 lg:px-16 max-w-7xl mx-auto select-none">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs font-sans text-charcoal/60">
           <Link href="/" className="hover:text-deep-navy transition-colors">
@@ -138,26 +138,26 @@ export default function OneDayPicnicPage() {
         </nav>
 
         {/* Hero Header */}
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/15 border border-champagne-gold/30 rounded-full mb-4">
+        <div className="mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-champagne-gold/15 border border-champagne-gold/30 rounded-full mb-3 sm:mb-4">
             <span className="w-2 h-2 rounded-full bg-champagne-gold animate-pulse" />
-            <span className="font-sans text-[11px] uppercase tracking-widest text-deep-navy font-semibold">
+            <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-deep-navy font-semibold">
               Palghar &amp; Kelva Beach Premier Day Stay
             </span>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-deep-navy font-normal tracking-tight leading-[1.12] max-w-4xl">
+          <h1 className="font-display text-2xl min-[360px]:text-[1.85rem] sm:text-5xl lg:text-6xl text-deep-navy font-normal tracking-tight leading-[1.18] sm:leading-[1.12] max-w-4xl">
             One Day Picnic Resort in Palghar — Pure Veg Fun, Pool &amp; Rain Dance
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-charcoal/80 font-light mt-5 max-w-3xl leading-relaxed">
+          <p className="font-sans text-xs sm:text-base text-charcoal/80 font-light mt-3 sm:mt-5 max-w-3xl leading-relaxed">
             Escape the city chaos of Mumbai, Thane, Vasai, and Virar for a sunlit day in paradise. Enjoy unlimited pure vegetarian dining, our 40x25ft swimming pool, rain dance with music, and a 2-minute stroll to Kelva Beach — all for an unhurried day rate.
           </p>
         </div>
 
         {/* Pricing Card & Quick Booking */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
-          <div className="lg:col-span-7 bg-white rounded-2xl border border-charcoal/15 p-7 sm:p-9 shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-charcoal/15 p-5 sm:p-9 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap items-baseline justify-between gap-4 mb-4 pb-4 border-b border-charcoal/10">
                 <div>
