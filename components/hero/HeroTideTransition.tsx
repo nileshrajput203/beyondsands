@@ -45,7 +45,7 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
     handleResize();
     window.addEventListener("resize", handleResize, { passive: true });
 
-    const N = 48;
+    const N = 32;
     const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
     const edge = (base: number, ph: number, A: number) => {
@@ -64,7 +64,6 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
       };
     };
 
-    let sp = 0;
     let rafId: number;
 
     const frame = (ts: number) => {
@@ -72,9 +71,14 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
       const max = track.offsetHeight - H;
       const p = max > 0 ? clamp(-r.top / max) : 0;
 
-      // Smooth interpolation for fluid tide surge
-      sp += (p - sp) * 0.2;
-      if (Math.abs(p - sp) < 0.0005) sp = p;
+      // When scrolled far past the hero track, bypass calculations to save GPU/CPU cycles
+      if (r.bottom < -200) {
+        rafId = requestAnimationFrame(frame);
+        return;
+      }
+
+      // Responsive 1:1 scroll tracking without artificial delay/lag
+      const sp = p;
 
       // 2-Scroll Timeline:
       // Scroll 1 (0 to 100vh, sp 0.00 to 0.90): Tidal wave reveals Section 2 fully
@@ -84,13 +88,6 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
       const A = reduce ? 0 : Math.min(44, H * 0.055);
       const ph = ts / 1400 + sp * 9;
 
-      const startY = H + A * 1.5 + 80;
-      const endY = -A * 1.5 - 80;
-      const base = startY + (endY - startY) * e;
-
-      const a = edge(base, ph, A);
-      const b = edge(base - 65, ph + 1.3, A * 1.2);
-
       // Clip second section and translucent wash layer
       if (q >= 0.99) {
         introLayer.style.clipPath = "none";
@@ -99,7 +96,7 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         svg.style.opacity = "0";
         introLayer.style.pointerEvents = "auto";
         dim.style.opacity = "0.45";
-        heroLayer.style.transform = "translateY(-60px) scale(1.04)";
+        heroLayer.style.transform = "translate3d(0, -60px, 0)";
       } else if (q <= 0.01) {
         introLayer.style.clipPath = `polygon(0px ${H + 100}px, ${W}px ${H + 100}px, ${W}px ${H + 100}px, 0px ${H + 100}px)`;
         wash.style.clipPath = `polygon(0px ${H + 100}px, ${W}px ${H + 100}px, ${W}px ${H + 100}px, 0px ${H + 100}px)`;
@@ -109,6 +106,13 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         dim.style.opacity = "0";
         heroLayer.style.transform = "none";
       } else {
+        const startY = H + A * 1.5 + 80;
+        const endY = -A * 1.5 - 80;
+        const base = startY + (endY - startY) * e;
+
+        const a = edge(base, ph, A);
+        const b = edge(base - 65, ph + 1.3, A * 1.2);
+
         introLayer.style.clipPath = a.poly;
         wash.style.clipPath = b.poly;
         wash.style.opacity = "1";
@@ -116,7 +120,7 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         f2.setAttribute("d", b.d);
         svg.style.opacity = String(Math.min(q * 10, (1 - q) * 10, 1));
         dim.style.opacity = String(e * 0.45);
-        heroLayer.style.transform = `translateY(${-e * 60}px) scale(${1 + e * 0.04})`;
+        heroLayer.style.transform = `translate3d(0, ${-e * 60}px, 0)`;
         introLayer.style.pointerEvents = q > 0.7 ? "auto" : "none";
       }
 

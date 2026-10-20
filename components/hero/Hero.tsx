@@ -11,10 +11,13 @@ type NetworkInformation = {
 export function Hero() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
     const saveData = connection?.saveData === true;
@@ -28,18 +31,16 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
-    if (!shouldLoadVideo) return;
-    const playVideo = (v: HTMLVideoElement | null) => {
-      if (!v) return;
-      v.play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          // Autoplay policy fallback (browser policy)
-        });
-    };
-    playVideo(desktopVideoRef.current);
-    playVideo(mobileVideoRef.current);
-  }, [shouldLoadVideo]);
+    if (!shouldLoadVideo || isMobile === null) return;
+    const activeVideo = isMobile ? mobileVideoRef.current : desktopVideoRef.current;
+    if (!activeVideo) return;
+    activeVideo
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        // Autoplay policy fallback (browser policy)
+      });
+  }, [shouldLoadVideo, isMobile]);
 
   return (
     <section
@@ -70,41 +71,47 @@ export function Hero() {
         }`}
       />
 
-      {shouldLoadVideo && (
+      {shouldLoadVideo && isMobile !== null && (
         <>
           {/* Desktop Video (Strictly 100% untouched for desktop >= 768px) */}
-          <video
-            ref={desktopVideoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/assets/hero/hero-canopy-poster.jpg"
-            onPlaying={() => setIsPlaying(true)}
-            className={`hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              isPlaying ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
-            <source src="/assets/hero/hero-video.webm" type="video/webm" />
-          </video>
+          {!isMobile && (
+            <video
+              ref={desktopVideoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster="/assets/hero/hero-canopy-poster.jpg"
+              onPlaying={() => setIsPlaying(true)}
+              className={`hidden md:block absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                isPlaying ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
+              <source src="/assets/hero/hero-video.webm" type="video/webm" />
+            </video>
+          )}
 
           {/* Mobile-Only Video: IMG_7204 (Strictly for mobile viewport < 768px) */}
-          <video
-            ref={mobileVideoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/assets/hero/hero-mobile-poster.jpg"
-            onPlaying={() => setIsPlaying(true)}
-            className={`block md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              isPlaying ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <source src="/assets/hero/hero-mobile-video.mp4" type="video/mp4" />
-            <source src="/assets/hero/hero-mobile-video.mov" type="video/quicktime" />
-          </video>
+          {isMobile && (
+            <video
+              ref={mobileVideoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster="/assets/hero/hero-mobile-poster.jpg"
+              onPlaying={() => setIsPlaying(true)}
+              className={`block md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                isPlaying ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <source src="/assets/hero/hero-mobile-video.mp4" type="video/mp4" />
+              <source src="/assets/hero/hero-mobile-video.mov" type="video/quicktime" />
+            </video>
+          )}
         </>
       )}
 
