@@ -1,20 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Utensils, MapPin, ShieldCheck, Waves } from "lucide-react";
 
 export function IntroTrustSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current && typeof window !== "undefined" && window.innerWidth >= 768) {
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {
-        // Autoplay policy fallback
-      });
+    if (typeof window !== "undefined") {
+      const desktop = window.innerWidth >= 768;
+      setIsDesktop(desktop);
+      if (desktop && videoRef.current) {
+        videoRef.current.defaultMuted = true;
+        videoRef.current.muted = true;
+        videoRef.current.play().catch(() => {
+          // Autoplay policy fallback
+        });
+      }
     }
   }, []);
 
@@ -44,18 +49,20 @@ export function IntroTrustSection() {
       {/* ======================================================== */}
       {/* DESKTOP-ONLY BACKGROUND VIDEO (>= 768px strictly)        */}
       {/* ======================================================== */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/assets/intro/intro-video-poster.jpg"
-        className="hidden md:block absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
-      >
-        <source src="/assets/intro/intro-section-fast.mp4" type="video/mp4" />
-        <source src="/assets/intro/intro-section-video.mp4" type="video/mp4" />
-      </video>
+      {isDesktop && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/intro/intro-video-poster.jpg"
+          className="hidden md:block absolute inset-0 w-full h-full object-cover pointer-events-none select-none z-0"
+        >
+          <source src="/assets/intro/intro-section-fast.mp4" type="video/mp4" />
+          <source src="/assets/intro/intro-section-video.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Subtle protective overlay for text contrast (Desktop only) */}
       <div

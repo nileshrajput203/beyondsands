@@ -40,6 +40,22 @@ export function Hero() {
       .catch(() => {
         // Autoplay policy fallback (browser policy)
       });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          activeVideo.play().catch(() => {});
+        } else {
+          activeVideo.pause();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    const heroSection = document.getElementById("hero-section");
+    if (heroSection) observer.observe(heroSection);
+
+    return () => observer.disconnect();
   }, [shouldLoadVideo, isMobile]);
 
   return (

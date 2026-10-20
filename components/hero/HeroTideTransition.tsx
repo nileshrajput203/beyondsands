@@ -35,25 +35,41 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
 
     let W = window.innerWidth;
     let H = window.innerHeight;
+    let isMobile = W < 768;
+    let trackTop = 0;
+    let trackHeight = 0;
 
-    const handleResize = () => {
+    const measure = () => {
       W = window.innerWidth;
       H = window.innerHeight;
+      isMobile = W < 768;
       svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+
+      // Apply double drop-shadow glow only on desktop; disable on mobile to prevent GPU fill-rate pipeline stall
+      if (isMobile) {
+        svg.style.filter = "none";
+      } else {
+        svg.style.filter =
+          "drop-shadow(0 0 8px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 16px rgba(233, 251, 246, 0.6))";
+      }
+
+      const rect = track.getBoundingClientRect();
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      trackTop = rect.top + scrollY;
+      trackHeight = track.offsetHeight;
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize, { passive: true });
+    measure();
+    window.addEventListener("resize", measure, { passive: true });
 
-    const N = 32;
     const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
-    const edge = (base: number, ph: number, A: number) => {
+    const edge = (base: number, ph: number, A: number, nPoints: number) => {
       const s: string[] = [];
       let d = "";
-      for (let i = 0; i <= N; i++) {
-        const x = (W * i) / N;
-        const u = (i / N) * 6.2831853; // 2 * PI
+      for (let i = 0; i <= nPoints; i++) {
+        const x = (W * i) / nPoints;
+        const u = (i / nPoints) * 6.2831853; // 2 * PI
         const y = base + A * Math.sin(u * 1.4 + ph) + A * 0.45 * Math.sin(u * 3.3 - ph * 1.6);
         s.push(`${x.toFixed(1)}px ${y.toFixed(1)}px`);
         d += (i ? "L" : "M") + `${x.toFixed(1)} ${y.toFixed(1)}`;
@@ -66,6 +82,7 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
 
     let rafId: number | null = null;
     let isVisible = true;
+    let lastState: "start" | "end" | "animating" | null = null;
 
     const frame = (ts: number) => {
       if (!isVisible) {
@@ -73,51 +90,76 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         return;
       }
 
-      const r = track.getBoundingClientRect();
-      const max = track.offsetHeight - H;
-      const p = max > 0 ? clamp(-r.top / max) : 0;
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      const max = trackHeight - H;
+      const p = max > 0 ? clamp((scrollY - trackTop) / max) : 0;
 
-      // When scrolled far past the hero track, bypass calculations to save GPU/CPU cycles
-      if (r.bottom < -100) {
+      // When scrolled far past the hero track, bypass calculations
+      if (scrollY > trackTop + trackHeight + 100) {
+        if (lastState !== "end") {
+          lastState = "end";
+          introLayer.style.clipPath = "none";
+          wash.style.clipPath = "none";
+          wash.style.opacity = "0";
+          svg.style.opacity = "0";
+          introLayer.style.pointerEvents = "auto";
+          dim.style.opacity = "0.45";
+          heroLayer.style.transform = "translate3d(0, -60px, 0)";
+        }
         rafId = requestAnimationFrame(frame);
         return;
       }
 
-      // Responsive 1:1 scroll tracking without artificial delay/lag
       const sp = p;
 
-      // 2-Scroll Timeline:
-      // Scroll 1 (0 to 100vh, sp 0.00 to 0.90): Tidal wave reveals Section 2 fully
-      // Scroll 2 (> 100vh, sp >= 1.00): Sticky stage unpins immediately and Section 2 scrolls away with NO extra scroll
-      const q = clamp((sp - 0.02) / (0.90 - 0.02));
-      const e = 0.5 - Math.cos(Math.PI * q) / 2;
-      const A = reduce ? 0 : Math.min(44, H * 0.055);
-      const ph = ts / 1400 + sp * 9;
+      // Progress mapping
+      let q: number;
+      let e: number;
+      if (isMobile) {
+        // Mobile: immediate 1:1 responsive reveal without sluggish easing dead zones
+        q = clamp(sp / 0.92);
+        e = q;
+      } else {
+        // Desktop: unchanged cinematic ease
+        q = clamp((sp - 0.02) / (0.90 - 0.02));
+        e = 0.5 - Math.cos(Math.PI * q) / 2;
+      }
+
+      const N = isMobile ? 12 : 32;
+      const A = reduce ? 0 : isMobile ? Math.min(26, H * 0.038) : Math.min(44, H * 0.055);
+      const ph = isMobile ? sp * 8 : ts / 1400 + sp * 9;
 
       // Clip second section and translucent wash layer
       if (q >= 0.99) {
-        introLayer.style.clipPath = "none";
-        wash.style.clipPath = "none";
-        wash.style.opacity = "0";
-        svg.style.opacity = "0";
-        introLayer.style.pointerEvents = "auto";
-        dim.style.opacity = "0.45";
-        heroLayer.style.transform = "translate3d(0, -60px, 0)";
+        if (lastState !== "end") {
+          lastState = "end";
+          introLayer.style.clipPath = "none";
+          wash.style.clipPath = "none";
+          wash.style.opacity = "0";
+          svg.style.opacity = "0";
+          introLayer.style.pointerEvents = "auto";
+          dim.style.opacity = "0.45";
+          heroLayer.style.transform = "translate3d(0, -60px, 0)";
+        }
       } else if (q <= 0.01) {
-        introLayer.style.clipPath = `polygon(0px ${H + 100}px, ${W}px ${H + 100}px, ${W}px ${H + 100}px, 0px ${H + 100}px)`;
-        wash.style.clipPath = `polygon(0px ${H + 100}px, ${W}px ${H + 100}px, ${W}px ${H + 100}px, 0px ${H + 100}px)`;
-        wash.style.opacity = "0";
-        svg.style.opacity = "0";
-        introLayer.style.pointerEvents = "none";
-        dim.style.opacity = "0";
-        heroLayer.style.transform = "none";
+        if (lastState !== "start") {
+          lastState = "start";
+          introLayer.style.clipPath = `polygon(0px ${H + 100}px, ${W}px ${H + 100}px, ${W}px ${H + 100}px, 0px ${H + 100}px)`;
+          wash.style.clipPath = `polygon(0px ${H + 100}px, ${W}px ${H + 100}px, ${W}px ${H + 100}px, 0px ${H + 100}px)`;
+          wash.style.opacity = "0";
+          svg.style.opacity = "0";
+          introLayer.style.pointerEvents = "none";
+          dim.style.opacity = "0";
+          heroLayer.style.transform = "none";
+        }
       } else {
-        const startY = H + A * 1.5 + 80;
-        const endY = -A * 1.5 - 80;
+        lastState = "animating";
+        const startY = H + A * 1.5 + (isMobile ? 30 : 80);
+        const endY = -A * 1.5 - (isMobile ? 30 : 80);
         const base = startY + (endY - startY) * e;
 
-        const a = edge(base, ph, A);
-        const b = edge(base - 65, ph + 1.3, A * 1.2);
+        const a = edge(base, ph, A, N);
+        const b = edge(base - (isMobile ? 40 : 65), ph + 1.3, A * 1.2, N);
 
         introLayer.style.clipPath = a.poly;
         wash.style.clipPath = b.poly;
@@ -158,12 +200,12 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
     return () => {
       observer.disconnect();
       if (rafId !== null) cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", measure);
     };
   }, []);
 
   return (
-    <div ref={trackRef} className="relative w-full h-[200vh] select-none">
+    <div ref={trackRef} className="relative w-full h-[145vh] md:h-[200vh] select-none">
       {/* Sticky Stage Container */}
       <div className="sticky top-0 h-[100dvh] w-full overflow-hidden">
         {/* Layer 1: Section 1 (Hero) */}
@@ -174,14 +216,14 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         {/* Hero Dimming Filter during wave rise */}
         <div
           ref={dimRef}
-          className="absolute inset-0 bg-[#06323a] pointer-events-none transition-opacity duration-200 z-10 opacity-0"
+          className="absolute inset-0 bg-[#06323a] pointer-events-none z-10 opacity-0"
           aria-hidden="true"
         />
 
         {/* Layer 2: Translucent Cyan/Teal Tidal Wash */}
         <div
           ref={washRef}
-          className="absolute inset-0 pointer-events-none z-10"
+          className="absolute inset-0 pointer-events-none z-10 will-change-[clip-path] transform-gpu"
           style={{
             background:
               "linear-gradient(to top, rgba(14, 124, 134, 0.72) 0%, rgba(20, 160, 172, 0.45) 50%, rgba(233, 251, 246, 0.6) 100%)",
@@ -192,7 +234,7 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         {/* Layer 3: Section 2 (IntroTrustSection with background video) */}
         <div
           ref={introLayerRef}
-          className="absolute inset-0 w-full h-full z-20"
+          className="absolute inset-0 w-full h-full z-20 will-change-[clip-path] transform-gpu"
           style={{ pointerEvents: "none", overflow: "hidden" }}
         >
           {intro}
@@ -201,16 +243,13 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
         {/* Layer 4: Shimmering Foam Crest SVG Line */}
         <svg
           ref={svgRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-30 opacity-0 transition-opacity duration-150"
-          style={{
-            filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 16px rgba(233, 251, 246, 0.6))",
-          }}
+          className="absolute inset-0 w-full h-full pointer-events-none z-30 opacity-0"
           aria-hidden="true"
         >
           {/* Main front wave foam line */}
-          <path ref={f1Ref} stroke="#e9fbf6" strokeWidth={3.5} fill="none" strokeLinejoin="round" />
+          <path ref={f1Ref} stroke="#e9fbf6" strokeWidth={3} fill="none" strokeLinejoin="round" />
           {/* Secondary trailing wash wave line */}
-          <path ref={f2Ref} stroke="#e9fbf6" strokeWidth={1.8} opacity={0.65} fill="none" strokeLinejoin="round" />
+          <path ref={f2Ref} stroke="#e9fbf6" strokeWidth={1.5} opacity={0.65} fill="none" strokeLinejoin="round" />
         </svg>
       </div>
     </div>
