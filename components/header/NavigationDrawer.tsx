@@ -254,17 +254,17 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={onClose}
-                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-[#D6B588] text-[#061423] font-sans text-[11px] uppercase tracking-wider font-bold shadow-xs active:scale-98 transition-transform"
+                className="flex items-center justify-center gap-1.5 h-10 px-2 min-[360px]:px-3 rounded-full bg-[#D6B588] text-[#061423] font-sans text-[10px] min-[360px]:text-[11px] uppercase tracking-[0.05em] font-bold shadow-xs active:scale-98 transition-transform whitespace-nowrap"
               >
-                <WhatsAppIcon size={14} />
-                <span>WhatsApp Book</span>
+                <WhatsAppIcon size={14} className="shrink-0" />
+                <span className="truncate">WhatsApp Book</span>
               </a>
               <a
                 href="tel:+919923895055"
-                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-white/20 bg-white/5 text-white font-sans text-[11px] uppercase tracking-wider font-semibold active:scale-98 transition-transform"
+                className="flex items-center justify-center gap-1.5 h-10 px-2 min-[360px]:px-3 rounded-full border border-white/20 bg-white/5 text-white font-sans text-[10px] min-[360px]:text-[11px] uppercase tracking-[0.05em] font-semibold active:scale-98 transition-transform whitespace-nowrap"
               >
-                <PhoneIcon size={13} />
-                <span>Call Concierge</span>
+                <PhoneIcon size={13} className="shrink-0" />
+                <span className="truncate">Call Concierge</span>
               </a>
             </div>
 
