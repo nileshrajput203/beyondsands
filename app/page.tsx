@@ -1,4 +1,6 @@
 import { Hero } from "@/components/hero/Hero";
+import { IntroTrustSection } from "@/components/home/IntroTrustSection";
+import { HeroTideTransition } from "@/components/hero/HeroTideTransition";
 import { KineticMarquee } from "@/components/ui/KineticMarquee";
 import { Reveal } from "@/components/ui/Reveal";
 import { RoomsRail } from "@/components/rooms/RoomsRail";
@@ -14,7 +16,10 @@ import { Footer } from "@/components/footer/Footer";
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <HeroTideTransition
+        hero={<Hero />}
+        intro={<IntroTrustSection />}
+      />
       <KineticMarquee />
       <RoomsRail />
       <Reveal>

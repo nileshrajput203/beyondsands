@@ -19,161 +19,42 @@ interface GalleryPhoto {
   id: string;
   src: string;
   title: string;
-  category: "Suites" | "Celebrations" | "Pool" | "Surroundings";
+  category: "Celebrations" | "Dining";
   locationTag: string;
 }
 
 const GALLERY_PHOTOS: GalleryPhoto[] = [
-  // Suites & Interiors
   {
     id: "g-1",
-    src: "/assets/rooms/garden-view-main.jpg",
-    title: "Garden View Deluxe Suite Bedroom & Verandah",
-    category: "Suites",
-    locationTag: "Suites · Ground Level",
+    src: "/assets/gallery/gallery-wedding-mandap.webp",
+    title: "Grand Wedding Mandap & Floral Stage Setup",
+    category: "Celebrations",
+    locationTag: "Celebration Stage",
   },
   {
     id: "g-2",
-    src: "/assets/rooms/pool-view-main.jpg",
-    title: "Pool View Executive Suite Private Balcony",
-    category: "Suites",
-    locationTag: "Suites · First Level",
+    src: "/assets/gallery/gallery-wedding-couple.webp",
+    title: "Bride & Groom Ceremony on Decorated Stage",
+    category: "Celebrations",
+    locationTag: "Wedding Ceremony",
   },
   {
     id: "g-3",
-    src: "/assets/rooms/couple-room-main.webp",
-    title: "Couple's Intimate Coastal Nook with Amber Mood Lighting",
-    category: "Suites",
-    locationTag: "Suites · Quiet Wing",
+    src: "/assets/gallery/gallery-banquet-hall.webp",
+    title: "Air-Conditioned Banquet Hall & Event Seating",
+    category: "Celebrations",
+    locationTag: "AC Banquet Hall",
   },
   {
     id: "g-4",
-    src: "/assets/rooms/family-dorm-main.jpg",
-    title: "Grand Family Dormitory with Spacious Multi-Bed Layout",
-    category: "Suites",
-    locationTag: "Suites · Family Block",
-  },
-  {
-    id: "g-5",
-    src: "/assets/rooms/garden-view-thumb3.jpg",
-    title: "Deluxe Bedroom with Marble Floor & Comfort Seating",
-    category: "Suites",
-    locationTag: "Suites · Interior",
-  },
-  {
-    id: "g-6",
-    src: "/assets/rooms/pool-view-thumb2.jpg",
-    title: "Pool View Suite King Bed & Day Lounge Setup",
-    category: "Suites",
-    locationTag: "Suites · Interior",
-  },
-  {
-    id: "g-7",
-    src: "/assets/rooms/couple-room-thumb1.webp",
-    title: "Romantic Balcony Overlooking Sparkling Azure Pool",
-    category: "Suites",
-    locationTag: "Suites · Balcony",
-  },
-  {
-    id: "g-8",
-    src: "/assets/rooms/family-dorm-thumb4.jpg",
-    title: "Spacious Multi-Bed Suite for Extended Family Gatherings",
-    category: "Suites",
-    locationTag: "Suites · Family Wing",
-  },
-
-  // Celebrations & Lawns
-  {
-    id: "g-9",
-    src: "/assets/gallery/wedding-banner.webp",
-    title: "15,000+ sq ft Celebration Lawns Decorated for Grand Wedding",
-    category: "Celebrations",
-    locationTag: "Celebration Lawns",
-  },
-  {
-    id: "g-10",
-    src: "/assets/gallery/banquet-hall.jpg",
-    title: "Spacious Air-Conditioned Banquet Hall for Sangeet & Receptions",
-    category: "Celebrations",
-    locationTag: "Banquet Hall",
-  },
-  {
-    id: "g-11",
-    src: "/assets/hero/hero-gardens.jpg",
-    title: "Lush Tropical Coconut Groves & Manicured Evening Lawns",
-    category: "Celebrations",
-    locationTag: "Garden Courtyard",
-  },
-  {
-    id: "g-12",
-    src: "/assets/rooms/garden-view-thumb5.png",
-    title: "Illuminated Garden Walkways Under Tall Casuarina Palms",
-    category: "Celebrations",
-    locationTag: "Garden Pathways",
-  },
-
-  // Pool & Twilight
-  {
-    id: "g-13",
-    src: "/assets/rooms/pool-view-thumb4.png",
-    title: "Signature Resort Swimming Pool Under Coastal Sunlight",
-    category: "Pool",
-    locationTag: "Pool Deck",
-  },
-  {
-    id: "g-14",
-    src: "/assets/rooms/pool-view-thumb5.jpg",
-    title: "Poolside Twilight View with Starry Night Sky Silhouettes",
-    category: "Pool",
-    locationTag: "Pool Deck · Blue Hour",
-  },
-  {
-    id: "g-15",
-    src: "/assets/rooms/pool-view-thumb3.jpg",
-    title: "Golden Hour Sunset Reflections Across the Shimmering Waters",
-    category: "Pool",
-    locationTag: "Pool Deck · Sunset",
-  },
-  {
-    id: "g-16",
-    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
-    title: "Evening Amber Lanterns & Poolside Relaxation Loungers",
-    category: "Pool",
-    locationTag: "Pool Deck",
-  },
-
-  // Surroundings & Kelva Landmarks
-  {
-    id: "g-17",
-    src: "/assets/location/location-drone-shitlamata.jpg",
-    title: "Aerial View: Ancient Sheetla Devi Temple Directly Opposite Resort",
-    category: "Surroundings",
-    locationTag: "Opposite Gate (0 Mins)",
-  },
-  {
-    id: "g-18",
-    src: "/assets/location/location-surroundings-beach.webp",
-    title: "Pristine Kelva Beach Coastline (1 Min Walk from Resort)",
-    category: "Surroundings",
-    locationTag: "Kelva Beach Shoreline",
-  },
-  {
-    id: "g-19",
-    src: "/assets/location/location-kelvafort.jpg",
-    title: "Historic Portuguese Kelva Fort (Kelve Killa) Low-Tide Trail",
-    category: "Surroundings",
-    locationTag: "Kelva Fort · 1.2 km",
-  },
-  {
-    id: "g-20",
-    src: "/assets/location/location-kelvadam.avif",
-    title: "Serene Kelva Dam Reservoir & Scenic Sahyadri Foothills",
-    category: "Surroundings",
-    locationTag: "Kelva Dam · 10 km",
+    src: "/assets/gallery/gallery-buffet-dining.webp",
+    title: "Covered Outdoor Buffet Feast Dining Area",
+    category: "Dining",
+    locationTag: "Dining Pavilion",
   },
 ];
 
-type CategoryFilter = "All" | "Suites" | "Celebrations" | "Pool" | "Surroundings";
+type CategoryFilter = "All" | "Celebrations" | "Dining";
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("All");
@@ -236,7 +117,7 @@ export default function GalleryPage() {
 
             {/* Category Filter Pills */}
             <div className="flex flex-wrap gap-2 shrink-0">
-              {(["All", "Suites", "Celebrations", "Pool", "Surroundings"] as CategoryFilter[]).map((cat) => (
+              {(["All", "Celebrations", "Dining"] as CategoryFilter[]).map((cat) => (
                 <button
                   key={cat}
                   onClick={() => {

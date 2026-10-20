@@ -23,23 +23,23 @@ export function EventsSection() {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-12 sm:mb-16 hairline-b border-charcoal/15 pb-8">
         <div className="max-w-2xl">
           {/* Top Pill Eyebrow */}
-          <span className="section-kicker mb-4">Celebrations</span>
-          <h2 className="font-display text-3xl sm:text-5xl font-normal text-deep-navy tracking-tight leading-[1.1]">
-            Events &amp; wedding celebrations
+          <span className="section-kicker mb-4">Picnics · Weddings · Packages</span>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-deep-navy tracking-tight leading-[1.15]">
+            One-Day Picnic &amp; Overnight Staycation Packages at Kelwa Beach
           </h2>
 
           <p className="font-sans text-sm sm:text-base text-charcoal/70 font-light mt-3 leading-relaxed">
-            From sunset mandap vows under whispering palms to family milestone celebrations and corporate retreats — Beyond Sands provides a tranquil beachfront sanctuary directly opposite Sheetla Devi Temple with 100% pure veg &amp; Jain catering.
+            From ₹2,200/person one-day picnic packages (10 AM – 5 PM with pool &amp; rain dance) to grand weddings on 15,000+ sq ft lawns and family staycations — Beyond Sands provides a tranquil beachfront sanctuary directly opposite Sheetla Devi Temple with 100% pure veg &amp; Jain catering.
           </p>
         </div>
 
         {/* Action Buttons - Vertically Centered & Proportionate */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
           <Link
-            href="/events-gallery"
+            href="/weddings-events"
             className="cta-island"
           >
-            <span>View gallery</span>
+            <span>Weddings &amp; Events</span>
             <span className="cta-icon" aria-hidden="true">↗</span>
           </Link>
 
@@ -55,54 +55,36 @@ export function EventsSection() {
       </div>
 
       {/* Visual Showcase Bento Grid - Real Authentic Images from beyondsands.in with NO overlay text */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch mb-12">
-        {/* Large Featured Card (Official Wedding Stage from beyondsands.in) - Clean image, no text overlay */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch mb-12">
+        {/* Featured Card 1: Official Wedding Stage */}
         <Link
-          href="/events-gallery"
-          aria-label="View Grand Wedding Stage in Event Gallery"
-          className="lg:col-span-7 group relative rounded-[1.8rem] overflow-hidden border border-charcoal/10 shadow-[0_24px_50px_-32px_rgba(11,34,56,0.4)] aspect-[16/10] min-h-[320px] sm:min-h-[360px] bg-deep-navy block cursor-pointer"
+          href="/weddings-events"
+          aria-label="View Grand Wedding Stage in Weddings & Events"
+          className="group relative rounded-[1.8rem] overflow-hidden border border-charcoal/10 shadow-[0_24px_50px_-32px_rgba(11,34,56,0.4)] aspect-[16/10] min-h-[300px] sm:min-h-[360px] bg-deep-navy block cursor-pointer"
         >
           <Image
             src="/assets/events/wedding-banner.webp"
             alt="Real Wedding & Celebration Stage at Beyond Sands Resort Palghar"
             fill
-            sizes="(max-width: 1024px) 100vw, 60vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover object-center group-hover:scale-105 transition-transform duration-700 luxury-grade"
           />
         </Link>
 
-        {/* Right 2 Stacked Cards (Real Banquet Hall & Evening Pool from beyondsands.in) - Clean images, no text overlay */}
-        <div className="lg:col-span-5 flex flex-col gap-6 justify-between">
-          {/* Card 1: Real AC Banquet & Conference Hall */}
-          <Link
-            href="/events-gallery"
-            aria-label="View AC Banquet Hall in Event Gallery"
-            className="group relative rounded-[1.6rem] overflow-hidden border border-charcoal/10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.35)] flex-1 min-h-[175px] bg-deep-navy block cursor-pointer"
-          >
-            <Image
-              src="/assets/events/banquet-hall.jpg"
-              alt="Air-Conditioned Banquet & Event Hall at Beyond Sands Resort"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 luxury-grade"
-            />
-          </Link>
-
-          {/* Card 2: Real Evening Poolside Celebration */}
-          <Link
-            href="/events-gallery"
-            aria-label="View Evening Poolside Celebrations in Event Gallery"
-            className="group relative rounded-[1.6rem] overflow-hidden border border-charcoal/10 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.35)] flex-1 min-h-[175px] bg-deep-navy block cursor-pointer"
-          >
-            <Image
-              src="/assets/events/pool-evening.jpg"
-              alt="Evening Poolside Celebration Lawn at Beyond Sands Resort"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 luxury-grade"
-            />
-          </Link>
-        </div>
+        {/* Featured Card 2: Real AC Banquet & Conference Hall */}
+        <Link
+          href="/weddings-events"
+          aria-label="View AC Banquet Hall in Weddings & Events"
+          className="group relative rounded-[1.8rem] overflow-hidden border border-charcoal/10 shadow-[0_24px_50px_-32px_rgba(11,34,56,0.4)] aspect-[16/10] min-h-[300px] sm:min-h-[360px] bg-deep-navy block cursor-pointer"
+        >
+          <Image
+            src="/assets/events/banquet-hall.jpg"
+            alt="Air-Conditioned Banquet & Event Hall at Beyond Sands Resort"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-700 luxury-grade"
+          />
+        </Link>
       </div>
 
       {/* Key Event Capabilities Strip */}

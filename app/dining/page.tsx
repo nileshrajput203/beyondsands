@@ -149,7 +149,7 @@ export default function DiningPage() {
               "streetAddress": "Opposite Shitla Devi Temple, Kelve Beach Road",
               "addressLocality": "Palghar",
               "addressRegion": "Maharashtra",
-              "postalCode": "401404",
+              "postalCode": "401401",
               "addressCountry": "IN"
             }
           }),

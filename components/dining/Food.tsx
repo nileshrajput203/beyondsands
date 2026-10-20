@@ -34,7 +34,7 @@ const MEALS = [
     description:
       "Breakfast (08:00 AM – 10:30 AM) · Steamed Idli & Medu Vada, Coastal Poha with Crispy Peanuts, Upma & Sheera with Fresh Masala Chai.",
     src: "/assets/dining/breakfast.png",
-    alt: "Vegetarian breakfast spread at Beyond Sands",
+    alt: "100% Pure Veg breakfast spread at Beyond Sands Resort, Kelva Beach Palghar",
   },
   {
     id: "lunch",
@@ -43,7 +43,7 @@ const MEALS = [
     description:
       "Lunch (12:30 PM – 03:00 PM) · Hearty Maharashtrian Coastal Thali, Paneer Coastal Masala, Dal Tadka, Steamed Basmati & Chilled Solkadhi.",
     src: "/assets/dining/lunch.png",
-    alt: "Vegetarian lunch thali at Beyond Sands",
+    alt: "Maharashtrian pure veg buffet lunch thali at Beyond Sands Resort Palghar",
   },
   {
     id: "dinner",
@@ -52,7 +52,7 @@ const MEALS = [
     description:
       "Dinner (08:00 PM – 10:30 PM) · Pure Vegetarian Blue-Hour Feast, Palak Corn Delight, Artisanal Tandoori Rotis, Jeera Pulao & Warm Gulab Jamun.",
     src: "/assets/dining/dinner.png",
-    alt: "Vegetarian dinner feast at Beyond Sands",
+    alt: "Satvik pure veg dinner feast at Beyond Sands Pure Veg Resort Kelve Beach",
   },
 ];
 

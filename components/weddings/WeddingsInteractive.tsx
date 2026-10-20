@@ -226,7 +226,7 @@ export function WeddingsInteractive() {
           {/* Hero Venue: Casuarina Lawns (8 cols) */}
           <div className="lg:col-span-8 relative min-h-[380px] rounded-[3px] overflow-hidden border border-charcoal/15 shadow-sm group">
             <Image
-              src="/assets/gallery/wedding-banner.webp"
+              src="/assets/weddings/wedding-banner.webp"
               alt="Open-air wedding lawn setup at Beyond Sands"
               fill
               sizes="(max-width: 1024px) 100vw, 66vw"
@@ -249,7 +249,7 @@ export function WeddingsInteractive() {
           {/* Venue 2: Banquet Hall (4 cols) */}
           <div className="lg:col-span-4 relative min-h-[380px] rounded-[3px] overflow-hidden border border-charcoal/15 shadow-sm group">
             <Image
-              src="/assets/gallery/banquet-hall.jpg"
+              src="/assets/weddings/banquet-hall.jpg"
               alt="Climate-Controlled AC Banquet Hall at Beyond Sands"
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"

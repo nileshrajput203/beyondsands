@@ -81,8 +81,8 @@ export function Location() {
               className="absolute inset-0 -top-10 w-full h-[120%] transition-transform will-change-transform"
             >
               <Image
-                src="/assets/location/location-drone-shitlamata.jpg"
-                alt="Upper drone view showing Beyond Sands situated directly in front of Shitla Mata Temple"
+                src="/assets/location/location-resort-exterior.jpg"
+                alt="Beyond Sands Beach Resort - Entrance and modern property exterior"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="object-cover object-center luxury-grade"
@@ -136,7 +136,7 @@ export function Location() {
             <div className="pt-4 space-y-1 font-sans text-xs">
               <div className="flex items-start gap-2 text-deep-navy font-medium">
                 <MapPinIcon size={16} className="text-champagne-gold shrink-0 mt-0.5" />
-                <span>Opposite Shitladevi temple Kelve Road, Kelve, Palghar 401404</span>
+                <span>Survey No. 1000, 1709, 1710, Shitladevi Road, Opposite Shitladevi Temple, Near Kelva Beach, Kelva, Palghar - 401401</span>
               </div>
               <div className="flex items-center gap-2 text-charcoal/70 pl-6">
                 <PhoneIcon size={14} className="text-champagne-gold shrink-0" />
@@ -149,20 +149,59 @@ export function Location() {
         </div>
       </div>
 
-      {/* Direction & Property Highlights Bar */}
-      <div className="hairline-b border-charcoal/15 py-4 flex flex-wrap justify-between items-center text-xs font-sans text-charcoal/80 gap-4 mt-8">
-        <span className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold" />
-          <span>5 min walk to Kelva Beach shoreline</span>
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold" />
-          <span>15 min from Kelve Rd Railway Station</span>
-        </span>
-        <span className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold" />
-          <span>Check-in: 12:00 PM · Check-out: 10:00 AM</span>
-        </span>
+      {/* Nearby Attractions & Distance Block (Local Geo-Relevance) */}
+      <div className="mt-12 bg-white/70 border border-charcoal/10 rounded-[1.8rem] p-6 sm:p-8 shadow-[0_18px_40px_-30px_rgba(11,34,56,0.3)]">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-6 pb-4 border-b border-charcoal/10">
+          <div>
+            <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-widest text-champagne-gold font-semibold block mb-1">
+              Geo-Relevance &amp; Accessibility
+            </span>
+            <h3 className="font-display text-2xl sm:text-3xl text-deep-navy font-normal">
+              Explore Palghar &amp; Kelve Beach Around Our Resort
+            </h3>
+          </div>
+          <span className="font-sans text-xs text-charcoal/60">
+            Shitladevi Road, Kelva 401401
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="p-3.5 rounded-xl bg-warm-ivory/50 border border-charcoal/10">
+            <span className="text-[10px] uppercase tracking-wider text-charcoal/50 block">Directly Opposite</span>
+            <span className="font-semibold text-deep-navy text-sm block mt-0.5">Shri Shitladevi Temple, Kelve</span>
+            <span className="text-xs text-champagne-gold font-medium">1-minute walk</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-warm-ivory/50 border border-charcoal/10">
+            <span className="text-[10px] uppercase tracking-wider text-charcoal/50 block">Arabian Sea Shoreline</span>
+            <span className="font-semibold text-deep-navy text-sm block mt-0.5">Kelva Beach (Kelve Beach)</span>
+            <span className="text-xs text-champagne-gold font-medium">2-minute walk (290 meters)</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-warm-ivory/50 border border-charcoal/10">
+            <span className="text-[10px] uppercase tracking-wider text-charcoal/50 block">Historic Sea Fortress</span>
+            <span className="font-semibold text-deep-navy text-sm block mt-0.5">Kelve Fort (Pankot Fort)</span>
+            <span className="text-xs text-champagne-gold font-medium">5-minute drive</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-warm-ivory/50 border border-charcoal/10">
+            <span className="text-[10px] uppercase tracking-wider text-charcoal/50 block">Scenic Estuary &amp; Views</span>
+            <span className="font-semibold text-deep-navy text-sm block mt-0.5">Kelve Dam &amp; Dandakhadi Bridge</span>
+            <span className="text-xs text-champagne-gold font-medium">7-minute drive</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-warm-ivory/50 border border-charcoal/10">
+            <span className="text-[10px] uppercase tracking-wider text-charcoal/50 block">Western Railway Railhead</span>
+            <span className="font-semibold text-deep-navy text-sm block mt-0.5">Kelve Road Railway Station</span>
+            <span className="text-xs text-champagne-gold font-medium">10-minute auto / car ride</span>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-warm-ivory/50 border border-charcoal/10">
+            <span className="text-[10px] uppercase tracking-wider text-charcoal/50 block">District Headquarters</span>
+            <span className="font-semibold text-deep-navy text-sm block mt-0.5">Palghar Railway Station</span>
+            <span className="text-xs text-champagne-gold font-medium">20-minute drive</span>
+          </div>
+        </div>
       </div>
     </section>
   );

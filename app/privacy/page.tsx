@@ -88,7 +88,7 @@ export default function PrivacyPage() {
           </p>
           <div className="p-4 rounded-xl bg-warm-ivory/80 border border-charcoal/10 text-xs space-y-1 text-deep-navy font-sans">
             <p className="font-semibold">Resort Manager · Grievance Officer</p>
-            <p>Beyond Sands Resort, Opposite Shitladevi Temple, Kelve Road, Kelve, Palghar 401404, Maharashtra</p>
+            <p>Beyond Sands Resort, Opposite Shitladevi Temple, Kelwa Beach Road, Kelwa, Palghar - 401401, Maharashtra</p>
             <p>Email: <a href="mailto:beyondsandsresort@gmail.com" className="text-champagne-gold font-medium underline">beyondsandsresort@gmail.com</a></p>
             <p>Telephone: <a href="tel:+919923895055" className="text-champagne-gold font-medium">+91 99238 95055</a></p>
             <p className="text-charcoal/60 pt-1">Response Timeline: Within 48 business hours</p>

@@ -20,50 +20,28 @@ export function Header() {
   const isHomePage = pathname === "/";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [isDarkTheme, setIsDarkTheme] = useState(isHomePage);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const lastScrollYRef = useRef(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    setIsDarkTheme(isHomePage);
-
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > 120) {
-        if (currentScrollY > lastScrollYRef.current && !isMenuOpen && !isEnquiryOpen) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-      } else {
-        setIsVisible(true);
-      }
-      lastScrollYRef.current = currentScrollY;
-      setLastScrollY(currentScrollY);
-
-      if (!isHomePage) {
-        setIsDarkTheme(false);
-        return;
-      }
-
-      setIsDarkTheme(true);
+      setIsScrolled(window.scrollY > 20);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMenuOpen, isEnquiryOpen, isHomePage]);
+  }, []);
 
+  const isDarkTheme = isHomePage;
   const textColorClass = isDarkTheme ? "text-warm-ivory" : "text-deep-navy";
   const logoSrc = isDarkTheme
-    ? "/assets/brand/beyond-sands-logo-dark.png"
-    : "/assets/brand/beyond-sands-logo-light.png";
+    ? "/assets/header/beyond-sands-logo-dark.png"
+    : "/assets/header/beyond-sands-logo-light.png";
   const islandTone = isHomePage
-    ? lastScrollY > 40
-      ? "is-scrolled-dark"
+    ? isScrolled
+      ? "is-scrolled-dark shadow-2xl"
       : ""
-    : "is-light";
+    : "is-light shadow-md";
 
   const navLink =
     `hidden md:inline-flex font-sans text-[11px] uppercase tracking-[0.16em] font-medium relative group py-1 ${textColorClass} transition-colors duration-500`;
@@ -71,13 +49,13 @@ export function Header() {
   return (
     <>
       <div
-        className={`fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4 transition-transform duration-700 ease-luxury ${
-          isVisible ? "translate-y-0" : "-translate-y-[140%]"
+        className={`fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 transition-all duration-300 ease-luxury ${
+          isScrolled ? "pt-2 sm:pt-2.5" : "pt-3 sm:pt-4"
         }`}
       >
         <header
           role="banner"
-          className={`island-nav ${islandTone} max-w-6xl mx-auto h-[4.25rem] sm:h-[4.5rem] px-6 sm:px-8 md:px-10 flex items-center justify-between`}
+          className={`island-nav ${islandTone} max-w-6xl mx-auto h-[4rem] sm:h-[4.5rem] px-6 sm:px-8 md:px-10 flex items-center justify-between transition-all duration-300`}
         >
           <nav className="hidden md:flex flex-1 items-center justify-start gap-8 lg:gap-10" aria-label="Primary">
             <Link href="/about" className={navLink}>
@@ -90,18 +68,18 @@ export function Header() {
             </Link>
           </nav>
 
-          <div className="flex-1 md:flex-initial flex items-center justify-center shrink-0">
+          <div className="flex-1 md:flex-initial flex items-center justify-center shrink-0 py-1">
             <Link
               href="/"
-              className="relative block w-28 sm:w-36 h-10 transition-transform duration-500 ease-luxury hover:scale-[1.03]"
+              className="relative block w-32 sm:w-44 md:w-52 h-12 sm:h-14 md:h-[3.85rem] transition-transform duration-500 ease-luxury hover:scale-[1.03] outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0"
             >
               <Image
                 src={logoSrc}
                 alt="Beyond Sands Hotels & Resorts"
                 fill
                 priority
-                sizes="(min-width: 640px) 144px, 112px"
-                className="object-contain"
+                sizes="(min-width: 768px) 208px, (min-width: 640px) 176px, 128px"
+                className="object-contain object-center outline-none"
               />
             </Link>
           </div>

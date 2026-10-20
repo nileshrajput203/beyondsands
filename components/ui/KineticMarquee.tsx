@@ -11,16 +11,16 @@ export function KineticMarquee() {
 
   return (
     <div
-      className="relative w-full overflow-hidden py-5 sm:py-6 border-y border-charcoal/10 bg-warm-ivory/40"
+      className="relative w-full overflow-hidden py-2 sm:py-2.5 border-y border-charcoal/10 bg-warm-ivory/40"
       aria-hidden="true"
     >
-      <div className="animate-marquee-left flex items-center gap-8 sm:gap-12 px-4">
+      <div className="animate-marquee-left flex items-center gap-6 sm:gap-8 px-4">
         {loop.map((phrase, i) => (
-          <span key={`${phrase}-${i}`} className="flex items-center gap-8 sm:gap-12 shrink-0">
-            <span className="font-display text-2xl sm:text-4xl lg:text-5xl italic text-deep-navy/80 tracking-tight whitespace-nowrap">
+          <span key={`${phrase}-${i}`} className="flex items-center gap-6 sm:gap-8 shrink-0">
+            <span className="font-display text-base sm:text-lg lg:text-xl italic text-deep-navy/80 tracking-tight whitespace-nowrap">
               {phrase}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold shrink-0" />
+            <span className="w-1 h-1 rounded-full bg-champagne-gold shrink-0" />
           </span>
         ))}
       </div>

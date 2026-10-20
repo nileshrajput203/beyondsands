@@ -24,14 +24,31 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Beyond Sands - Coastal calm at the blue hour",
+  title: "Beyond Sands Resort | Best Pure Veg & Jain Resort in Kelwa Beach, Palghar",
   description:
-    "Wake to palms, wind, and the sea's quiet hush. Premium coastal resort with private verandahs and curated local experiences.",
-  authors: [{ name: "Beyond Sands Resort" }],
+    "Looking for the best 100% Pure Veg & Jain resort in Palghar or Kelva Beach? Beyond Sands Pure Veg Resort is located opposite Shitladevi Temple, 2 mins from Kelva Beach (Pin: 401401). Enjoy our 40ft swimming pool, rain dance, family AC rooms & one-day picnic packages.",
+  authors: [{ name: "Beyond Sands Pure Veg Resort" }],
   metadataBase: new URL("https://www.beyondsands.in"),
   alternates: {
     canonical: "/",
   },
+  keywords: [
+    "best resort in palghar",
+    "kelve resort",
+    "kelva beach resort",
+    "kelwa resort",
+    "Beyond Sands Resort",
+    "Beyond Sands Pure Veg Resort",
+    "pure veg resort palghar",
+    "pure veg resort kelva beach",
+    "kelva beach resort with swimming pool",
+    "best resort in kelva",
+    "one day picnic resort palghar",
+    "resort near shitladevi temple kelva",
+    "family resort in palghar near mumbai",
+    "jain resort near mumbai",
+    "ac dormitory in kelve",
+  ],
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -41,17 +58,17 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Beyond Sands - Coastal calm at the blue hour",
+    title: "Beyond Sands Resort | Best Resort in Palghar & Kelve Beach (Pure Veg)",
     description:
-      "Wake to palms, wind, and the sea's quiet hush. Premium coastal resort with private verandahs and curated local experiences.",
+      "Looking for the best resort in Palghar or Kelve Beach? Beyond Sands Pure Veg Resort is 2 mins from Kelva Beach & Shitladevi Temple. Enjoy our 40ft swimming pool, rain dance, AC rooms & one-day picnic packages.",
     url: "https://www.beyondsands.in",
-    siteName: "Beyond Sands Resort",
+    siteName: "Beyond Sands Pure Veg Resort",
     images: [
       {
         url: "/assets/hero/hero-canopy-poster.jpg",
         width: 1600,
         height: 1200,
-        alt: "Beyond Sands Resort Canopy Overview",
+        alt: "Beyond Sands Resort Kelva Beach Palghar",
       },
     ],
     locale: "en_IN",
@@ -59,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beyond Sands - Coastal calm at the blue hour",
+    title: "Beyond Sands Resort | Best Resort in Palghar & Kelve Beach (Pure Veg)",
     description:
-      "Wake to palms, wind, and the sea's quiet hush. Premium coastal resort with private verandahs and curated local experiences.",
+      "Looking for the best resort in Palghar or Kelve Beach? Beyond Sands Pure Veg Resort is 2 mins from Kelva Beach & Shitladevi Temple. Enjoy our 40ft swimming pool, rain dance, AC rooms & one-day picnic packages.",
     images: ["/assets/hero/hero-canopy-poster.jpg"],
   },
 };
@@ -69,20 +86,24 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Resort",
-  "name": "Beyond Sands Resort",
+  "name": "Beyond Sands Pure Veg Resort",
+  "alternateName": ["Beyond Sands Resort", "Beyond Sands Kelva", "Beyond Sands Palghar"],
+  "url": "https://www.beyondsands.in/",
+  "telephone": "+91-9923895055",
+  "priceRange": "₹2200 - ₹5000",
+  "servesCuisine": ["Pure Vegetarian", "Jain", "Gujarati", "Maharashtrian"],
   "image": [
     "https://www.beyondsands.in/assets/hero/hero-canopy-poster.jpg",
     "https://www.beyondsands.in/assets/rooms/garden-view-main.jpg",
     "https://www.beyondsands.in/assets/location/location-drone-shitlamata.jpg"
   ],
-  "description": "Wake to palms, wind, and the sea's quiet hush. Premium coastal resort with private verandahs and curated local experiences.",
-  "telephone": "+91-99238-95055",
+  "description": "Book direct at Beyond Sands Resort, the top-rated 100% Pure Veg beach resort in Kelva, Palghar. Located opposite Shitladevi Temple (2 mins walk from Kelva Beach) with a 40x25ft swimming pool, rain dance, AC Deluxe rooms & One-Day Picnic packages.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Opposite Shitladevi temple Kelve Road",
+    "streetAddress": "Survey No. 1000, 1709, 1710, Shitladevi Road, Opposite Shitladevi Temple, Near Kelva Beach",
     "addressLocality": "Kelva, Palghar",
-    "postalCode": "401404",
-    "addressRegion": "Maharashtra",
+    "addressRegion": "MH",
+    "postalCode": "401401",
     "addressCountry": "IN"
   },
   "geo": {
@@ -90,8 +111,12 @@ const jsonLd = {
     "latitude": 19.612193,
     "longitude": 72.729605
   },
-  "url": "https://www.beyondsands.in",
-  "priceRange": "₹4,500 - ₹7,000",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Swimming Pool (40ft x 25ft)", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Pure Veg Restaurant", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Rain Dance", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true }
+  ],
   "checkinTime": "12:00:00",
   "checkoutTime": "10:00:00",
   "aggregateRating": {
@@ -122,7 +147,7 @@ export default function RootLayout({
           <ScrollProgressBar />
           <SkySystem />
           <Header />
-          <main id="main-content" role="main" className="relative z-10 w-full overflow-hidden">
+          <main id="main-content" role="main" className="relative z-10 w-full overflow-visible">
             {children}
           </main>
           <div className="noise-overlay" aria-hidden="true" />

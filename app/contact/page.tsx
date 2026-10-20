@@ -297,7 +297,7 @@ export default function ContactPage() {
                   <div>
                     <span className="font-semibold text-deep-navy block text-sm">Physical Address</span>
                     <span className="text-charcoal/75 leading-relaxed block mt-0.5">
-                      Opposite Shitladevi Temple, Kelve Road, Kelve, Palghar 401404, Maharashtra, India
+                      Opposite Shitladevi Temple, Kelwa Beach Road, Kelwa, Palghar - 401401, Maharashtra, India
                     </span>
                     <span className="text-[10px] text-champagne-gold font-mono block mt-1">
                       5 mins walk from Kelva Beach

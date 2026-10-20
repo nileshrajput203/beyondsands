@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 type NetworkInformation = {
@@ -11,6 +11,7 @@ type NetworkInformation = {
 export function Hero() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState<boolean>(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -18,13 +19,25 @@ export function Hero() {
     const saveData = connection?.saveData === true;
     const slowNetwork =
       typeof connection?.effectiveType === "string" &&
-      /^(slow-2g|2g|3g)$/.test(connection.effectiveType);
-    const smallScreen = Math.min(window.innerWidth, window.innerHeight) < 600;
+      /^(slow-2g|2g)$/.test(connection.effectiveType);
 
-    if (reducedMotion || saveData || slowNetwork || smallScreen) return;
+    if (reducedMotion || saveData || slowNetwork) return;
 
     setShouldLoadVideo(true);
   }, []);
+
+  useEffect(() => {
+    if (!shouldLoadVideo) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    video
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        // Autoplay policy fallback (browser policy)
+      });
+  }, [shouldLoadVideo]);
 
   return (
     <section
@@ -33,28 +46,32 @@ export function Hero() {
     >
       <Image
         src="/assets/hero/hero-canopy-poster.jpg"
-        alt="Beyond Sands coastal canopy overlooking Kelva Beach"
+        alt="Beyond Sands Resort coastal canopy overlooking Kelva Beach"
         fill
         priority
         sizes="100vw"
-        className={`object-cover object-center luxury-grade transition-opacity duration-1000 ${
+        className={`object-cover object-center transition-opacity duration-1000 ${
           isPlaying ? "opacity-0" : "opacity-100"
         }`}
       />
 
       {shouldLoadVideo && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/YBjgWfEOSXY?autoplay=1&mute=1&controls=0&loop=1&playlist=YBjgWfEOSXY&playsinline=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
-            title="Beyond Sands Resort"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            onLoad={() => setIsPlaying(true)}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] min-w-full h-full min-h-[56.25vw] pointer-events-none scale-105 border-0"
-          />
-        </div>
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/hero/hero-canopy-poster.jpg"
+          onPlaying={() => setIsPlaying(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            isPlaying ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
+          <source src="/assets/hero/hero-video.webm" type="video/webm" />
+        </video>
       )}
-
-      <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/50 via-transparent to-deep-navy/30 pointer-events-none" />
 
       {/* Screen-reader and SEO accessible heading */}
       <h1 className="sr-only">Beyond Sands Resort — Kelva Beach, Palghar</h1>

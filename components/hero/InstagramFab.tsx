@@ -19,9 +19,13 @@ export function InstagramFab() {
         rel="noopener noreferrer"
         aria-label="Visit Beyond Sands on Instagram"
         title="Follow @beyondsands on Instagram"
-        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0b2238] text-warm-ivory border border-champagne-gold/35 flex items-center justify-center shadow-[0_18px_40px_-18px_rgba(11,34,56,0.7)] transition-transform duration-500 ease-luxury hover:scale-105 cursor-pointer"
+        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full text-white border border-white/20 flex items-center justify-center shadow-[0_18px_40px_-14px_rgba(225,48,108,0.75)] transition-all duration-500 ease-luxury hover:scale-110 active:scale-95 cursor-pointer"
+        style={{
+          background:
+            "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
+        }}
       >
-        <InstagramIcon size={22} strokeWidth={1.5} />
+        <InstagramIcon size={24} strokeWidth={1.8} />
       </a>
     </div>
   );

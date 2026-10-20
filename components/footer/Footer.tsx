@@ -152,6 +152,14 @@ export function Footer() {
                   Resort Gallery
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-champagne-gold transition-colors duration-200 block py-0.5 hover:translate-x-1 transform transition-transform"
+                >
+                  Blog &amp; Stories
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -236,9 +236,14 @@ export function GoogleReviews() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header: All-caps bold "REVIEWS" */}
-        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white text-center">
-          Guest words
-        </h2>
+        <div className="text-center mb-2">
+          <span className="font-sans text-xs uppercase tracking-[0.2em] text-champagne-gold font-semibold block mb-2">
+            Guest Testimonials · Google Hotels Verified
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-white text-center max-w-4xl mx-auto">
+            Why Families Rate Us the Best Resort in Palghar Near Mumbai
+          </h2>
+        </div>
 
         {/* Rating Banner: Google Icon + Authentic 4.2 + Beyond Sands Resort + Stars + 40+ Reviews */}
         <div className="flex items-center justify-center gap-3.5 mt-4 mb-10 sm:mb-14">

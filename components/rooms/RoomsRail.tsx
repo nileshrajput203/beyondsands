@@ -69,33 +69,59 @@ export function RoomsRail() {
       };
     });
 
+    const handleWheel = (e: WheelEvent) => {
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 120 && rect.bottom >= window.innerHeight - 120) {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 15) {
+          window.scrollBy({ top: e.deltaX * 1.5 });
+        }
+      }
+    };
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    // Refresh ScrollTrigger to ensure accurate layout geometry
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 350);
+
     return () => {
+      clearTimeout(timer);
+      window.removeEventListener("wheel", handleWheel);
       mm.revert();
     };
   }, []);
 
-  // Scroll all the way through the horizontal section from left to right
-  const handleScrollAllTheWay = () => {
+  // Navigate smoothly between slides step-by-step
+  const goToSlide = (targetIndex: number) => {
+    const clampedIndex = Math.max(0, Math.min(ROOMS_DATA.length - 1, targetIndex));
+    setCurrentSlide(clampedIndex);
+
     if (window.innerWidth >= 1024) {
       const st = ScrollTrigger.getById("rooms-rail");
       if (st) {
-        // If already near the end (progress >= 0.92), scroll all the way back to start; otherwise scroll all the way to the end
-        const isAtEnd = st.progress >= 0.92;
-        const targetScroll = isAtEnd ? st.start : st.end;
-        scrollToY(targetScroll, 2.4);
+        const targetProgress = clampedIndex / (ROOMS_DATA.length - 1);
+        const targetScroll = st.start + targetProgress * (st.end - st.start);
+        scrollToY(targetScroll, 0.85);
         return;
       }
     }
 
-    // Fallback or Mobile (native horizontal scroll container)
     if (trackRef.current) {
-      const maxScroll = trackRef.current.scrollWidth - trackRef.current.clientWidth;
-      const isAtEnd = trackRef.current.scrollLeft >= maxScroll - 40;
+      const panelWidth = trackRef.current.clientWidth;
       trackRef.current.scrollTo({
-        left: isAtEnd ? 0 : maxScroll,
+        left: clampedIndex * panelWidth,
         behavior: "smooth",
       });
     }
+  };
+
+  const handleNextSlide = () => {
+    goToSlide((currentSlide + 1) % ROOMS_DATA.length);
+  };
+
+  const handlePrevSlide = () => {
+    goToSlide((currentSlide - 1 + ROOMS_DATA.length) % ROOMS_DATA.length);
   };
 
   return (
@@ -114,9 +140,25 @@ export function RoomsRail() {
             </h2>
           </div>
 
-          <p className="hidden md:block font-sans text-xs tracking-[0.18em] text-charcoal/55 uppercase">
-            Scroll through each suite
-          </p>
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-1.5">
+              {ROOMS_DATA.map((room, idx) => (
+                <button
+                  key={room.id}
+                  onClick={() => goToSlide(idx)}
+                  aria-label={`Jump to ${room.name}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    idx === currentSlide
+                      ? "w-7 h-2 bg-champagne-gold"
+                      : "w-2 h-2 bg-charcoal/20 hover:bg-charcoal/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="font-sans text-xs tracking-[0.18em] text-charcoal/55 uppercase">
+              Scroll through each suite
+            </p>
+          </div>
         </div>
 
         {/* Horizontal Track Container */}
@@ -134,13 +176,32 @@ export function RoomsRail() {
           ))}
         </div>
 
-        {/* Floating Scroll Based View Pill (Centered at bottom of pinned Rooms section, avoiding WhatsApp FAB) */}
-        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:block pointer-events-auto">
+        {/* Floating Left / Right Navigation Pill Bar */}
+        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 pointer-events-auto">
+          {/* Previous Room Button */}
+          <button
+            onClick={handlePrevSlide}
+            aria-label="Previous room suite"
+            className="w-10 h-10 rounded-full bg-deep-navy/90 hover:bg-deep-navy text-champagne-gold border border-champagne-gold/30 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+          >
+            <span className="text-sm font-bold">←</span>
+          </button>
+
+          {/* Stepper Pill */}
           <ScrollBasedViewPill
             currentIndex={currentSlide}
             totalRooms={ROOMS_DATA.length}
-            onNext={handleScrollAllTheWay}
+            onNext={handleNextSlide}
           />
+
+          {/* Next Room Button */}
+          <button
+            onClick={handleNextSlide}
+            aria-label="Next room suite"
+            className="w-10 h-10 rounded-full bg-deep-navy/90 hover:bg-deep-navy text-champagne-gold border border-champagne-gold/30 shadow-xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-105 cursor-pointer"
+          >
+            <span className="text-sm font-bold">→</span>
+          </button>
         </div>
       </section>
     </div>

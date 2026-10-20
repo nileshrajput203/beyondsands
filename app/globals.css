@@ -101,8 +101,11 @@ body {
 }
 
 .island-nav.is-scrolled-dark {
-  background: rgba(11, 34, 56, 0.72);
-  border-color: rgba(196, 154, 101, 0.22);
+  background: rgba(11, 34, 56, 0.88);
+  border-color: rgba(196, 154, 101, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 18px 45px -15px rgba(0, 0, 0, 0.45);
 }
 
 .bezel {
@@ -293,6 +296,26 @@ html.lenis, html.lenis body {
   outline-offset: 3px;
 }
 
+/* Ensure brand logos and header/footer logo links NEVER receive an outline, border, or ring */
+header a[href="/"],
+footer a[href="/"],
+nav a[href="/"],
+.logo-link,
+a[href="/"],
+a[href="/"]:focus,
+a[href="/"]:focus-visible,
+a[href="/"] img,
+a[href="/"] img:focus,
+a[href="/"] img:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-shadow: 0 0 #0000 !important;
+}
+
 /* Hairline utilities */
 .hairline-b {
   border-bottom: 1px solid var(--hairline);
@@ -351,8 +374,9 @@ html.lenis, html.lenis body {
   perspective: 1000px;
 }
 
+.animate-marquee-left,
 .animate-marquee-left:hover {
-  animation-play-state: paused;
+  animation-play-state: running !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
