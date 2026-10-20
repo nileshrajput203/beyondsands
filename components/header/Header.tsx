@@ -73,9 +73,13 @@ export function Header() {
           <div className="flex-1 flex md:hidden items-center justify-start">
             <Link
               href="/rooms-tariff"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#F5DEB3] hover:text-white font-sans text-[9.5px] uppercase tracking-[0.16em] font-medium shadow-xs active:scale-95 transition-all"
+              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-sans text-[9.5px] uppercase tracking-[0.16em] font-medium shadow-xs active:scale-95 transition-all ${
+                isDarkTheme
+                  ? "bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#F5DEB3] hover:text-white"
+                  : "bg-deep-navy/5 border border-deep-navy/15 text-deep-navy hover:bg-deep-navy/10"
+              }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
+              <span className={`w-1.5 h-1.5 rounded-full ${isDarkTheme ? "bg-[#D4AF37]" : "bg-[#C49A65]"} animate-pulse`} />
               <span>Book</span>
             </Link>
           </div>
