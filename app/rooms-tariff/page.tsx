@@ -174,11 +174,6 @@ export default function RoomsTariffPage() {
                     <Users className="w-3 h-3 text-champagne-gold" />
                     <span>{room.capacity}</span>
                   </span>
-                  {/* Bottom Strip: Pure Veg Ethos & Proximity */}
-                  <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-sans">
-                    <span className="text-emerald-300 font-medium">🌿 100% Pure Veg</span>
-                    <span className="text-warm-ivory/80">Opp. Sheetla Devi Temple</span>
-                  </div>
                 </div>
 
                 {/* Content Body */}
