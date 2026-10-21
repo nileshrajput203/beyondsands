@@ -89,7 +89,7 @@ export function BackToTop() {
             strokeDasharray={circumference}
             strokeDashoffset={circumference}
             strokeLinecap="round"
-            className="transition-all duration-150"
+            className=""
           />
         </svg>
 

@@ -216,8 +216,10 @@ export function GoogleReviews() {
           src="/assets/hero/hero-gardens.jpg"
           alt="Beyond Sands Lush Gardens"
           fill
-          priority={false}
-          className="object-cover object-center scale-105"
+          loading="lazy"
+          sizes="100vw"
+          quality={75}
+          className="object-cover object-center"
         />
         {/* Soft Vignette / Gradient Overlay to replicate the lush overcast aesthetic */}
         <div className="absolute inset-0 bg-black/45 md:bg-black/40" />

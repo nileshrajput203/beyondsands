@@ -63,8 +63,8 @@ export function RoomPanel({ room }: RoomPanelProps) {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 55vw, 50vw"
                     className="object-cover object-center luxury-grade"
-                    loading="lazy"
-                    quality={75}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    quality={70}
                   />
                 </div>
               ))}

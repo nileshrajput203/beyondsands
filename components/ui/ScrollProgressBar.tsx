@@ -12,8 +12,10 @@ export function ScrollProgressBar() {
       ticking = false;
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll <= 0 || !barRef.current) return;
-      const progress = Math.min(100, Math.max(0, (window.scrollY / totalScroll) * 100));
-      barRef.current.style.width = `${progress}%`;
+      const progress = Math.min(1, Math.max(0, window.scrollY / totalScroll));
+      // Use scaleX transform instead of width — runs entirely on GPU compositor
+      // with zero layout/paint cost. The old width approach triggered layout per frame.
+      barRef.current.style.transform = `scaleX(${progress})`;
     };
 
     const handleScroll = () => {
@@ -40,7 +42,12 @@ export function ScrollProgressBar() {
     >
       <div
         ref={barRef}
-        className="h-full w-0 bg-gradient-to-r from-champagne-gold/60 via-champagne-gold to-warm-ivory transition-all duration-150 ease-out shadow-[0_0_8px_rgba(196,154,101,0.6)]"
+        className="h-full w-full bg-gradient-to-r from-champagne-gold/60 via-champagne-gold to-warm-ivory shadow-[0_0_8px_rgba(196,154,101,0.6)]"
+        style={{
+          transform: "scaleX(0)",
+          transformOrigin: "left center",
+          willChange: "transform",
+        }}
       />
     </div>
   );

@@ -83,11 +83,22 @@ export function HeroTideTransition({ hero, intro }: HeroTideTransitionProps) {
     let rafId: number | null = null;
     let isVisible = true;
     let lastState: "start" | "end" | "animating" | null = null;
+    let frameSkip = 0; // Mobile throttle: skip every other frame to halve CPU load
 
     const frame = (ts: number) => {
       if (!isVisible) {
         rafId = null;
         return;
+      }
+
+      // On mobile, halve the frame rate to 30fps — clip-path polygon recalculation
+      // per frame is expensive and 30fps is visually sufficient for a scroll transition.
+      if (isMobile) {
+        frameSkip++;
+        if (frameSkip % 2 !== 0) {
+          rafId = requestAnimationFrame(frame);
+          return;
+        }
       }
 
       const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;

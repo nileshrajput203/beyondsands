@@ -65,6 +65,17 @@ body {
   .noise-overlay {
     display: none !important;
   }
+  /* Kill blur() filters on mobile — each creates a separate GPU texture layer
+     consuming ~4× the pixel area in VRAM. With 7+ reveal sections + transitions,
+     this saturates mobile GPUs (Adreno/Mali) causing 15-20 fps scroll jank.
+     The fade + slide-up animation alone is sufficient for mobile viewports. */
+  .reveal-up {
+    filter: none !important;
+    will-change: opacity, transform;
+  }
+  .reveal-up.is-visible {
+    will-change: auto;
+  }
 }
 
 .skip-link {

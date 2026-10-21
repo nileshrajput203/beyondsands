@@ -66,7 +66,9 @@ export function EventsSection() {
             src="/assets/events/wedding-banner.webp"
             alt="Real Wedding & Celebration Stage at Beyond Sands Resort Palghar"
             fill
+            loading="lazy"
             sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={75}
             className="object-cover object-center group-hover:scale-105 transition-transform duration-700 luxury-grade"
           />
         </Link>
@@ -81,7 +83,9 @@ export function EventsSection() {
             src="/assets/events/banquet-hall.jpg"
             alt="Air-Conditioned Banquet & Event Hall at Beyond Sands Resort"
             fill
+            loading="lazy"
             sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={75}
             className="object-cover object-center group-hover:scale-105 transition-transform duration-700 luxury-grade"
           />
         </Link>

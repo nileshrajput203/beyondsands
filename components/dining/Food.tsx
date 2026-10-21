@@ -132,9 +132,9 @@ export function Food() {
       const st = ScrollTrigger.create({
         trigger: section,
         start: "top top",
-        end: "+=420",
+        end: "+=520",
         pin: true,
-        scrub: 0.3,
+        scrub: 0.6,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
