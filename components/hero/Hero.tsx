@@ -69,7 +69,7 @@ export function Hero() {
         alt="Beyond Sands Resort coastal canopy overlooking Kelva Beach"
         fill
         priority
-        sizes="100vw"
+        sizes="(min-width: 768px) 100vw, 1px"
         className={`hidden md:block object-cover object-center transition-opacity duration-1000 ${
           isPlaying ? "opacity-0" : "opacity-100"
         }`}

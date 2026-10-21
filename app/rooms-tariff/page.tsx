@@ -257,6 +257,8 @@ export default function RoomsTariffPage() {
                     src={room.image}
                     alt={room.name}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority={idx === 0}
                     className="object-cover object-center"
                   />
                   <span className="absolute top-4 left-4 px-3 py-1 bg-deep-navy/70 backdrop-blur-md text-warm-ivory text-xs font-semibold rounded-full border border-warm-ivory/20">

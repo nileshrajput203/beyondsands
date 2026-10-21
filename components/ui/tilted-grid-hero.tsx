@@ -221,18 +221,22 @@ export function TiltedGridHero({
   // loop's ends, where it wraps, fall inside that stretch, and so do tiles
   // swinging round behind the camera.
   const hide = +(((sweep - limit) / (2 * sweep || 1)) * 100).toFixed(4);
+  const share = aspectRatio / SLICES;
+  const duration = columns * speed;
   const css =
     `@keyframes ${orbit}{` +
     `from{transform:${turn(-sweep)}}to{transform:${turn(sweep)}}` +
     `0%,${hide}%,${100 - hide}%,100%{visibility:hidden}` +
     `${hide + 0.001}%,${100 - hide - 0.001}%{visibility:visible}}` +
-    // Pausing rather than removing the motion keeps the band whole: every
-    // tile is already placed by its negative delay, so it freezes as a
-    // finished still.
-    `@media(prefers-reduced-motion:reduce){.${tile}{animation-play-state:paused}}`;
+    `.${tile}{` +
+    `animation-name:${orbit};` +
+    `animation-duration:${duration}s;` +
+    `animation-timing-function:linear;` +
+    `animation-iteration-count:infinite;` +
+    `animation-play-state:${isInView ? "running" : "paused"};` +
+    `}` +
+    `@media(prefers-reduced-motion:reduce){.${tile}{animation-play-state:paused !important}}`;
 
-  const share = aspectRatio / SLICES;
-  const duration = columns * speed;
   const mask =
     fade > 0
       ? `linear-gradient(90deg,transparent,#000 ${fade}%,#000 ${
@@ -279,13 +283,7 @@ export function TiltedGridHero({
                 width: u(aspectRatio),
                 height: u(1),
                 transformStyle: "preserve-3d",
-                // Tile t starts t tiles along the loop.
-                animationName: orbit,
-                animationDuration: `${duration}s`,
-                animationTimingFunction: "linear",
                 animationDelay: `${-t * speed}s`,
-                animationIterationCount: "infinite",
-                animationPlayState: isInView ? "running" : "paused",
               }}
               onAnimationIteration={(e) => {
                 // elapsedTime counts whole loops, missed events included.
