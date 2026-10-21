@@ -14,7 +14,29 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     // Register GSAP plugins
     gsap.registerPlugin(ScrollTrigger);
 
-    // Instantiate Lenis
+    // On mobile touch devices, use native 60Hz/120Hz compositor momentum scrolling
+    // to prevent touch interception lag and stuttering.
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 || window.matchMedia("(pointer: coarse)").matches);
+
+    if (isMobile) {
+      registerLenis(null);
+      let disposed = false;
+      const refresh = () => {
+        if (!disposed) ScrollTrigger.refresh();
+      };
+      refresh();
+      document.fonts.ready.then(refresh);
+      window.addEventListener("load", refresh, { once: true });
+      return () => {
+        disposed = true;
+        window.removeEventListener("load", refresh);
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      };
+    }
+
+    // Desktop: Instantiate Lenis for smooth wheel gliding
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -22,13 +44,14 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1,
+      touchMultiplier: 0,
+      syncTouch: false,
     });
 
     lenisRef.current = lenis;
     registerLenis(lenis);
 
-    // Drive Lenis from GSAP Ticker exactly as mandated in Section 9
+    // Drive Lenis from GSAP Ticker on desktop
     lenis.on("scroll", ScrollTrigger.update);
 
     const tickerCb = (time: number) => {

@@ -150,7 +150,7 @@ export default function RootLayout({
           <main id="main-content" role="main" className="relative z-10 w-full max-w-full overflow-x-clip md:overflow-visible">
             {children}
           </main>
-          <div className="noise-overlay" aria-hidden="true" />
+          <div className="noise-overlay hidden md:block" aria-hidden="true" />
 
           {/* Floating WhatsApp Concierge on Right, Instagram on Left & Back to Top */}
           <InstagramFab />

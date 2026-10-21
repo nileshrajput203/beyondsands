@@ -49,7 +49,7 @@ export function Hero() {
           activeVideo.pause();
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.15 }
     );
 
     const heroSection = document.getElementById("hero-section");

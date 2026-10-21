@@ -87,52 +87,62 @@ export function SkySystem() {
     // Initialize initial state
     updateSkyGradient();
 
-    // Segment 1: Rooms -> Location (S0 Morning -> S1 Day)
-    const st1 = ScrollTrigger.create({
-      trigger: "#rooms-section",
-      start: "bottom center",
-      endTrigger: "#location-section",
-      end: "top center",
-      scrub: 1,
-      onUpdate: (self) => {
-        p1 = self.progress;
-        scheduleUpdate();
-      },
-    });
+    const mm = gsap.matchMedia();
 
-    // Segment 2: Location Spacer -> Food (S1 Day -> S2 Dusk)
-    const st2 = ScrollTrigger.create({
-      trigger: "#location-food-spacer",
-      start: "top center",
-      endTrigger: "#food-section",
-      end: "top center",
-      scrub: 1,
-      onUpdate: (self) => {
-        p2 = self.progress;
-        scheduleUpdate();
-      },
-    });
+    // Only run continuous linear-gradient JS recalculations on desktop (>= 768px).
+    // On mobile, keeping the fixed sky background static avoids repainting the entire viewport on every scroll frame.
+    mm.add("(min-width: 768px)", () => {
+      // Segment 1: Rooms -> Location (S0 Morning -> S1 Day)
+      const st1 = ScrollTrigger.create({
+        trigger: "#rooms-section",
+        start: "bottom center",
+        endTrigger: "#location-section",
+        end: "top center",
+        scrub: 1,
+        onUpdate: (self) => {
+          p1 = self.progress;
+          scheduleUpdate();
+        },
+      });
 
-    // Segment 3: Food -> Gallery & Footer (S2 Dusk -> S3 Night)
-    const st3 = ScrollTrigger.create({
-      trigger: "#food-section",
-      start: "center center",
-      endTrigger: "#gallery-section",
-      end: "top center",
-      scrub: 1,
-      onUpdate: (self) => {
-        p3 = self.progress;
-        scheduleUpdate();
-        if (starsRef.current) {
-          starsRef.current.style.opacity = (p3 * 0.06).toFixed(4);
-        }
-      },
+      // Segment 2: Location Spacer -> Food (S1 Day -> S2 Dusk)
+      const st2 = ScrollTrigger.create({
+        trigger: "#location-food-spacer",
+        start: "top center",
+        endTrigger: "#food-section",
+        end: "top center",
+        scrub: 1,
+        onUpdate: (self) => {
+          p2 = self.progress;
+          scheduleUpdate();
+        },
+      });
+
+      // Segment 3: Food -> Gallery & Footer (S2 Dusk -> S3 Night)
+      const st3 = ScrollTrigger.create({
+        trigger: "#food-section",
+        start: "center center",
+        endTrigger: "#gallery-section",
+        end: "top center",
+        scrub: 1,
+        onUpdate: (self) => {
+          p3 = self.progress;
+          scheduleUpdate();
+          if (starsRef.current) {
+            starsRef.current.style.opacity = (p3 * 0.06).toFixed(4);
+          }
+        },
+      });
+
+      return () => {
+        st1.kill();
+        st2.kill();
+        st3.kill();
+      };
     });
 
     return () => {
-      st1.kill();
-      st2.kill();
-      st3.kill();
+      mm.revert();
     };
   }, [pathname]);
 

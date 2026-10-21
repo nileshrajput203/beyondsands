@@ -116,9 +116,10 @@ export function Food() {
         const opacity = Math.max(0, 1 - Math.pow(absDist, 1.4) * 0.65);
         const zIndex = Math.round(10 - absDist * 4);
 
-        plate.style.transform = `translate(-50%, -50%) translateX(${x}px) scale(${scale}) rotate(${totalRotation}deg)`;
+        plate.style.transform = `translate3d(-50%, -50%, 0) translateX(${x}px) scale(${scale}) rotate(${totalRotation}deg)`;
         plate.style.opacity = String(opacity);
         plate.style.zIndex = String(zIndex);
+        plate.style.willChange = "transform, opacity";
       });
     };
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TiltedGridHero, type TiltedGridImage } from "@/components/ui/tilted-grid-hero";
 
@@ -49,6 +50,15 @@ const MOBILE_GALLERY_HIGHLIGHTS = [
 ];
 
 export function Gallery() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section
       id="gallery-section"
@@ -93,19 +103,21 @@ export function Gallery() {
       </div>
 
       {/* Desktop-Only 3D Tilted Grid Cylinder (>= 768px) */}
-      <div className="hidden md:block relative w-full overflow-hidden">
-        <TiltedGridHero
-          images={ALL_GALLERY_IMAGES}
-          speed={3.5}
-          tileHeight={32}
-          aspectRatio={16 / 9}
-          gap={5}
-          axis={54}
-          curve={75}
-          fade={0}
-          className="h-[620px] lg:h-[700px] w-full"
-        />
-      </div>
+      {isDesktop && (
+        <div className="hidden md:block relative w-full overflow-hidden">
+          <TiltedGridHero
+            images={ALL_GALLERY_IMAGES}
+            speed={3.5}
+            tileHeight={32}
+            aspectRatio={16 / 9}
+            gap={5}
+            axis={54}
+            curve={75}
+            fade={0}
+            className="h-[620px] lg:h-[700px] w-full"
+          />
+        </div>
+      )}
     </section>
   );
 }
