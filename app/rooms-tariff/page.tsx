@@ -206,27 +206,27 @@ export default function RoomsTariffPage() {
                   {/* Dual Plan Pricing Box (MakeMyTrip Style) */}
                   <div className="rounded-xl border border-charcoal/15 bg-warm-ivory/30 overflow-hidden divide-y divide-charcoal/10 text-xs font-sans">
                     {/* Plan 1: Room Only */}
-                    <div className="p-2.5 flex items-center justify-between">
-                      <div>
-                        <span className="text-[9.5px] uppercase tracking-wider text-charcoal/60 font-bold block">
+                    <div className="p-2.5 flex items-center justify-between gap-2">
+                      <div className="min-w-0 flex-1">
+                        <span className="text-[9.5px] uppercase tracking-wider text-charcoal/60 font-bold block truncate">
                           Room Only (EP Plan)
                         </span>
-                        <span className="text-[10px] text-charcoal/65">Pure veg meals à la carte</span>
+                        <span className="text-[10px] text-charcoal/65 block truncate">Pure veg meals à la carte</span>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         <span className="font-bold text-deep-navy text-xs">{room.priceRoomOnly}</span>
                       </div>
                     </div>
 
                     {/* Plan 2: All 4 Meals (Recommended) */}
-                    <div className="p-2.5 bg-champagne-gold/15 flex items-center justify-between">
-                      <div>
-                        <span className="text-[9.5px] uppercase tracking-wider text-[#8A5A1E] font-bold block">
+                    <div className="p-2.5 bg-champagne-gold/15 flex items-center justify-between gap-2">
+                      <div className="min-w-0 flex-1">
+                        <span className="text-[9.5px] uppercase tracking-wider text-[#8A5A1E] font-bold block truncate">
                           All 4 Meals (AP Plan) ★ Best Value
                         </span>
-                        <span className="text-[10px] text-charcoal/70">Lunch · Hi-Tea · Dinner · Breakfast</span>
+                        <span className="text-[10px] text-charcoal/70 block truncate">Lunch · Hi-Tea · Dinner · Breakfast</span>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         <span className="font-black text-deep-navy text-xs">{room.priceAllInclusive}</span>
                       </div>
                     </div>

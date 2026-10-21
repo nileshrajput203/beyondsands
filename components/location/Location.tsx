@@ -153,7 +153,9 @@ export function Location() {
                 src="/assets/location/location-resort-exterior.jpg"
                 alt="Beyond Sands Beach Resort - Entrance and modern property exterior"
                 fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 60vw"
+                loading="lazy"
+                quality={75}
                 className="object-cover object-top lg:object-center luxury-grade"
               />
             </div>
@@ -168,7 +170,9 @@ export function Location() {
               src="/assets/location/location-surroundings-beach.webp"
               alt="Kelva Beach Casuarina Grove and Arabian Sea Shoreline"
               fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
+              sizes="(max-width: 768px) 100vw, 40vw"
+              loading="lazy"
+              quality={75}
               className="object-cover object-center luxury-grade transition-transform duration-700 group-hover:scale-105"
             />
           </div>

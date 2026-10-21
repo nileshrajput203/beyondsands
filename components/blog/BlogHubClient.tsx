@@ -90,12 +90,12 @@ export function BlogHubClient() {
         </div>
 
         {/* Category Pills */}
-        <div className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+        <div className="relative z-10 mt-8 flex sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-2.5 overflow-x-auto no-scrollbar -mx-4 sm:mx-0 px-4 sm:px-0 py-1">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-full font-sans text-xs uppercase tracking-wider font-semibold transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-full font-sans text-xs uppercase tracking-wider font-semibold transition-all duration-200 cursor-pointer shrink-0 sm:shrink ${
                 selectedCategory === cat.id
                   ? "bg-[#0A1624] text-[#FAF6F0] shadow-md scale-102"
                   : "bg-white hover:bg-[#EFE5D2] text-[#4A5568] hover:text-[#0A1624] border border-[#E2D8C7]"

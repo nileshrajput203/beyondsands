@@ -81,7 +81,8 @@ export function Hero() {
         alt="Beyond Sands Resort Kelva Beach"
         fill
         priority
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 1px"
+        quality={75}
         className={`block md:hidden object-cover object-center transition-opacity duration-1000 ${
           isPlaying ? "opacity-0" : "opacity-100"
         }`}
@@ -117,8 +118,7 @@ export function Hero() {
               loop
               muted
               playsInline
-              preload="auto"
-              poster="/assets/hero/hero-mobile-poster.jpg"
+              preload="none"
               onPlaying={() => setIsPlaying(true)}
               className={`block md:hidden absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
                 isPlaying ? "opacity-100" : "opacity-0"

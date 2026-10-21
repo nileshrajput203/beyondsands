@@ -40,8 +40,9 @@ export function IntroTrustSection() {
           src="/assets/intro/beyond-sands-poster.png"
           alt="Beyond Sands Resort — Pure Veg Beachside Escape, Kelva Beach, Palghar"
           fill
-          priority
-          sizes="100vw"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 1px"
+          quality={75}
           className="object-cover object-center"
         />
       </div>

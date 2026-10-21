@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { TiltedGridHero, type TiltedGridImage } from "@/components/ui/tilted-grid-hero";
 
 const ALL_GALLERY_IMAGES: TiltedGridImage[] = [
@@ -38,19 +39,61 @@ const ALL_GALLERY_IMAGES: TiltedGridImage[] = [
   { src: "/assets/events/lawn-reception.jpg", alt: "Celebration lawns prepared for a reception" },
 ];
 
+const MOBILE_GALLERY_HIGHLIGHTS = [
+  { src: "/assets/rooms/pool-view-main.jpg", alt: "Pool View Suite Balcony" },
+  { src: "/assets/rooms/garden-view-main.jpg", alt: "Garden View Deluxe Room" },
+  { src: "/assets/gallery/wedding-banner.webp", alt: "15,000 sq ft Celebration Lawns" },
+  { src: "/assets/rooms/couple-room-main.webp", alt: "Romantic Couple Suite" },
+  { src: "/assets/location/location-surroundings-beach.webp", alt: "Kelva Beach Shoreline" },
+  { src: "/assets/dining/lunch.png", alt: "100% Pure Veg Dining" },
+];
+
 export function Gallery() {
   return (
     <section
       id="gallery-section"
       className="relative w-full py-12 sm:py-24 bg-transparent text-charcoal select-none overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-12 mb-6 sm:mb-10">
-        <span className="section-kicker mb-2.5 sm:mb-3">Gallery</span>
-        <h2 className="font-display text-2xl sm:text-5xl font-normal text-deep-navy tracking-tight">
-          The grounds, in motion
-        </h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-12 mb-5 sm:mb-10 flex items-end justify-between">
+        <div>
+          <span className="section-kicker mb-2.5 sm:mb-3">Gallery</span>
+          <h2 className="font-display text-2xl sm:text-5xl font-normal text-deep-navy tracking-tight">
+            The grounds, in motion
+          </h2>
+        </div>
+        <span className="block md:hidden text-[10px] uppercase font-sans tracking-widest text-charcoal/50">
+          Swipe photos →
+        </span>
       </div>
-      <div className="relative w-full overflow-hidden">
+
+      {/* Mobile-Only Lightweight Optimized Photo Stream (< 768px) */}
+      <div className="block md:hidden w-full overflow-x-auto no-scrollbar px-4 pb-2">
+        <div className="flex gap-3 snap-x snap-mandatory">
+          {MOBILE_GALLERY_HIGHLIGHTS.map((item, idx) => (
+            <div
+              key={idx}
+              className="relative w-[78vw] max-w-[310px] aspect-[16/10] shrink-0 rounded-2xl overflow-hidden border border-charcoal/10 shadow-sm snap-center bg-neutral-100"
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                loading="lazy"
+                sizes="(max-width: 768px) 78vw, 310px"
+                quality={75}
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute bottom-2.5 left-3 right-3 text-[11px] font-sans text-white/95 truncate font-medium">
+                {item.alt}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop-Only 3D Tilted Grid Cylinder (>= 768px) */}
+      <div className="hidden md:block relative w-full overflow-hidden">
         <TiltedGridHero
           images={ALL_GALLERY_IMAGES}
           speed={3.5}
@@ -60,7 +103,7 @@ export function Gallery() {
           axis={54}
           curve={75}
           fade={0}
-          className="h-[380px] sm:h-[620px] lg:h-[700px] w-full"
+          className="h-[620px] lg:h-[700px] w-full"
         />
       </div>
     </section>

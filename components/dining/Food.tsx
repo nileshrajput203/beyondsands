@@ -264,9 +264,10 @@ export function Food() {
                 src="/assets/dining/wood.jpg"
                 alt="Rustic wooden dining table surface"
                 fill
-                sizes="(max-width: 1024px) 100vw, 1500px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 1500px"
                 className="object-cover object-center"
-                priority
+                loading="lazy"
+                quality={75}
               />
             </div>
 

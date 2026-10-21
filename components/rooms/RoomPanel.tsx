@@ -63,7 +63,8 @@ export function RoomPanel({ room }: RoomPanelProps) {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 55vw, 50vw"
                     className="object-cover object-center luxury-grade"
-                    priority={idx === 0}
+                    loading="lazy"
+                    quality={75}
                   />
                 </div>
               ))}
@@ -111,6 +112,8 @@ export function RoomPanel({ room }: RoomPanelProps) {
                     alt={thumb.alt}
                     fill
                     sizes="120px"
+                    loading="lazy"
+                    quality={75}
                     className="object-cover object-center luxury-grade"
                   />
                 </button>

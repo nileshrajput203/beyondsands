@@ -234,8 +234,8 @@ export default function RoomsPage() {
         }}
       />
 
-      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-32 sm:pt-36 pb-20 select-none">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12">
+      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-28 sm:pt-36 pb-20 select-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-champagne-gold mb-8">
@@ -293,21 +293,21 @@ export default function RoomsPage() {
                     />
                     
                     {/* Floating Badge */}
-                    <div className="absolute top-5 left-5 z-10">
-                      <span className="px-3.5 py-1.5 rounded-full bg-deep-navy/90 backdrop-blur-md text-champagne-gold font-sans text-xs font-semibold tracking-wider uppercase border border-champagne-gold/30 shadow-md">
+                    <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-10">
+                      <span className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-deep-navy/90 backdrop-blur-md text-champagne-gold font-sans text-[11px] sm:text-xs font-semibold tracking-wider uppercase border border-champagne-gold/30 shadow-md">
                         {room.badge}
                       </span>
                     </div>
 
                     {/* Subtle Overlay Badge: Proximity */}
-                    <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between text-white text-xs backdrop-blur-md bg-black/50 px-4 py-2 rounded-xl border border-white/20">
-                      <span>Kelva Beach &amp; Sheetla Devi Temple Enclave</span>
-                      <span className="text-champagne-gold font-semibold">100% Pure Veg</span>
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-white text-[11px] sm:text-xs backdrop-blur-md bg-black/55 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-white/20">
+                      <span className="truncate">Kelva Beach &amp; Sheetla Devi Temple Enclave</span>
+                      <span className="text-champagne-gold font-semibold shrink-0">100% Pure Veg</span>
                     </div>
                   </div>
 
                   {/* Right Column: Room Content & Specs */}
-                  <div className="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between">
+                  <div className="lg:col-span-5 p-4 sm:p-8 lg:p-10 flex flex-col justify-between">
                     <div>
                       {/* Subtitle / Tagline */}
                       <span className="font-sans text-xs uppercase tracking-[0.16em] text-champagne-gold font-medium block mb-2">

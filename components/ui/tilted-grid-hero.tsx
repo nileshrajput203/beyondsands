@@ -280,7 +280,11 @@ export function TiltedGridHero({
                 height: u(1),
                 transformStyle: "preserve-3d",
                 // Tile t starts t tiles along the loop.
-                animation: `${orbit} ${duration}s linear ${-t * speed}s infinite`,
+                animationName: orbit,
+                animationDuration: `${duration}s`,
+                animationTimingFunction: "linear",
+                animationDelay: `${-t * speed}s`,
+                animationIterationCount: "infinite",
                 animationPlayState: isInView ? "running" : "paused",
               }}
               onAnimationIteration={(e) => {
@@ -320,6 +324,8 @@ export function TiltedGridHero({
                       src={img.src}
                       alt={k === 0 ? (img.alt ?? "") : ""}
                       draggable={false}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute top-0 max-w-none object-cover"
                       style={{
                         left: u(-k * share),

@@ -138,7 +138,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/events-gallery"
+                  href="/weddings-events"
                   className="hover:text-champagne-gold transition-colors duration-200 block py-0.5 hover:translate-x-1 transform transition-transform"
                 >
                   Events &amp; Weddings

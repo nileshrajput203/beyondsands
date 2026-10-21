@@ -156,8 +156,8 @@ export default function DiningPage() {
         }}
       />
 
-      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-32 sm:pt-36 pb-20 select-none">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12">
+      <div className="min-h-[100dvh] bg-transparent text-charcoal pt-28 sm:pt-36 pb-20 select-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-champagne-gold mb-8">
@@ -195,7 +195,7 @@ export default function DiningPage() {
           </div>
 
           {/* Sattvic Purity & Jain Assurance Grid */}
-          <section className="mb-20 bg-white/70 rounded-3xl p-8 sm:p-12 border border-charcoal/10 shadow-sm">
+          <section className="mb-20 bg-white/70 rounded-3xl p-5 sm:p-8 lg:p-12 border border-charcoal/10 shadow-sm">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <span className="font-sans text-xs uppercase tracking-[0.2em] text-champagne-gold font-semibold block mb-2">
                 Ethos of Sacred Purity
@@ -252,20 +252,20 @@ export default function DiningPage() {
                     />
 
                     {/* Badge */}
-                    <div className="absolute top-5 left-5 z-10">
-                      <span className="px-3.5 py-1.5 rounded-full bg-deep-navy/90 backdrop-blur-md text-champagne-gold font-sans text-xs font-semibold tracking-wider uppercase border border-champagne-gold/30">
+                    <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-10">
+                      <span className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-deep-navy/90 backdrop-blur-md text-champagne-gold font-sans text-[11px] sm:text-xs font-semibold tracking-wider uppercase border border-champagne-gold/30">
                         {meal.dietBadge}
                       </span>
                     </div>
 
-                    <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center gap-2 text-white text-xs backdrop-blur-md bg-black/50 px-4 py-2 rounded-xl border border-white/20">
-                      <Clock className="w-4 h-4 text-champagne-gold" />
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-10 flex items-center gap-2 text-white text-[11px] sm:text-xs backdrop-blur-md bg-black/55 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-white/20">
+                      <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-champagne-gold" />
                       <span>{meal.timing}</span>
                     </div>
                   </div>
 
                   {/* Description Column */}
-                  <div className={`lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
+                  <div className={`lg:col-span-6 p-4 sm:p-8 lg:p-10 flex flex-col justify-between ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
                     <div>
                       <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-champagne-gold font-semibold mb-2">
                         <Clock className="w-3.5 h-3.5" />

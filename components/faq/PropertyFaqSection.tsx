@@ -164,7 +164,7 @@ export function PropertyFaqSection() {
                   value={item.id}
                   className="bg-white/75 border border-charcoal/10 rounded-2xl overflow-hidden data-[state=open]:border-champagne-gold/50"
                 >
-                  <AccordionTrigger className="px-5 sm:px-7 py-4 sm:py-5 hover:no-underline transition-colors hover:bg-gray-50/60">
+                  <AccordionTrigger className="px-4 sm:px-7 py-3.5 sm:py-5 hover:no-underline transition-colors hover:bg-gray-50/60">
                     <div className="flex items-center gap-3.5 text-left pr-4">
                       <div className="w-9 h-9 rounded-lg bg-deep-navy/5 text-deep-navy flex items-center justify-center shrink-0 border border-deep-navy/10">
                         <Icon className="w-4 h-4 text-champagne-gold" />
@@ -180,7 +180,7 @@ export function PropertyFaqSection() {
                     </div>
                   </AccordionTrigger>
 
-                  <AccordionContent className="px-5 sm:px-7 pt-2 pb-6 border-t border-gray-100">
+                  <AccordionContent className="px-4 sm:px-7 pt-2 pb-6 border-t border-gray-100">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-2">
                       {/* Image Banner */}
                       <div className="md:col-span-5 relative h-48 sm:h-56 w-full rounded-lg overflow-hidden shadow-xs">
@@ -293,7 +293,7 @@ export function PropertyFaqSection() {
               href={whatsappInquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-champagne-gold hover:bg-warm-ivory text-deep-navy text-xs uppercase tracking-wider font-semibold font-sans transition-all duration-300 shadow-sm shrink-0 hover:scale-105 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-champagne-gold hover:bg-warm-ivory text-deep-navy text-xs uppercase tracking-wider font-semibold font-sans transition-all duration-300 shadow-sm shrink-0 hover:scale-105 cursor-pointer w-full sm:w-auto"
             >
               <MessageCircle className="w-4 h-4 text-deep-navy" />
               <span>Ask on WhatsApp</span>

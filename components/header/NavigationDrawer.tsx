@@ -201,7 +201,7 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
                 fill
                 sizes="36px"
                 className="object-contain"
-                priority
+                loading="lazy"
               />
             </div>
             <div className="flex flex-col">
@@ -277,36 +277,36 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
                   className="group relative flex flex-row items-stretch h-[68px] sm:h-[72px] lg:h-[74px] xl:h-[78px] bg-[#FAF5EE] hover:bg-[#FFFFFF] rounded-xl sm:rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.015] cursor-pointer touch-pan-y"
                 >
                   {/* Left Thumbnail Photo */}
-                  <div className="relative w-[32%] sm:w-[34%] shrink-0 h-full overflow-hidden bg-black/10 pointer-events-none select-none">
+                  <div className="relative w-[30%] sm:w-[34%] shrink-0 h-full overflow-hidden bg-black/10 pointer-events-none select-none">
                     <Image
                       src={item.image}
                       alt={item.name}
                       fill
                       draggable={false}
                       sizes="180px"
+                      loading="lazy"
+                      quality={75}
                       className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out pointer-events-none select-none"
                     />
+                    {item.badge && (
+                      <span className="sm:hidden absolute top-1.5 left-1.5 font-sans text-[7.5px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded-full bg-[#060C14]/90 text-[#E8DEC9] border border-[#E8DEC9]/35 shadow-xs backdrop-blur-xs">
+                        {item.badge}
+                      </span>
+                    )}
                   </div>
 
-                  {/* Mobile Layout (sm:hidden): Pristine Un-messy 2-Row Layout */}
+                  {/* Mobile Layout (sm:hidden): Pristine Un-messy Layout with Zero Truncation */}
                   <div className="flex sm:hidden flex-1 p-2.5 flex-col justify-center gap-1 min-w-0 text-[#0A1624]">
                     <div className="flex items-center justify-between gap-1.5">
-                      <div className="flex items-center gap-1.5 min-w-0">
+                      <div className="flex items-center gap-1.5 min-w-0 flex-1">
                         <span className="font-mono text-[9.5px] font-bold text-[#8C7A6B] shrink-0">
                           {item.index}
                         </span>
-                        <h3 className="font-serif text-[13.5px] font-semibold text-[#0A1624] truncate">
+                        <h3 className="font-serif text-[14px] font-semibold text-[#0A1624] truncate">
                           {item.name}
                         </h3>
                       </div>
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        {item.badge && (
-                          <span className="font-sans text-[7.5px] uppercase tracking-wider font-semibold px-1.5 py-0.5 rounded-full bg-[#E8DEC9] text-[#6E5536] border border-[#CBBBA0]/40">
-                            {item.badge}
-                          </span>
-                        )}
-                        <ArrowRight className="w-3 h-3 text-[#8C7A6B] shrink-0" />
-                      </div>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#8C7A6B] shrink-0 ml-1" />
                     </div>
                     <p className="font-sans text-[10px] text-[#4A5568] leading-tight line-clamp-1 font-light">
                       {item.subtitle}
@@ -341,10 +341,38 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
                 </Link>
               ))}
             </div>
+
+            {/* Mobile-only 4 Brand Pillars Strip below 11 cards */}
+            <div className="sm:hidden pt-3 pb-2 border-t border-white/10 grid grid-cols-4 gap-1 text-center">
+              <div className="flex flex-col items-center gap-0.5">
+                <Leaf className="w-3 h-3 text-[#C49A65]" />
+                <span className="text-[8px] uppercase tracking-wider text-white/70 font-sans">
+                  Pure Veg
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <Waves className="w-3 h-3 text-[#C49A65]" />
+                <span className="text-[8px] uppercase tracking-wider text-white/70 font-sans">
+                  Beach 2m
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <Sparkles className="w-3 h-3 text-[#C49A65]" />
+                <span className="text-[8px] uppercase tracking-wider text-white/70 font-sans">
+                  Luxury
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <Calendar className="w-3 h-3 text-[#C49A65]" />
+                <span className="text-[8px] uppercase tracking-wider text-white/70 font-sans">
+                  Events
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Right Column (Cols 8-12 on desktop): Grand Featured Showcase Card */}
-          <div className="lg:col-span-5 flex flex-col">
+          <div className="hidden lg:flex lg:col-span-5 flex-col">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gradient-to-b from-[#091522] via-[#07111C] to-[#040A12] p-4 sm:p-5 flex flex-col justify-between h-full">
               
               {/* Background Subtle Ambience */}
@@ -461,7 +489,7 @@ export function NavigationDrawer({ isOpen, onClose }: NavigationDrawerProps) {
       </main>
 
         {/* Bottom Footer Ambience Line */}
-        <footer className="relative z-20 py-2.5 sm:py-3 border-t border-white/10 bg-[#040910] text-center shrink-0">
+        <footer className="relative z-20 py-2.5 sm:py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] border-t border-white/10 bg-[#040910] text-center shrink-0">
           <span className="text-[9.5px] uppercase tracking-[0.35em] text-[#FAF6F0]/40 font-sans">
             SAND &nbsp;·&nbsp; SEA &nbsp;·&nbsp; SERENITY
           </span>
