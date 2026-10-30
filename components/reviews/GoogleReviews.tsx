@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useId } from "react";
+import { useState, useEffect, useCallback, useId, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star, X, ExternalLink, SquarePen } from "lucide-react";
 
@@ -205,6 +205,116 @@ export function GoogleReviews() {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   }, [maxIndex]);
 
+  // Hand (touch swipe) and Cursor (mouse drag) sliding
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const pointerStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+  const isDraggingRef = useRef(false);
+  const isHorizontalDragRef = useRef(false);
+  const hasMovedRef = useRef(false);
+  const wheelLockRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // Only primary mouse click or touch
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+
+    pointerStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      time: Date.now(),
+    };
+    isDraggingRef.current = true;
+    isHorizontalDragRef.current = false;
+    hasMovedRef.current = false;
+
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current || !pointerStartRef.current) return;
+
+    const deltaX = e.clientX - pointerStartRef.current.x;
+    const deltaY = e.clientY - pointerStartRef.current.y;
+
+    // Detect direction
+    if (!isHorizontalDragRef.current) {
+      if (Math.abs(deltaX) > 6 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        isHorizontalDragRef.current = true;
+        hasMovedRef.current = true;
+        setIsDragging(true);
+      } else if (Math.abs(deltaY) > 8 && Math.abs(deltaY) > Math.abs(deltaX)) {
+        // Vertical scroll intent — release drag so page scrolls smoothly
+        isDraggingRef.current = false;
+        pointerStartRef.current = null;
+        return;
+      }
+    }
+
+    if (isHorizontalDragRef.current) {
+      let offset = deltaX;
+      // Damped rubber-band effect at extremes
+      if ((currentIndex === 0 && deltaX > 0) || (currentIndex >= maxIndex && deltaX < 0)) {
+        offset = deltaX * 0.35;
+      }
+      setDragOffset(offset);
+      hasMovedRef.current = true;
+    }
+  };
+
+  const handlePointerEnd = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current) return;
+
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {
+      // ignore
+    }
+
+    if (isHorizontalDragRef.current && pointerStartRef.current) {
+      const deltaX = e.clientX - pointerStartRef.current.x;
+      const duration = Math.max(1, Date.now() - pointerStartRef.current.time);
+      const velocity = Math.abs(deltaX) / duration; // px/ms
+
+      // Slide if dragged > 35px OR flicked with velocity > 0.3 px/ms
+      const shouldSlide = Math.abs(deltaX) > 35 || (velocity > 0.3 && Math.abs(deltaX) > 12);
+
+      if (shouldSlide) {
+        if (deltaX < 0) {
+          handleNext();
+        } else {
+          handlePrev();
+        }
+      }
+    }
+
+    isDraggingRef.current = false;
+    isHorizontalDragRef.current = false;
+    setIsDragging(false);
+    setDragOffset(0);
+    pointerStartRef.current = null;
+  };
+
+  // Trackpad / Horizontal wheel swipe support
+  const handleWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaX) > 30) {
+      if (wheelLockRef.current) return;
+      if (e.deltaX > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+      wheelLockRef.current = setTimeout(() => {
+        wheelLockRef.current = null;
+      }, 350);
+    }
+  };
+
   return (
     <section
       id="reviews-section"
@@ -295,12 +405,30 @@ export function GoogleReviews() {
             <ChevronLeft className="w-8 h-8 sm:w-12 sm:h-12 stroke-[2.5]" />
           </button>
 
-          {/* Cards Track */}
-          <div className="w-full overflow-hidden px-1 sm:px-2 py-4">
+          {/* Cards Track with Hand (Touch Swipe) and Cursor (Mouse Drag) Slide */}
+          <div
+            className="w-full overflow-hidden px-1 sm:px-2 py-4 touch-pan-y cursor-grab active:cursor-grabbing select-none"
+            style={{ touchAction: "pan-y" }}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerEnd}
+            onPointerCancel={handlePointerEnd}
+            onWheel={handleWheel}
+            onDragStart={(e) => e.preventDefault()}
+            onClickCapture={(e) => {
+              // Prevent modal opening or link clicks if user was swiping/dragging
+              if (hasMovedRef.current) {
+                e.stopPropagation();
+                e.preventDefault();
+              }
+            }}
+          >
             <div
-              className="flex transition-transform duration-500 ease-out"
+              className={`flex ${isDragging ? "transition-none" : "transition-transform duration-500 ease-out"}`}
               style={{
-                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+                transform: isDragging
+                  ? `translateX(calc(-${currentIndex * (100 / visibleCount)}% + ${dragOffset}px))`
+                  : `translateX(-${currentIndex * (100 / visibleCount)}%)`,
               }}
             >
               {REVIEWS.map((review) => {
@@ -314,7 +442,7 @@ export function GoogleReviews() {
                     style={{ width: `${100 / visibleCount}%` }}
                   >
                     {/* White Card */}
-                    <div className="bg-white rounded-2xl sm:rounded-[1.6rem] shadow-[0_20px_50px_-28px_rgba(0,0,0,0.45)] p-5 sm:p-8 flex flex-col items-center justify-between min-h-[310px] sm:min-h-[370px] w-full text-center border border-white/40 transition-transform duration-500 ease-luxury hover:-translate-y-1">
+                    <div className="bg-white rounded-2xl sm:rounded-[1.6rem] shadow-[0_20px_50px_-28px_rgba(0,0,0,0.45)] p-5 sm:p-8 flex flex-col items-center justify-between min-h-[310px] sm:min-h-[370px] w-full text-center border border-white/40 transition-transform duration-500 ease-luxury hover:-translate-y-1 select-none" draggable={false}>
                       {/* Top: Large Centered Avatar */}
                       <div className="flex flex-col items-center pt-1 sm:pt-2">
                         <div

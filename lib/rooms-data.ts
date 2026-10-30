@@ -120,7 +120,6 @@ export const ROOMS_DATA: RoomItem[] = [
       { src: "/assets/rooms/pool-view-thumb1.jpg", alt: "Premium Suite Bedroom Layout" },
       { src: "/assets/rooms/pool-view-thumb2.jpg", alt: "Cozy Lounge Reading Corner" },
       { src: "/assets/rooms/pool-view-thumb3.jpg", alt: "Sunset Reflection Across Pool" },
-      { src: "/assets/rooms/pool-view-thumb4.png", alt: "Azure Swimming Pool Daylight" },
     ],
     packages: [
       {

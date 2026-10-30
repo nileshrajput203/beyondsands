@@ -8,7 +8,7 @@ export function InstagramFab() {
 
   return (
     <div
-      className={`fixed bottom-4 left-3 sm:bottom-6 sm:left-6 z-[60] transition-all duration-700 ease-luxury hidden sm:block ${
+      className={`fixed bottom-4 left-3 sm:bottom-6 sm:left-6 z-[60] transition-all duration-700 ease-luxury ${
         isPastHero ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-3 pointer-events-none"
       } ${isFooterVisible ? "opacity-30 hover:opacity-100" : ""}`}
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}

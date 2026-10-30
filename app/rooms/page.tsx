@@ -89,7 +89,6 @@ const ROOMS_DATA = [
     gallery: [
       "/assets/rooms/pool-view-main.jpg",
       "/assets/rooms/pool-view-thumb2.jpg",
-      "/assets/rooms/pool-view-thumb4.png",
       "/assets/rooms/pool-view-thumb3.jpg",
     ],
     features: [
